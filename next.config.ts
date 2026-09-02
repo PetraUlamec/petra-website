@@ -9,12 +9,15 @@ import type { NextConfig } from "next";
 // porque three.js genera texturas y trabajadores en memoria.
 const CSP = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline'",
+  // blob: es imprescindible: three.js/drei cargan sus «workers» (los que descomprimen los
+  // modelos 3D) desde blob:. Sin esto la escena se queda sin modelos — comprobado con navegador.
+  "script-src 'self' 'unsafe-inline' blob:",
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob:",
   "font-src 'self' data:",
   "connect-src 'self'",
-  "worker-src 'self' blob:",
+  "worker-src 'self' blob: data:",
+  "child-src 'self' blob:",
   "media-src 'self' data: blob:",
   "frame-src https://checkout.stripe.com https://js.stripe.com",
   "form-action 'self' https://checkout.stripe.com",
