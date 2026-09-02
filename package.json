@@ -5,8 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
+    "start": "next start -H 127.0.0.1 -p 3111",
+    "lint": "eslint",
+    "start:publico": "next start -p 3111"
   },
   "dependencies": {
     "@fontsource/fraunces": "^5.3.0",

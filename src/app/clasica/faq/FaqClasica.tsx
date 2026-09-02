@@ -1,5 +1,6 @@
 "use client";
 import { useT } from "@/i18n";
+import { jsonLdSeguro } from "@/lib/jsonLd";
 
 export default function FaqClasica() {
   const T = useT();
@@ -17,7 +18,7 @@ export default function FaqClasica() {
           </details>
         ))}
       </div>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdSeguro({
         "@context": "https://schema.org", "@type": "FAQPage",
         mainEntity: T.cl.faq.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
       }) }} />

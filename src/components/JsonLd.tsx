@@ -1,5 +1,6 @@
 // JSON-LD para Google (U6): la Organización/Tienda y los Productos (tés) — server component.
 import { TEAS } from "@/data/teas";
+import { jsonLdSeguro } from "@/lib/jsonLd";
 
 const BASE = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3111";
 
@@ -14,7 +15,7 @@ export function OrgJsonLd() {
     currenciesAccepted: "EUR",
     paymentAccepted: "Credit Card, PayPal",
   };
-  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdSeguro(data) }} />;
 }
 
 export function TeasJsonLd({ sala }: { sala: "te" | "te-premium" }) {
@@ -32,5 +33,5 @@ export function TeasJsonLd({ sala }: { sala: "te" | "te-premium" }) {
       },
     })),
   };
-  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdSeguro(data) }} />;
 }

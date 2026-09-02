@@ -1,7 +1,10 @@
 // 🩺 EL DOCTOR del taller: revisa lo publicado y avisa de problemas, con gravedad.
-import { promises as fs } from "fs";
+// 2-sep-2026 (auditoría): era público y enseñaba el mapa interno de las salas y el catálogo
+// procesado. Es una herramienta del taller, así que ahora pide la clave del taller.
 import path from "path";
 import { NextResponse } from "next/server";
+import { guardaTaller } from "@/lib/tallerAuth";
+import { leerJSON } from "@/lib/jsonSeguro";
 
 export const runtime = "nodejs";
 const FICHERO = path.join(process.cwd(), "data", "catalogo-vivo.json");
@@ -23,9 +26,10 @@ const OCUPADO: Record<string, { x: number; z: number; r: number; que: string }[]
   intro: [{ x: 0, z: -1, r: 5, que: "la fachada (la calle admite poco)" }],
 };
 
-export async function GET() {
-  let d: { teas?: unknown[]; extras?: unknown[]; deco?: unknown[] } = {};
-  try { d = JSON.parse(await fs.readFile(FICHERO, "utf8")); } catch { /* vacío */ }
+export async function GET(req: Request) {
+  const corte = guardaTaller(req);
+  if (corte) return corte;
+  const d = await leerJSON<{ teas?: unknown[]; extras?: unknown[]; deco?: unknown[] }>(FICHERO, {});
   const avisos: { nivel: "rojo" | "ambar" | "ok"; texto: string }[] = [];
   const teas = (d.teas ?? []) as { id: string; nombre: string; precio: number; paraQueSirve?: string; plantas: { plantaId: string; porQueEnEsteMix?: string }[] }[];
   const extras = (d.extras ?? []) as { id: string; nombre: string; tipo: string; procedencia?: string }[];

@@ -13,6 +13,7 @@ import { trTea, trPlanta } from "@/i18n/catalogo";
 import type { Tea } from "@/lib/types";
 import PlantaSVG from "@/components/clasica/PlantaSVG";
 import Lamina from "@/components/clasica/Lamina";
+import { jsonLdSeguro } from "@/lib/jsonLd";
 
 export default function FichaTe({ tea: teaRaw }: { tea: Tea }) {
   const T = useT();
@@ -101,7 +102,7 @@ export default function FichaTe({ tea: teaRaw }: { tea: Tea }) {
           </div>
         </section>
       )}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdSeguro({
         "@context": "https://schema.org", "@type": "Product",
         name: tea.nombre, description: tea.paraQueSirve,
         brand: { "@type": "Brand", name: "Petra & Erik" },

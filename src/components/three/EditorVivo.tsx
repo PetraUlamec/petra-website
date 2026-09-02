@@ -13,6 +13,7 @@ import * as THREE from "three";
 import { piezaDe, listarPiezas, idPieza, esAuxiliar } from "@/lib/piezas";
 import { BIBLIOTECA, ETIQUETA_PIEZA, CATEGORIAS, porCategoria, alturaDe, esDePared } from "./DecoVivo";
 import { recargarVivo } from "@/lib/vivoStore";
+import { cabecerasTaller } from "@/lib/editor";
 
 type Modo = "translate" | "rotate" | "scale";
 type Estado = { p: [number, number, number]; rotY: number; s: number; visible: boolean };
@@ -44,7 +45,7 @@ export default function EditorVivo() {
   const guarda = useCallback(async (items: { id: string; obj: THREE.Object3D }[]) => {
     for (const { id, obj } of items) {
       const e = estadoDe(obj);
-      await fetch("/api/overrides", { method: "POST", headers: { "Content-Type": "application/json" },
+      await fetch("/api/overrides", { method: "POST", headers: cabecerasTaller(),
         body: JSON.stringify({ sala: location.pathname, id, p: e.p.map(r3), rotY: r3(e.rotY), s: r3(e.s), hidden: !e.visible }) });
     }
     (window as unknown as { __overridesRecargar?: () => void }).__overridesRecargar?.();
@@ -130,7 +131,7 @@ export default function EditorVivo() {
     for (const o of objs) {
       const vivoId = o.userData?.vivoId as string | undefined;
       const antes = estadoDe(o); o.visible = false;
-      if (vivoId) { await fetch("/api/deco", { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: vivoId }) }); }
+      if (vivoId) { await fetch("/api/deco", { method: "DELETE", headers: cabecerasTaller(), body: JSON.stringify({ id: vivoId }) }); }
       paso.push({ id: idPieza(o, scene), obj: o, antes, despues: estadoDe(o) });
     }
     commit(paso); selecciona([]); ui.current?.aviso(`🗑 borradas ${objs.length} (Deshacer para recuperar)`);
@@ -139,7 +140,7 @@ export default function EditorVivo() {
   const anade = useCallback(async (pieza: string, x = 0, z = 1.2) => {
     const sala = SALA[location.pathname] ?? "salon";
     const y = alturaDe(pieza);
-    const r = await fetch("/api/deco", { method: "POST", headers: { "Content-Type": "application/json" },
+    const r = await fetch("/api/deco", { method: "POST", headers: cabecerasTaller(),
       body: JSON.stringify({ pieza, sala, x: +x.toFixed(2), z: +z.toFixed(2), rotY: 0, escala: 1, ...(y ? { y } : {}) }) });
     if (r.ok) { await recargarVivo(); ui.current?.aviso(`＋ ${ETIQUETA_PIEZA[pieza] ?? pieza}${esDePared(pieza) ? " (va en la pared: súbela con RePág)" : ""}`); }
     else ui.current?.aviso("✗ no se pudo añadir");
@@ -151,7 +152,7 @@ export default function EditorVivo() {
     for (const o of objs) {
       const vivo = o.userData?.vivo as { pieza: string; sala: string; x: number; z: number; rotY: number; escala: number; y?: number } | undefined;
       if (!vivo) continue;
-      await fetch("/api/deco", { method: "POST", headers: { "Content-Type": "application/json" },
+      await fetch("/api/deco", { method: "POST", headers: cabecerasTaller(),
         body: JSON.stringify({ ...vivo, x: vivo.x + 0.45 }) });
       hechas++;
     }
@@ -173,13 +174,13 @@ export default function EditorVivo() {
       const e = estadoDe(obj);
       return { id, p: e.p.map(r3), rotY: r3(e.rotY), s: r3(e.s), hidden: !e.visible };
     });
-    const r = await fetch("/api/overrides", { method: "POST", headers: { "Content-Type": "application/json" },
+    const r = await fetch("/api/overrides", { method: "POST", headers: cabecerasTaller(),
       body: JSON.stringify({ sala: location.pathname, cambios }) });
     ui.current?.aviso(r.ok ? `💾 GUARDADO · ${cambios.length} piezas de esta sala quedan como las ves` : "✗ no se pudo guardar");
   }, [scene]);
 
   const marca = useCallback((estado: string) => {
-    selRef.current.forEach((o) => fetch("/api/editor-log", { method: "POST", headers: { "Content-Type": "application/json" },
+    selRef.current.forEach((o) => fetch("/api/editor-log", { method: "POST", headers: cabecerasTaller(),
       body: JSON.stringify({ sala: location.pathname, pieza: idPieza(o, scene), estado, ahora: estadoDe(o) }) }));
     ui.current?.aviso(`✓ marcado ${estado} (${selRef.current.length})`);
   }, [scene]);
