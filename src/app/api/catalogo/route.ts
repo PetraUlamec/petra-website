@@ -1,31 +1,28 @@
-// API del catálogo vivo (LOCAL): lee/escribe web/data/catalogo-vivo.json.
-// Cuando la tienda salga a internet, esta ruta se protege con clave o se sustituye por un CMS.
-import { promises as fs } from "fs";
+// API del catálogo vivo: lee/escribe web/data/catalogo-vivo.json.
+// 2-sep-2026 (auditoría): la clave ya no tiene valor por defecto ("petra" estaba escrita en el
+// código); ahora pasa por la puerta única del taller. Guardado atómico y topes de tamaño.
 import path from "path";
 import { NextResponse } from "next/server";
 import { esClaveValida } from "@/lib/biblioteca-claves";
+import { guardaTaller } from "@/lib/tallerAuth";
+import { leerJSON, escribirJSON } from "@/lib/jsonSeguro";
 
 export const runtime = "nodejs";
 const FICHERO = path.join(process.cwd(), "data", "catalogo-vivo.json");
+const MAX_ITEMS = 500;          // tés o extras publicados
+const MAX_TEXTO = 2000;         // largo de cualquier texto que llegue del taller
 
-async function leer() {
-  try { return JSON.parse(await fs.readFile(FICHERO, "utf8")); }
-  catch { return { teas: [], extras: [], deco: [] }; }
-}
-async function guardar(d: unknown) {
-  await fs.mkdir(path.dirname(FICHERO), { recursive: true });
-  await fs.writeFile(FICHERO, JSON.stringify(d, null, 2), "utf8");
-}
+interface CatalogoVivo { teas: any[]; extras: any[]; deco?: any[] }
+const leer = () => leerJSON<CatalogoVivo>(FICHERO, { teas: [], extras: [], deco: [] });
+const guardar = (d: unknown) => escribirJSON(FICHERO, d);
+/** Recorta cualquier texto del taller: ni descomunal ni con caracteres de control. */
+const txt = (v: unknown, max = MAX_TEXTO) =>
+  String(v ?? "").replace(/[\u0000-\u001F\u007F]/g, " ").trim().slice(0, max);
 const slug = (s: string) =>
   s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
 export async function GET() {
   return NextResponse.json(await leer());
-}
-
-function claveOk(req: Request) {
-  const esperada = process.env.TALLER_KEY ?? "petra";
-  return (req.headers.get("x-taller-key") ?? "") === esperada;
 }
 
 /** Lo que puede llegar del taller (todo opcional: la validación es la de abajo). */
@@ -41,7 +38,8 @@ async function cuerpo(req: Request): Promise<{ tipo?: string; item?: ItemIn; id?
 }
 
 export async function POST(req: Request) {
-  if (!claveOk(req)) return NextResponse.json({ error: "clave del taller incorrecta" }, { status: 401 });
+  const corte = guardaTaller(req);
+  if (corte) return corte;
   const body = await cuerpo(req);
   if (!body) return NextResponse.json({ error: "cuerpo no válido (se espera JSON)" }, { status: 400 });
   const { tipo, item } = body;
@@ -50,11 +48,12 @@ export async function POST(req: Request) {
     const precio = Number(item?.precio);
     if (!item?.nombre || !Array.isArray(item?.plantas) || item.plantas.length === 0 || !Number.isFinite(precio) || precio <= 0)
       return NextResponse.json({ error: "Faltan nombre o plantas, o el precio no es válido" }, { status: 400 });
+    if (d.teas.length >= MAX_ITEMS) return NextResponse.json({ error: "demasiados tés publicados" }, { status: 409 });
     const t = {
-      id: slug(item.nombre), nombre: item.nombre,
+      id: slug(item.nombre), nombre: txt(item.nombre, 120),
       sala: item.sala === "te-premium" ? "te-premium" : "te",
       precio, gramos: Number(item.gramos) || 60,
-      paraQueSirve: item.paraQueSirve || "", colorHoja: item.colorHoja || "#C9B36A",
+      paraQueSirve: txt(item.paraQueSirve), colorHoja: /^#[0-9a-fA-F]{3,8}$/.test(String(item.colorHoja)) ? item.colorHoja : "#C9B36A",
       ...(item.foto ? { foto: String(item.foto) } : {}),
       plantas: item.plantas.filter((p: { plantaId?: string }) => p?.plantaId),
     };
@@ -62,11 +61,12 @@ export async function POST(req: Request) {
   } else if (tipo === "extra") {
     if (!item?.nombre || !item?.procedencia)
       return NextResponse.json({ error: "Faltan nombre o historia/procedencia" }, { status: 400 });
+    if (d.extras.length >= MAX_ITEMS) return NextResponse.json({ error: "demasiados extras publicados" }, { status: 409 });
     const e = {
-      id: slug(item.nombre), nombre: item.nombre,
+      id: slug(item.nombre), nombre: txt(item.nombre, 120),
       tipo: ["cuchara", "queso", "carne", "limonada", "miel"].includes(item.tipo ?? "") ? item.tipo : "queso",
       hechoPor: item.hechoPor === "Erik" ? "Erik" : "Petra",
-      procedencia: item.procedencia,
+      procedencia: txt(item.procedencia),
       ...(item.foto ? { foto: String(item.foto) } : {}),
     };
     d.extras = d.extras.filter((x: { id: string }) => x.id !== e.id).concat(e);
@@ -89,7 +89,8 @@ export async function POST(req: Request) {
 }
 
 export async function DELETE(req: Request) {
-  if (!claveOk(req)) return NextResponse.json({ error: "clave del taller incorrecta" }, { status: 401 });
+  const corte = guardaTaller(req);
+  if (corte) return corte;
   const body = await cuerpo(req);
   if (!body) return NextResponse.json({ error: "cuerpo no válido (se espera JSON)" }, { status: 400 });
   const { tipo, id } = body;

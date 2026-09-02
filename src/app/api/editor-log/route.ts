@@ -1,31 +1,38 @@
-// Registro del MODO EDITOR de SER: cada pieza que mueve/rota/marca queda aquí,
-// y Claude lo lee para fijar los cambios en el código. Solo en local.
+// Registro del MODO EDITOR: cada pieza que se mueve/rota/marca queda aquí.
+// 2-sep-2026 (auditoría): estaba ABIERTO — cualquiera podía leerlo, inflarlo hasta llenar el
+// disco (se reescribe entero en cada apunte) o vaciarlo. Ahora exige la clave del taller y
+// tiene tope de entradas.
 import { NextResponse } from "next/server";
-import { promises as fs } from "fs";
 import path from "path";
+import { guardaTaller } from "@/lib/tallerAuth";
+import { leerJSON, escribirJSON } from "@/lib/jsonSeguro";
 
+export const runtime = "nodejs";
 const FICHERO = path.join(process.cwd(), "data", "editor-log.json");
+/** Se queda con los últimos N apuntes: el registro no puede crecer sin fin. */
+const MAX_APUNTES = 2000;
 
-async function leer(): Promise<unknown[]> {
-  try { return JSON.parse(await fs.readFile(FICHERO, "utf8")); } catch { return []; }
-}
-
-export async function GET() {
-  return NextResponse.json(await leer());
+export async function GET(req: Request) {
+  const corte = guardaTaller(req);
+  if (corte) return corte;
+  return NextResponse.json(await leerJSON<unknown[]>(FICHERO, []));
 }
 
 export async function POST(req: Request) {
+  const corte = guardaTaller(req);
+  if (corte) return corte;
   let body: unknown;
   try { body = await req.json(); } catch { return NextResponse.json({ error: "JSON no válido" }, { status: 400 }); }
-  const lista = await leer();
+  const lista = await leerJSON<unknown[]>(FICHERO, []);
   lista.push({ ...(body as object), cuando: new Date().toISOString() });
-  await fs.mkdir(path.dirname(FICHERO), { recursive: true });
-  await fs.writeFile(FICHERO, JSON.stringify(lista, null, 2));
-  return NextResponse.json({ ok: true, total: lista.length });
+  const recortada = lista.length > MAX_APUNTES ? lista.slice(-MAX_APUNTES) : lista;
+  await escribirJSON(FICHERO, recortada);
+  return NextResponse.json({ ok: true, total: recortada.length });
 }
 
-export async function DELETE() {
-  await fs.mkdir(path.dirname(FICHERO), { recursive: true });
-  await fs.writeFile(FICHERO, "[]");
+export async function DELETE(req: Request) {
+  const corte = guardaTaller(req);
+  if (corte) return corte;
+  await escribirJSON(FICHERO, []);
   return NextResponse.json({ ok: true });
 }
