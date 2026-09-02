@@ -1,0 +1,354 @@
+[
+  {
+    "sala": "/",
+    "pieza": "Box+Cylinder+Cylinder+4#0",
+    "estado": "BIEN",
+    "ahora": {
+      "p": [
+        -4.689,
+        3.166,
+        0.274
+      ],
+      "rotY": 1.571,
+      "s": 1,
+      "visible": true
+    },
+    "cuando": "2026-08-24T23:24:34.806Z"
+  },
+  {
+    "sala": "/",
+    "pieza": "Box",
+    "estado": "BIEN",
+    "ahora": {
+      "p": [
+        0,
+        4.75,
+        -0.5
+      ],
+      "rotY": 0,
+      "s": 1,
+      "visible": true
+    },
+    "cuando": "2026-08-24T23:24:39.268Z"
+  },
+  {
+    "sala": "/",
+    "pieza": "Sphere+Sphere+Sphere+2#0",
+    "estado": "BIEN",
+    "ahora": {
+      "p": [
+        4.25,
+        4.62,
+        0.18
+      ],
+      "rotY": 0.7,
+      "s": 1,
+      "visible": true
+    },
+    "cuando": "2026-08-24T23:24:43.154Z"
+  },
+  {
+    "sala": "/",
+    "pieza": "Box#7",
+    "estado": "BIEN",
+    "ahora": {
+      "p": [
+        3.4,
+        5.1,
+        -1.2
+      ],
+      "rotY": 0,
+      "s": 1,
+      "visible": true
+    },
+    "cuando": "2026-08-24T23:24:46.041Z"
+  },
+  {
+    "sala": "/",
+    "pieza": "Sphere+Sphere+Sphere#0",
+    "estado": "BIEN",
+    "ahora": {
+      "p": [
+        3.4,
+        5.6,
+        -1.2
+      ],
+      "rotY": 0,
+      "s": 1,
+      "visible": true
+    },
+    "cuando": "2026-08-24T23:24:50.535Z"
+  },
+  {
+    "sala": "/",
+    "pieza": "Box+Box+Box+6#0",
+    "estado": "MAL",
+    "ahora": {
+      "p": [
+        0,
+        0.025,
+        0
+      ],
+      "rotY": 0,
+      "s": 0.86,
+      "visible": true
+    },
+    "cuando": "2026-08-24T23:24:56.101Z"
+  },
+  {
+    "sala": "/",
+    "pieza": "Sphere+Sphere#0",
+    "estado": "MAL",
+    "ahora": {
+      "p": [
+        -0.595,
+        0,
+        7.234
+      ],
+      "rotY": 0,
+      "s": 1,
+      "visible": true
+    },
+    "cuando": "2026-08-24T23:33:41.714Z"
+  },
+  {
+    "sala": "/",
+    "pieza": "Sphere+Sphere#0",
+    "estado": "MAL",
+    "ahora": {
+      "p": [
+        -0.595,
+        0,
+        7.234
+      ],
+      "rotY": 0,
+      "s": 1,
+      "visible": true
+    },
+    "cuando": "2026-08-24T23:33:42.751Z"
+  },
+  {
+    "sala": "/",
+    "pieza": "Sphere+Sphere#0",
+    "estado": "BIEN",
+    "ahora": {
+      "p": [
+        -0.595,
+        0,
+        7.234
+      ],
+      "rotY": 0,
+      "s": 1,
+      "visible": true
+    },
+    "cuando": "2026-08-24T23:33:45.261Z"
+  },
+  {
+    "sala": "/",
+    "pieza": "Sphere+Sphere#0",
+    "estado": "BIEN",
+    "ahora": {
+      "p": [
+        -0.595,
+        0,
+        7.234
+      ],
+      "rotY": 0,
+      "s": 1,
+      "visible": true
+    },
+    "cuando": "2026-08-24T23:33:45.818Z"
+  },
+  {
+    "sala": "/",
+    "pieza": "Sphere+Sphere#0",
+    "estado": "BIEN",
+    "ahora": {
+      "p": [
+        -0.595,
+        0,
+        7.234
+      ],
+      "rotY": 0,
+      "s": 1,
+      "visible": true
+    },
+    "cuando": "2026-08-24T23:33:46.010Z"
+  },
+  {
+    "sala": "/",
+    "pieza": "Box+Box+Box+6#0",
+    "estado": "MAL",
+    "ahora": {
+      "p": [
+        0,
+        0.025,
+        0
+      ],
+      "rotY": 0,
+      "s": 0.86,
+      "visible": true
+    },
+    "cuando": "2026-08-24T23:33:50.581Z"
+  },
+  {
+    "sala": "/",
+    "pieza": "Box+Cylinder+Cylinder+4#0",
+    "estado": "MAL",
+    "ahora": {
+      "p": [
+        -4.689,
+        3.166,
+        0.274
+      ],
+      "rotY": 1.571,
+      "s": 1,
+      "visible": true
+    },
+    "cuando": "2026-08-24T23:33:54.811Z"
+  },
+  {
+    "sala": "/salon",
+    "pieza": "Torus+Torus+Cylinder+9#0",
+    "estado": "MAL",
+    "ahora": {
+      "p": [
+        -4.05,
+        0,
+        2.75
+      ],
+      "rotY": 0,
+      "s": 1,
+      "visible": true
+    },
+    "cuando": "2026-08-25T10:58:50.705Z"
+  },
+  {
+    "sala": "/salon",
+    "pieza": "Torus+Torus+Cylinder+9#0",
+    "estado": "MAL",
+    "ahora": {
+      "p": [
+        -4.05,
+        0,
+        2.75
+      ],
+      "rotY": 0,
+      "s": 1,
+      "visible": true
+    },
+    "cuando": "2026-08-25T11:04:33.748Z"
+  },
+  {
+    "sala": "/salon",
+    "pieza": "Cylinder+Sphere+Sphere+12#0",
+    "estado": "MAL",
+    "ahora": {
+      "p": [
+        -4.86,
+        0,
+        -1.4
+      ],
+      "rotY": 1.571,
+      "s": 1,
+      "visible": false
+    },
+    "cuando": "2026-08-25T11:04:43.306Z"
+  },
+  {
+    "sala": "/salon",
+    "pieza": "Box+Box+Cylinder+5#0",
+    "estado": "MAL",
+    "ahora": {
+      "p": [
+        -4.72,
+        0.85,
+        1.6
+      ],
+      "rotY": 1.571,
+      "s": 1,
+      "visible": true
+    },
+    "cuando": "2026-08-25T11:06:00.987Z"
+  },
+  {
+    "sala": "/salon",
+    "pieza": "Box+Box+Box+5#0",
+    "estado": "MAL",
+    "ahora": {
+      "p": [
+        -3.5,
+        2.95,
+        -4.88
+      ],
+      "rotY": 0,
+      "s": 1,
+      "visible": true
+    },
+    "cuando": "2026-08-25T11:10:19.341Z"
+  },
+  {
+    "sala": "/salon",
+    "pieza": "Box+Box+Box+3#2",
+    "estado": "MAL",
+    "ahora": {
+      "p": [
+        -0.85,
+        0,
+        -0.35
+      ],
+      "rotY": 0,
+      "s": 1,
+      "visible": true
+    },
+    "cuando": "2026-08-25T11:11:53.271Z"
+  },
+  {
+    "sala": "/salon",
+    "pieza": "Box+Box+Box+3#0",
+    "estado": "MAL",
+    "ahora": {
+      "p": [
+        0,
+        0,
+        0.25
+      ],
+      "rotY": 0,
+      "s": 1,
+      "visible": true
+    },
+    "cuando": "2026-08-25T11:11:56.676Z"
+  },
+  {
+    "sala": "/salon",
+    "pieza": "chimenea",
+    "estado": "MAL",
+    "ahora": {
+      "p": [
+        -4.97,
+        1.02,
+        1.6
+      ],
+      "rotY": 1.571,
+      "s": 1,
+      "visible": true
+    },
+    "cuando": "2026-08-25T11:13:49.585Z"
+  },
+  {
+    "sala": "/salon",
+    "pieza": "Box+Box+Box+8#2",
+    "estado": "MAL",
+    "ahora": {
+      "p": [
+        4.25,
+        0,
+        1.8
+      ],
+      "rotY": -0.9,
+      "s": 1,
+      "visible": true
+    },
+    "cuando": "2026-08-25T13:35:09.192Z"
+  }
+]

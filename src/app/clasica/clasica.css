@@ -1,0 +1,5 @@
+/* Ajustes de la web clásica que NO tocan globals.css (fuera de mi dominio): aditivos y scoped a .papel.
+   Contraste AA medido (audit_web.py): tinta #2e2013 sobre papel #fdf8ea → 0.62 de opacidad da 4.43 (< 4.5);
+   0.7 da 5.7. Por eso ningún texto del papel baja de 0.7. */
+.papel .eyebrow { opacity: 0.72; }
+.papel .latin { opacity: 0.74; }

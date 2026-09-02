@@ -1,0 +1,35 @@
+{
+  "teas": [
+    {
+      "id": "verif-c1-te",
+      "nombre": "Verif C1 Te",
+      "sala": "te",
+      "precio": 8,
+      "gramos": 60,
+      "paraQueSirve": "Prueba automática de C1: se borra al terminar.",
+      "colorHoja": "#C9B36A",
+      "plantas": [
+        {
+          "plantaId": "manzanilla",
+          "porQueEnEsteMix": "Prueba C1 · porqué 1: aquí está por esto."
+        },
+        {
+          "plantaId": "melisa",
+          "porQueEnEsteMix": "Prueba C1 · porqué 2: aquí está por esto."
+        }
+      ]
+    }
+  ],
+  "extras": [],
+  "deco": [
+    {
+      "id": "frutero-mszagmln",
+      "sala": "salon",
+      "pieza": "frutero",
+      "x": -1.9,
+      "z": -2.2,
+      "rotY": 0,
+      "escala": 1
+    }
+  ]
+}
