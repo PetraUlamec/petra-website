@@ -59,13 +59,9 @@ export default function CartScene() {
 
   const confirmPay = async (method: Exclude<PayMethod, null>) => {
     setProcessing(true);
-    // checkout REAL si el servidor tiene STRIPE_SECRET_KEY (U5); si no, sigue el demo
-    try {
-      const r = await fetch("/api/checkout", { method: "POST", headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ lines, cupon: cupon?.codigo ?? null }) }).then((x) => x.json());
-      if (r.url) { window.location.href = r.url; return; }
-    } catch { /* sin red o demo */ }
-    // DEMO: aquí irá la Checkout Session real de Stripe (tarjeta y PayPal como payment methods)
+    // 2-sep-2026 (auditoría, fallo funcional): el recibo se preparaba DESPUÉS del salto a
+    // Stripe y en un pago real no llegaba a guardarse. Ahora se prepara antes (más abajo se
+    // guarda) y solo después se intenta el cobro.
     // ¿viaja cuchara sorpresa? — con cajas de temporada y con tés premium (la "?" de Erik)
     const llevaSorpresa = lines.some(
       (l) => l.kind === "caja" || (l.kind === "tea" && teaById(l.id).sala === "te-premium")
@@ -82,12 +78,25 @@ export default function CartScene() {
       cuchara: cuchara ? { nombre: cuchara.nombre, historia: cuchara.procedencia } : null,
       fraseIdx: Math.floor(Math.random() * 4),
     };
-    sessionStorage.setItem("petra-last-order", JSON.stringify(receipt));
+    try {
+      sessionStorage.setItem("petra-last-order", JSON.stringify(receipt));
+      if (email.trim()) sessionStorage.setItem("petra-last-email", email.trim());
+    } catch { /* navegador sin almacenamiento */ }
+
+    // checkout REAL si el servidor tiene STRIPE_SECRET_KEY; si no, sigue el demo
+    try {
+      const r = await fetch("/api/checkout", { method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ lines, cupon: cupon?.codigo ?? null }) }).then((x) => x.json());
+      // Pago real: el recibo ya está guardado; el correo sale al volver de Stripe (?paid=1).
+      if (r.url) { window.location.href = r.url; return; }
+    } catch { /* sin red o demo */ }
+
     // recibo por correo si hay RESEND_API_KEY y el cliente dejó email (fire-and-forget)
     if (email.trim()) {
       const frases = T.gracias.bienvenidas;
       fetch("/api/pedido-email", { method: "POST", headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...receipt, email: email.trim(), frase: frases[receipt.fraseIdx % frases.length] }) }).catch(() => {});
+      try { sessionStorage.setItem("petra-correo-enviado", receipt.entrada); } catch { /* sin almacenamiento */ }
     }
     setTimeout(() => { clear(); window.location.assign("/gracias"); }, 1400);
   };

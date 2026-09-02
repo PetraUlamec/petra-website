@@ -21,9 +21,32 @@ export default function ReceiptView() {
   const LOCALE = { es: "es-ES", en: "en-GB", sl: "sl-SI" }[lang];
   const [r, setR] = useState<Receipt | null | "none">(null);
   useEffect(() => {
-    const raw = sessionStorage.getItem("petra-last-order");
-    setR(raw ? (JSON.parse(raw) as Receipt) : "none");
-  }, []);
+    let receipt: Receipt | null = null;
+    try {
+      const raw = sessionStorage.getItem("petra-last-order");
+      receipt = raw ? (JSON.parse(raw) as Receipt) : null;
+    } catch { receipt = null; }
+    setR(receipt ?? "none");
+    if (!receipt) return;
+
+    // 2-sep-2026 (auditoría, fallo funcional): con Stripe de verdad el navegador se va a pagar
+    // y vuelve aquí con ?paid=1. ESE es el momento de mandar el recibo por correo (antes no se
+    // mandaba nunca en pago real). La marca «correo-enviado» evita mandarlo dos veces.
+    const pagado = new URLSearchParams(window.location.search).get("paid") === "1";
+    if (!pagado) return;
+    let correo = "", yaEnviado = "";
+    try {
+      correo = sessionStorage.getItem("petra-last-email") ?? "";
+      yaEnviado = sessionStorage.getItem("petra-correo-enviado") ?? "";
+    } catch { /* sin almacenamiento */ }
+    if (!correo || yaEnviado === receipt.entrada) return;
+    try { sessionStorage.setItem("petra-correo-enviado", receipt.entrada ?? ""); } catch { /* sin almacenamiento */ }
+    const frases = T.gracias.bienvenidas;
+    fetch("/api/pedido-email", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ...receipt, email: correo, frase: frases[(receipt.fraseIdx ?? 0) % frases.length] }),
+    }).catch(() => {});
+  }, [T]);
 
   return (
     <main className="fixed inset-0 overflow-y-auto bg-[var(--madera-oscura)] pt-14 pb-8 px-4">

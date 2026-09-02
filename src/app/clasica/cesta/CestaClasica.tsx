@@ -44,11 +44,9 @@ export default function CestaClasica() {
 
   const pagar = async () => {
     setProcesando(true);
-    try {
-      const r = await fetch("/api/checkout", { method: "POST", headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ lines, cupon: (cupon as Cupon | null)?.codigo ?? null }) }).then((x) => x.json());
-      if (r.url) { window.location.href = r.url; return; }
-    } catch { /* demo */ }
+    // 2-sep-2026 (auditoría, fallo funcional): el recibo se preparaba DESPUÉS de saltar a
+    // Stripe, con lo cual en un pago real no se guardaba nunca y la página de gracias salía
+    // vacía. Ahora se prepara y se guarda ANTES de cualquier redirección.
     const llevaSorpresa = lines.some((l) => l.kind === "caja" || (l.kind === "tea" && teaById(l.id).sala === "te-premium"));
     const pool = cucharas();
     const cucharaRaw = llevaSorpresa ? pool[Math.floor(Math.random() * pool.length)] : null;
@@ -61,11 +59,23 @@ export default function CestaClasica() {
       cuchara: cuchara ? { nombre: cuchara.nombre, historia: cuchara.procedencia } : null,
       fraseIdx: Math.floor(Math.random() * 4),
     };
-    sessionStorage.setItem("petra-last-order", JSON.stringify(receipt));
+    try {
+      sessionStorage.setItem("petra-last-order", JSON.stringify(receipt));
+      if (email.trim()) sessionStorage.setItem("petra-last-email", email.trim());
+    } catch { /* navegador sin almacenamiento */ }
+
+    try {
+      const r = await fetch("/api/checkout", { method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ lines, cupon: (cupon as Cupon | null)?.codigo ?? null }) }).then((x) => x.json());
+      // Pago real: el recibo ya está guardado; el correo sale al volver de Stripe (?paid=1).
+      if (r.url) { window.location.href = r.url; return; }
+    } catch { /* demo */ }
+
     if (email.trim()) {
       const frases = T.gracias.bienvenidas;
       fetch("/api/pedido-email", { method: "POST", headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...receipt, email: email.trim(), frase: frases[receipt.fraseIdx % frases.length] }) }).catch(() => {});
+      try { sessionStorage.setItem("petra-correo-enviado", receipt.entrada); } catch { /* sin almacenamiento */ }
     }
     setTimeout(() => { clear(); window.location.assign("/gracias"); }, 1200);
   };
