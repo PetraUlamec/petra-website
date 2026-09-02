@@ -150,10 +150,10 @@ def main():
         if not ok: total["es"] = [("regresion", muestras)]
         ctx.close()
         # FALLBACK DEL TALLER: un té vivo SIN traducción debe verse (en ES) bajo EN, sin romper
-        import urllib.request
+        import urllib.request, os
         def api(metodo, data):
             r = urllib.request.Request(BASE + "/api/catalogo", method=metodo,
-                data=json.dumps(data).encode(), headers={"Content-Type": "application/json", "x-taller-key": "petra"})
+                data=json.dumps(data).encode(), headers={"Content-Type": "application/json", "x-taller-key": os.environ.get("TALLER_KEY", "")})
             return urllib.request.urlopen(r).status
         api("POST", {"tipo": "tea", "item": {"nombre": "Prueba Fallback Taller", "precio": 5,
             "paraQueSirve": "Té de prueba del verificador: si lees esto en la web es un fallo mío, no de Petra.",
