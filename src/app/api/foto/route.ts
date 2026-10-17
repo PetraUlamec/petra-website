@@ -17,7 +17,7 @@ import { guardaTaller } from "@/lib/tallerAuth";
 import { guardaLimite } from "@/lib/limitePeticiones";
 
 export const runtime = "nodejs";
-export const DIR_FOTOS = path.join(process.cwd(), "data", "fotos");
+const DIR_FOTOS = path.join(process.cwd(), "data", "fotos");
 const MAX_BYTES = 12 * 1024 * 1024;
 
 const slug = (s: string) =>
