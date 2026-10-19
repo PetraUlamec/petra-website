@@ -5,18 +5,20 @@
 // sistema de ficheros: o está el fichero viejo entero, o el nuevo entero, nunca a medias).
 import { promises as fs } from "fs";
 import path from "path";
+import { randomUUID } from "crypto";
 
-export async function leerJSON<T>(fichero: string, porDefecto: T): Promise<T> {
+export async function leerJSON<T>(fichero: string, porDefecto: T, estricto = false): Promise<T> {
   try {
     return JSON.parse(await fs.readFile(fichero, "utf8")) as T;
-  } catch {
+  } catch (error) {
+    if (estricto && (error as NodeJS.ErrnoException).code !== "ENOENT") throw error;
     return porDefecto;
   }
 }
 
 export async function escribirJSON(fichero: string, datos: unknown): Promise<void> {
   await fs.mkdir(path.dirname(fichero), { recursive: true });
-  const tmp = `${fichero}.tmp-${process.pid}-${Date.now().toString(36)}`;
+  const tmp = `${fichero}.tmp-${randomUUID()}`;
   await fs.writeFile(tmp, JSON.stringify(datos, null, 2), "utf8");
   await fs.rename(tmp, fichero); // atómico dentro del mismo disco
 }

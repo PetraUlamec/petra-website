@@ -27,10 +27,22 @@ function leafGeo() {
   sh.quadraticCurveTo(0.03, 0.13, 0, 0.15);       // punta
   sh.quadraticCurveTo(-0.03, 0.13, -0.05, 0.09);  // borde izquierdo
   sh.quadraticCurveTo(-0.045, 0.03, 0, 0);
-  LEAF_GEO = new THREE.ExtrudeGeometry(sh, { depth: 0.004, bevelEnabled: false, curveSegments: 5 });
+  LEAF_GEO = new THREE.ExtrudeGeometry(sh, { depth: 0.004, bevelEnabled: false, curveSegments: 12 });
   return LEAF_GEO;
 }
 let PETAL_GEO: THREE.ExtrudeGeometry | null = null;
+let STRAWBERRY_GEO: THREE.ExtrudeGeometry | null = null;
+function strawberryGeo() {
+  if (STRAWBERRY_GEO) return STRAWBERRY_GEO;
+  const outline = new THREE.Shape();
+  outline.moveTo(0, -0.11);
+  outline.bezierCurveTo(-0.04, -0.08, -0.12, 0.03, -0.08, 0.08);
+  outline.quadraticCurveTo(-0.04, 0.12, 0, 0.08);
+  outline.quadraticCurveTo(0.06, 0.12, 0.085, 0.07);
+  outline.bezierCurveTo(0.12, 0.02, 0.04, -0.08, 0, -0.11);
+  STRAWBERRY_GEO = new THREE.ExtrudeGeometry(outline, { depth: 0.012, bevelEnabled: true, bevelSegments: 2, steps: 1, bevelSize: 0.004, bevelThickness: 0.003, curveSegments: 20 });
+  return STRAWBERRY_GEO;
+}
 function petalGeo() {
   if (PETAL_GEO) return PETAL_GEO;
   const sh = new THREE.Shape();
@@ -39,7 +51,7 @@ function petalGeo() {
   sh.quadraticCurveTo(0.008, 0.105, 0, 0.11);
   sh.quadraticCurveTo(-0.008, 0.105, -0.016, 0.085);
   sh.quadraticCurveTo(-0.02, 0.04, 0, 0);
-  PETAL_GEO = new THREE.ExtrudeGeometry(sh, { depth: 0.003, bevelEnabled: false, curveSegments: 5 });
+  PETAL_GEO = new THREE.ExtrudeGeometry(sh, { depth: 0.003, bevelEnabled: false, curveSegments: 12 });
   return PETAL_GEO;
 }
 
@@ -53,6 +65,9 @@ const Leaf = ({ p, r, s, color }: { p: [number, number, number]; r: [number, num
       <boxGeometry args={[0.004, 0.13, 0.002]} />
       <meshStandardMaterial color={color} roughness={1} />
     </mesh>
+    {[0.04, 0.065, 0.09].flatMap(height => [-1, 1].map(side => <mesh key={`${height}-${side}`} position={[side * 0.014, height, 0.006]} rotation={[0, 0, side * -0.7]}>
+      <boxGeometry args={[0.0015, 0.036, 0.001]} /><meshStandardMaterial color={color} roughness={1} />
+    </mesh>))}
   </group>
 );
 
@@ -81,6 +96,137 @@ export default function PlantSprig({ plant, scale = 1 }: { plant: Plant; scale?:
     const C = plant.color, C2 = plant.color2;
 
     switch (plant.forma) {
+      case "te-seco": {
+        for (let index = 0; index < 11; index++) out.push(<mesh key={index} geometry={leafGeo()} position={[(r()-0.5)*0.2,0.03+r()*0.05,(r()-0.5)*0.18]} rotation={[-1.2+r()*0.5,r()*3,r()*6]} scale={[0.6+r()*0.4,0.5+r()*0.5,1]} castShadow>
+          <meshStandardMaterial color={index%3 ? C : C2} roughness={0.95} side={THREE.DoubleSide} />
+        </mesh>);
+        break;
+      }
+      case "te-bola": {
+        for (let index = 0; index < 9; index++) out.push(<mesh key={index} position={[(r()-0.5)*0.18,0.03+r()*0.05,(r()-0.5)*0.16]} scale={[1,0.8+r()*0.3,1]} castShadow>
+          <sphereGeometry args={[0.027,16,12]} /><meshStandardMaterial color={index%3 ? C : C2} roughness={0.95} />
+        </mesh>);
+        break;
+      }
+      case "polvo": {
+        out.push(<mesh key="mound" position={[0,0.025,0]} scale={[1,0.42,1]} castShadow><sphereGeometry args={[0.12,24,16,0,Math.PI*2,0,Math.PI/2]} /><meshStandardMaterial color={C} roughness={1} side={THREE.DoubleSide} /></mesh>);
+        for (let index = 0; index < 15; index++) out.push(<mesh key={index} position={[(r()-0.5)*0.22,0.03+r()*0.03,(r()-0.5)*0.22]}><sphereGeometry args={[0.003,5,4]} /><meshStandardMaterial color={C} roughness={1} /></mesh>);
+        break;
+      }
+      case "trozos": {
+        for (let index = 0; index < 6; index++) out.push(<mesh key={index} position={[(r()-0.5)*0.15,0.04+index%2*0.035,(r()-0.5)*0.13]} rotation={[r(),r()*5,r()]} scale={[1.1,0.55+r()*0.35,0.8]} castShadow>
+          <dodecahedronGeometry args={[0.055,0]} /><meshStandardMaterial color={index%3 ? C : C2} roughness={0.92} flatShading />
+        </mesh>);
+        break;
+      }
+      case "citrico": {
+        for (let slice = 0; slice < 2; slice++) out.push(<group key={slice} position={[(slice-0.5)*0.07,0.04+slice*0.04,0]} rotation={[0.2+slice*0.3,0,slice*0.5]}>
+          <mesh castShadow><cylinderGeometry args={[0.12,0.12,0.015,36]} /><meshStandardMaterial color={C} roughness={0.9} /></mesh>
+          <mesh rotation={[Math.PI/2,0,0]}><torusGeometry args={[0.12,0.009,8,36]} /><meshStandardMaterial color={C2} roughness={0.8} /></mesh>
+          {Array.from({ length: 9 }, (_, segment) => <group key={segment} rotation={[0,segment*Math.PI*2/9,0]}>
+            <mesh position={[0,0.009,0.059]}><boxGeometry args={[0.003,0.002,0.107]} /><meshStandardMaterial color="#fff1c6" /></mesh>
+          </group>)}
+        </group>);
+        break;
+      }
+      case "frambuesa": {
+        for (let ring = 0; ring < 4; ring++) for (let bead = 0; bead < 7; bead++) {
+          const angle = bead*Math.PI*2/7+ring*0.4;
+          const radius = 0.025+Math.sin(ring/4*Math.PI)*0.025;
+          out.push(<mesh key={`${ring}-${bead}`} position={[Math.cos(angle)*radius,0.045+ring*0.029,Math.sin(angle)*radius]} castShadow><sphereGeometry args={[0.023,12,8]} /><meshStandardMaterial color={C} roughness={0.65} /></mesh>);
+        }
+        break;
+      }
+      case "estrella": {
+        for (let point = 0; point < 8; point++) out.push(<group key={point} rotation={[0,point*Math.PI/4,0]}>
+          <mesh geometry={leafGeo()} position={[0,0.025,0]} rotation={[-Math.PI/2,0,0]} scale={[0.85,0.9,2]} castShadow><meshStandardMaterial color={C} roughness={1} side={THREE.DoubleSide} /></mesh>
+          <mesh position={[0,0.032,-0.07]} scale={[0.6,0.5,1.4]}><sphereGeometry args={[0.015,12,8]} /><meshStandardMaterial color={C2} roughness={0.7} /></mesh>
+        </group>);
+        break;
+      }
+      case "clavo": {
+        for (let index = 0; index < 3; index++) out.push(<group key={index} position={[(index-1)*0.065,0.04+index*0.014,0]} rotation={[1.2,0,index*0.7]}>
+          <mesh castShadow><cylinderGeometry args={[0.018,0.005,0.17,12]} /><meshStandardMaterial color={C} roughness={0.95} /></mesh>
+          <mesh position={[0,0.095,0]} castShadow><sphereGeometry args={[0.029,16,10]} /><meshStandardMaterial color={C2} roughness={0.9} /></mesh>
+          <mesh position={[0,0.075,0]} rotation={[0,Math.PI/4,0]}><boxGeometry args={[0.053,0.012,0.053]} /><meshStandardMaterial color={C} roughness={0.95} /></mesh>
+        </group>);
+        break;
+      }
+      case "coco": {
+        for (let index = 0; index < 3; index++) out.push(<group key={index} position={[(index-1)*0.045,0.035+index*0.025,0]} rotation={[0.4,index*1.8,0.3]}>
+          <mesh castShadow><sphereGeometry args={[0.13,24,12,0,Math.PI*0.65,Math.PI*0.25,Math.PI*0.22]} /><meshStandardMaterial color={C2} roughness={0.95} side={THREE.DoubleSide} /></mesh>
+          <mesh><sphereGeometry args={[0.124,24,12,0,Math.PI*0.65,Math.PI*0.25,Math.PI*0.22]} /><meshStandardMaterial color={C} roughness={0.8} side={THREE.DoubleSide} /></mesh>
+        </group>);
+        break;
+      }
+      case "grano":
+      case "nuez": {
+        const grain = plant.forma === "grano";
+        for (let index = 0; index < (grain ? 12 : 4); index++) out.push(<group key={index} position={[(r()-0.5)*0.18,0.025+index%2*0.02,(r()-0.5)*0.14]} rotation={[0,r()*6,0]} scale={grain ? 0.5 : 1}>
+          <mesh scale={[0.6,0.35,1.3]} castShadow><sphereGeometry args={[0.055,20,12]} /><meshStandardMaterial color={C} roughness={0.95} /></mesh>
+          <mesh position={[0,0.019,0]}><boxGeometry args={[0.002,0.001,0.09]} /><meshStandardMaterial color={C2} roughness={1} /></mesh>
+        </group>);
+        break;
+      }
+      case "hebras": {
+        for (let index = 0; index < 12; index++) out.push(<mesh key={index} position={[(r()-0.5)*0.12,0.03+index%3*0.012,(r()-0.5)*0.12]} rotation={[Math.PI/2,r(),r()*3]} castShadow><cylinderGeometry args={[0.003,0.005,0.12+r()*0.08,6]} /><meshStandardMaterial color={index%3 ? C : C2} roughness={1} /></mesh>);
+        break;
+      }
+      case "piel": {
+        for (let peel = 0; peel < 3; peel++) out.push(<group key={peel} position={[(peel - 1) * 0.07, 0.06 + peel * 0.025, 0]} rotation={[0.7, peel * 2.1, -0.3]} scale={[1, 0.65, 1]}>
+          <mesh castShadow><sphereGeometry args={[0.13, 24, 16, 0, Math.PI * 0.85, Math.PI * 0.28, Math.PI * 0.25]} /><meshStandardMaterial color={C} roughness={0.86} side={THREE.DoubleSide} /></mesh>
+          <mesh><sphereGeometry args={[0.122, 24, 16, 0, Math.PI * 0.85, Math.PI * 0.28, Math.PI * 0.25]} /><meshStandardMaterial color="#fff2ce" roughness={1} side={THREE.DoubleSide} /></mesh>
+        </group>);
+        break;
+      }
+      case "fresa": {
+        for (let slice = 0; slice < 2; slice++) out.push(<group key={slice} position={[(slice - 0.5) * 0.08, 0.07 + slice * 0.045, 0]} rotation={[-Math.PI / 2 + 0.25, 0, slice * 0.7]}>
+          <mesh geometry={strawberryGeo()} castShadow><meshStandardMaterial color={C} roughness={0.92} /></mesh>
+          <mesh geometry={strawberryGeo()} scale={[0.4, 0.74, 0.15]} position={[0, 0, 0.016]}><meshStandardMaterial color="#eab6a1" roughness={1} /></mesh>
+          {[-1,1].flatMap(side => [0,1,2,3].map(seed => <mesh key={`${side}-${seed}`} position={[side * (0.063 - seed * 0.012), 0.065 - seed * 0.042, 0.019]} rotation={[0, 0, side * -0.3]} scale={[0.5,1,0.25]}>
+            <sphereGeometry args={[0.007, 8, 6]} /><meshStandardMaterial color="#e8c78b" roughness={0.8} />
+          </mesh>))}
+        </group>);
+        break;
+      }
+      case "caliz": {
+        out.push(<mesh key="base" position={[0,0.07,0]} scale={[0.8,1.2,0.8]} castShadow><sphereGeometry args={[0.055,16,12]} /><meshStandardMaterial color={C} roughness={0.9} /></mesh>);
+        for (let lobe = 0; lobe < 5; lobe++) { const angle = lobe * Math.PI * 2 / 5; out.push(<group key={lobe} position={[Math.cos(angle)*0.025,0.05,Math.sin(angle)*0.025]} rotation={[0, -angle + Math.PI / 2, -0.45]}>
+          <Leaf p={[0,0,0]} r={[0,0,0]} s={0.95} color={C} />
+        </group>); }
+        break;
+      }
+      case "petalos": {
+        for (let petal = 0; petal < 6; petal++) out.push(<mesh key={petal} geometry={petalGeo()} position={[Math.cos(petal*2.4)*0.075,0.03+petal*0.008,Math.sin(petal*2.4)*0.06]} rotation={[-1.2,0,petal*2.4]} scale={[2.6,1,1]} castShadow>
+          <meshStandardMaterial color={C} roughness={0.8} side={THREE.DoubleSide} />
+        </mesh>);
+        break;
+      }
+      case "fruta-seca": {
+        for (let slice = 0; slice < 3; slice++) out.push(<group key={slice} position={[(slice - 1) * 0.07, 0.055 + slice * 0.04, 0]} rotation={[0.25 + slice * 0.22, slice, 0.2]}>
+          <mesh castShadow><cylinderGeometry args={[0.1, 0.1, 0.018, 32]} /><meshStandardMaterial color={C} roughness={0.95} /></mesh>
+          <mesh rotation={[Math.PI / 2, 0, 0]}><torusGeometry args={[0.097, 0.008, 8, 32]} /><meshStandardMaterial color={C2} roughness={0.9} /></mesh>
+          <mesh position={[0, 0.012, 0]}><cylinderGeometry args={[0.016, 0.014, 0.004, 12]} /><meshStandardMaterial color="#785037" /></mesh>
+        </group>);
+        break;
+      }
+      case "fruta": {
+        out.push(<group key="fruit" position={[0, 0.13, 0]}>
+          <mesh castShadow scale={[1, 0.85, 1]}><sphereGeometry args={[0.13, 24, 16]} /><meshStandardMaterial color={C} roughness={0.45} /></mesh>
+          <mesh position={[0, 0.13, 0]} rotation={[0, 0, -0.2]}><cylinderGeometry args={[0.008, 0.012, 0.08, 8]} /><meshStandardMaterial color="#795337" /></mesh>
+          <Leaf p={[0.01, 0.14, 0]} r={[0.3, 0, -0.8]} s={0.7} color={C2} />
+        </group>);
+        break;
+      }
+      case "semilla": {
+        for (let seed = 0; seed < 7; seed++) {
+          const angle = seed * 2.4;
+          out.push(<mesh key={`seed-${seed}`} position={[Math.cos(angle) * 0.08, 0.025 + seed % 2 * 0.02, Math.sin(angle) * 0.08]} rotation={[0.3, angle, 0.5]} scale={[0.55, 0.4, 1]} castShadow>
+            <sphereGeometry args={[0.045, 14, 10]} /><meshStandardMaterial color={C} roughness={0.65} />
+          </mesh>);
+        }
+        break;
+      }
       case "margarita": {
         out.push(<Stem key="s" h={0.22} color={C2} />);
         out.push(<Leaf key="l1" p={[0.04, 0.1, 0]} r={[0, 0, -0.9]} s={0.8} color={C2} />);
@@ -212,6 +358,16 @@ export default function PlantSprig({ plant, scale = 1 }: { plant: Plant; scale?:
         break;
       }
       case "raiz": {
+        out.push(<mesh key="root" position={[0,0.12,0]} rotation={[0,0,-0.3]} castShadow><cylinderGeometry args={[0.04,0.012,0.22,16]} /><meshStandardMaterial color={C} roughness={1} /></mesh>);
+        for (let branch = 0; branch < 7; branch++) {
+          const angle = branch * 2.4;
+          const height = 0.05 + branch * 0.021;
+          out.push(<mesh key={branch} position={[Math.cos(angle)*0.043,height,Math.sin(angle)*0.035]} rotation={[Math.sin(angle)*0.8,0,-Math.cos(angle)*0.9]} castShadow><cylinderGeometry args={[0.009,0.001,0.11,8]} /><meshStandardMaterial color={C2} roughness={1} /></mesh>);
+        }
+        out.push(<mesh key="cut" position={[0.031,0.225,0]} rotation={[0,0,-0.3]}><circleGeometry args={[0.037,20]} /><meshStandardMaterial color="#d7bd88" side={THREE.DoubleSide} /></mesh>);
+        break;
+      }
+      case "rizoma": {
         // rizoma nudoso tumbado
         const lobes = 4;
         for (let i = 0; i < lobes; i++) {
@@ -322,5 +478,5 @@ export default function PlantSprig({ plant, scale = 1 }: { plant: Plant; scale?:
     return out;
   }, [plant]);
 
-  return <group scale={scale}>{parts}</group>;
+  return <group name={`specimen-${plant.id}`} scale={scale}>{parts}</group>;
 }

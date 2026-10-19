@@ -28,7 +28,7 @@ function FichaCaja({ caja: cajaRaw, grande }: { caja: CajaTemporada; grande?: bo
       <ul className={`${grande ? "text-base" : "text-sm"} space-y-1`}>
         {caja.incluyeTeNormalAlAzar && <li>— {T.cl.teDeLaSala} 🍃</li>}
         {caja.extras.map((id) => { const e = extraById(id); return e ? <li key={id}>— {trExtra(e, lang).nombre}</li> : null; })}
-        <li>— {T.cl.cucharaCorta} <b>🥄?</b></li>
+        {caja.incluyeCucharaAlAzar && <li>— {T.cl.cucharaCorta} <b>🥄?</b></li>}
       </ul>
       <div className="mt-auto pt-4">
         {!enTemporada && <p className="text-xs text-[var(--granate)] mb-2">{T.cl.recargo}</p>}

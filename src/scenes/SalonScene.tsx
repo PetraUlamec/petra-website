@@ -21,7 +21,6 @@ import Basket, { BASKET_POS } from "@/components/three/Basket";
 import FlyingItem from "@/components/three/FlyingItem";
 import CajaPanel from "@/components/hud/CajaPanel";
 import Guia from "@/components/hud/Guia";
-import Hotspot, { useHotspots } from "@/components/three/Hotspot";
 import ExtraPanel from "@/components/hud/ExtraPanel";
 import { WOOD } from "@/components/three/Room";
 import { useT } from "@/i18n";
@@ -204,7 +203,6 @@ export default function SalonScene() {
   const setCaja = useUi((s) => s.setCaja);
   const focus: CamFocus = { target: [0, 1.3, 0], zoom: baseZoom };
   const est = estacionActual();
-  const hs = useHotspots();
 
   return (
     <main>
@@ -252,8 +250,6 @@ export default function SalonScene() {
           <Door position={[3.4, 1.3, -4.85]} color="#7d3a44" label={T.nav.tePremium} href="/te-premium" felpudo={false} />
           <Door position={[-4.85, 1.3, -1.4]} rotY={Math.PI / 2} color="#8a6a3f" label={T.nav.nosotros} href="/nosotros" />
           <DecoVivo sala="salon" />
-          <Hotspot position={[0.5, 0.03, 2.0]} visible={hs} />
-          <Hotspot position={[1.2, 0.03, -4.2]} visible={hs} />
           <Basket />
           <FlyingItem to={BASKET_POS} />
         </Room>

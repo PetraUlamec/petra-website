@@ -12,6 +12,6 @@ const FICHERO = path.join(process.cwd(), "data", "catalogo-vivo.json");
 export interface CatalogoVivo { teas: Tea[]; extras: Extra[] }
 
 export async function catalogoVivo(): Promise<CatalogoVivo> {
-  const d = await leerJSON<Partial<CatalogoVivo>>(FICHERO, {});
+  const d = await leerJSON<Partial<CatalogoVivo>>(FICHERO, {}, true);
   return { teas: Array.isArray(d.teas) ? d.teas : [], extras: Array.isArray(d.extras) ? d.extras : [] };
 }

@@ -5,7 +5,7 @@
 // definir la clave, la llave maestra de la tienda era la palabra "petra" — escrita además en
 // el propio código y en .env.example. Ahora: SIN clave configurada NO se abre nada (503).
 import { NextResponse } from "next/server";
-import { createHash, timingSafeEqual } from "crypto";
+import { createHash, createHmac, timingSafeEqual } from "crypto";
 
 export const CABECERA_CLAVE = "x-taller-key";
 /** Una clave de 5 letras no protege nada; se exige un mínimo razonable. */
@@ -31,8 +31,27 @@ export function claveOk(req: Request): boolean {
   const esperada = process.env.TALLER_KEY;
   if (!esperada || esperada.length < LARGO_MINIMO) return false;
   const dada = req.headers.get(CABECERA_CLAVE);
-  if (!dada) return false;
-  return igualSeguro(dada, esperada);
+  if (dada) return igualSeguro(dada, esperada);
+  const cookie = req.headers.get("cookie")?.split(";").map((part) => part.trim()).find((part) => part.startsWith("petra-taller="))?.slice(13);
+  if (!cookie) return false;
+  const [expiry, signature] = cookie.split(".");
+  if (!expiry || !signature || !/^\d+$/.test(expiry) || Number(expiry) <= Date.now()) return false;
+  const expected = createHmac("sha256", esperada).update(expiry).digest("hex");
+  if (!igualSeguro(signature, expected)) return false;
+  if (!["GET", "HEAD"].includes(req.method)) {
+    const origin = req.headers.get("origin");
+    const allowed = [new URL(req.url).origin, process.env.SITE_URL || process.env.NEXT_PUBLIC_SITE_URL].filter(Boolean);
+    if (!origin || !allowed.includes(origin)) return false;
+  }
+  return true;
+}
+
+export function nuevaSesion(password: unknown): string | null {
+  if (!hayClaveConfigurada() || typeof password !== "string") return null;
+  const configured = process.env.TALLER_PASSWORD || process.env.TALLER_KEY!;
+  if (!igualSeguro(password, configured)) return null;
+  const expiry = String(Date.now() + 12 * 60 * 60 * 1000);
+  return `${expiry}.${createHmac("sha256", process.env.TALLER_KEY!).update(expiry).digest("hex")}`;
 }
 
 /**

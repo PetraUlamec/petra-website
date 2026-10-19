@@ -5,7 +5,7 @@ import * as THREE from "three";
 import { WoodMat, MetalMat } from "./Mats";
 import { useFrame } from "@react-three/fiber";
 import { Html } from "@react-three/drei";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { enEditor } from "@/lib/editor";
 import { WOOD } from "./Room";
@@ -60,14 +60,35 @@ export function Door({
   const router = useRouter();
   const [hover, setHover] = useState(false);
   const g = useRef<THREE.Group>(null);
-  useFrame(({ clock }) => {
-    if (g.current) g.current.rotation.y = rotY + (hover ? Math.sin(clock.elapsedTime * 2.4) * 0.045 - 0.12 : 0);
+  const opening = useRef(false);
+  const elapsed = useRef(0);
+  const enter = () => {
+    if (enEditor() || opening.current) return;
+    opening.current = true;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) router.push(href);
+  };
+  useEffect(() => () => { document.body.style.cursor = "auto"; }, []);
+  useFrame((_, delta) => {
+    if (g.current) g.current.rotation.y = THREE.MathUtils.damp(g.current.rotation.y, opening.current ? -Math.PI / 2 : hover ? -0.12 : 0, 10, delta);
+    if (opening.current) {
+      elapsed.current += delta;
+      if (elapsed.current >= 0.45 && elapsed.current < 100) {
+        elapsed.current = 100;
+        document.body.style.cursor = "auto";
+        router.push(href);
+      }
+    }
   });
   return (
-    <group name={`puerta-${href.replace(/\//g, "")}`} position={position}>
-      <group ref={g}>
+    <group name={`puerta-${href.replace(/\//g, "")}`} position={position} rotation={[0, rotY, 0]}>
+      <mesh position={[0, 0, -0.025]}>
+        <boxGeometry args={[1.3, 2.6, 0.03]} />
+        <meshBasicMaterial color="#21180f" />
+      </mesh>
+      <group ref={g} position={[-0.65, 0, 0]}>
         <group
-          onClick={(e) => { e.stopPropagation(); if (enEditor()) return; router.push(href); }}
+          position={[0.65, 0, 0]}
+          onClick={(e) => { e.stopPropagation(); enter(); }}
           onPointerOver={(e) => { e.stopPropagation(); setHover(true); document.body.style.cursor = "pointer"; }}
           onPointerOut={() => { setHover(false); document.body.style.cursor = "auto"; }}
         >
@@ -107,7 +128,7 @@ export function Door({
         </group>
       </group>
       {/* marco completo: jambas y dintel */}
-      <group rotation={[0, rotY, 0]}>
+      <group>
         <mesh position={[0, 1.42, 0]}>
           <boxGeometry args={[1.66, 0.16, 0.22]} />
           <meshStandardMaterial color={WOOD.marco} />
@@ -126,9 +147,9 @@ export function Door({
           </mesh>
         )}
       </group>
-      {hover && (
-        <Html position={[0, 2.05, 0]} center style={{ pointerEvents: "none" }}>
-          <div className="sign px-2 py-1 text-xs whitespace-nowrap font-display">{label}</div>
+      {(
+        <Html position={[0.45, 0, 0.18]} center zIndexRange={[10, 0]}>
+          <button data-door-link type="button" onClick={enter} className="block h-10 w-10 rounded-full bg-transparent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-700" aria-label={label} />
         </Html>
       )}
     </group>

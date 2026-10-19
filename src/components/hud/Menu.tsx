@@ -43,7 +43,7 @@ export default function Menu() {
           <span className="italic text-[28px]">P</span>
           <span className="text-[19px] font-normal mx-[8px]">+</span>
           <span className="italic text-[28px]">E</span>
-          <span className="text-[18px] font-normal ml-[1px]">-espe</span>
+          <span className="text-[18px] font-normal ml-[1px]">-sp</span>
         </span>
       </Link>
       <div className="flex gap-1.5 ml-auto items-center">

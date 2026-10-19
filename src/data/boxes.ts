@@ -6,28 +6,28 @@ import type { CajaTemporada } from "@/lib/types";
 export const CAJAS: CajaTemporada[] = [
   {
     id: "caja-general", nombre: "Caja de la Casa", estacion: null, precioTemporada: 24,
-    extras: ["queso-casa"], incluyeCucharaAlAzar: true, incluyeTeNormalAlAzar: true,
-    descripcion: "La caja de siempre, disponible todo el año: un té de la sala, una cucharita de Erik al azar y el queso hecho en casa.",
+    extras: ["queso-casa"], incluyeCucharaAlAzar: false, incluyeTeNormalAlAzar: true,
+    descripcion: "Disponible todo el año: un té de la casa al azar y queso. Sin cuchara.",
   },
   {
     id: "caja-verano", nombre: "Caja de Verano", estacion: "verano", precioTemporada: 29,
-    extras: ["queso-casa", "limonada-frambuesa"], incluyeCucharaAlAzar: true, incluyeTeNormalAlAzar: true,
-    descripcion: "La caja de la casa más la limonada con frambuesas: limones del huerto junto al mar y frambuesas del borde del bosque.",
+    extras: ["limonada-frambuesa"], incluyeCucharaAlAzar: true, incluyeTeNormalAlAzar: true,
+    descripcion: "Un té de la casa al azar, limonada y una cucharita de Erik al azar. Sin queso.",
   },
   {
     id: "caja-invierno", nombre: "Caja de Invierno", estacion: "invierno", precioTemporada: 32,
     extras: ["queso-casa", "chorizo-valle"], incluyeCucharaAlAzar: true, incluyeTeNormalAlAzar: true,
-    descripcion: "La caja de la casa más algo de la matanza del valle: chorizo ahumado con haya o lomo curado al aire de la montaña.",
+    descripcion: "Un té de la casa al azar, carne, queso y una cucharita de Erik al azar.",
   },
   {
     id: "caja-primavera", nombre: "Caja de Primavera", estacion: "primavera", precioTemporada: 28,
-    extras: ["queso-casa", "miel-flores"], incluyeCucharaAlAzar: true, incluyeTeNormalAlAzar: true,
-    descripcion: "La caja de la casa más la miel de flores del prado alto, recién cosechada.",
+    extras: ["miel-flores"], incluyeCucharaAlAzar: true, incluyeTeNormalAlAzar: true,
+    descripcion: "Un té de la casa al azar, miel de flores y una cucharita de Erik al azar. Sin queso.",
   },
   {
     id: "caja-otono", nombre: "Caja de Otoño", estacion: "otono", precioTemporada: 28,
-    extras: ["queso-casa", "miel-castano"], incluyeCucharaAlAzar: true, incluyeTeNormalAlAzar: true,
-    descripcion: "La caja de la casa más la miel de castaño de octubre: oscura, seria, inolvidable.",
+    extras: ["miel-castano"], incluyeCucharaAlAzar: true, incluyeTeNormalAlAzar: true,
+    descripcion: "Un té de la casa al azar, miel de castaño y una cucharita de Erik al azar. Sin queso.",
   },
 ];
 

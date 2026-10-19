@@ -1,7 +1,7 @@
 "use client";
 // EL CATÁLOGO VIVO: lo que Petra y Erik publican desde /taller-privado sin tocar código.
 // Se guarda en web/data/catalogo-vivo.json vía /api/catalogo y se suma al catálogo base.
-import type { Tea, Extra } from "./types";
+import type { Tea, Extra, Plant } from "./types";
 
 export interface PiezaViva {
   id: string;
@@ -12,13 +12,13 @@ export interface PiezaViva {
   escala: number;
   y?: number;         // altura (piezas de pared)
 }
-export interface VivoData { teas: Tea[]; extras: Extra[]; deco?: PiezaViva[]; }
+export interface VivoData { teas: Tea[]; extras: Extra[]; plants?: Plant[]; deco?: PiezaViva[]; }
 let VIVO: VivoData = { teas: [], extras: [], deco: [] };
 let version = 0;
 const listeners = new Set<() => void>();
 
 export function setVivo(d: VivoData) {
-  VIVO = { teas: d.teas ?? [], extras: d.extras ?? [], deco: d.deco ?? [] };
+  VIVO = { teas: d.teas ?? [], extras: d.extras ?? [], plants: d.plants ?? [], deco: d.deco ?? [] };
   version++;
   listeners.forEach((l) => l());
 }
@@ -30,13 +30,18 @@ export function subscribeVivo(fn: () => void) {
 }
 
 let cargado = false;
-export async function cargarVivo() {
-  if (cargado || typeof window === "undefined") return;
-  cargado = true;
-  try {
-    const r = await fetch("/api/catalogo");
-    if (r.ok) setVivo(await r.json());
-  } catch { /* sin catálogo vivo: solo base */ }
+let carga: Promise<void> | undefined;
+export function cargarVivo(): Promise<void> {
+  if (carga) return carga;
+  if (cargado || typeof window === "undefined") return Promise.resolve();
+  carga = (async () => {
+    try {
+      const response = await fetch("/api/catalogo", { cache: "no-store" });
+      if (response.ok) { setVivo(await response.json()); cargado = true; }
+    } catch { cargado = false; }
+    finally { carga = undefined; }
+  })();
+  return carga;
 }
 
 /** Vuelve a leer el catálogo vivo (tras añadir/borrar desde el editor). */

@@ -1,0 +1,78 @@
+const assert = require('node:assert/strict');
+const path = require('node:path');
+const fs = require('node:fs');
+const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
+const base = process.env.PETRA_BASE || 'http://127.0.0.1:3111';
+assert.ok(['127.0.0.1', 'localhost'].includes(new URL(base).hostname), 'Only isolated localhost tests are allowed');
+const output = process.env.PETRA_EVIDENCE;
+assert.ok(output, 'PETRA_EVIDENCE must point to an evidence directory');
+const key = process.env.PETRA_TEST_KEY;
+assert.ok(key, 'PETRA_TEST_KEY is required');
+
+(async () => {
+  const browser = await chromium.launch({ headless: true, executablePath: process.env.CHROMIUM_PATH, args: ['--enable-unsafe-swiftshader'] });
+  const context = await browser.newContext({ viewport: { width: 1440, height: 1000 }, locale: 'es-ES' });
+  const page = await context.newPage();
+  const errors = [];
+  page.on('pageerror', error => errors.push(error.message));
+  page.on('dialog', dialog => dialog.accept());
+  await page.goto(`${base}/studio/index.html`);
+  await page.locator('#tea-list button').first().waitFor();
+  assert.ok(await page.locator('#tea-list button').count() >= 19);
+  await page.locator('#workshop-key').fill(key);
+  await page.getByRole('button', { name: 'Entrar al taller', exact: true }).click();
+  await page.locator('#login-form').waitFor({ state: 'hidden' });
+  await page.locator('#tea-name').fill('Mezcla de prueba local');
+  await page.locator('#tea-price').fill('11.25');
+  await page.locator('#open-plant').click();
+  await page.locator('#plant-name').fill('Arándano de prueba local ' + Date.now());
+  await page.locator('#plant-shape').selectOption('baya');
+  await page.getByRole('button', { name: 'Guardar ingrediente en borrador' }).click();
+  const expectedCount = Number((await page.locator('#plant-count').innerText()).split(' ')[0]);
+  assert.ok(expectedCount >= 5);
+  await page.locator('#site-frame').scrollIntoViewIfNeeded();
+  const frame = page.frameLocator('#site-frame');
+  await frame.getByRole('heading', { name: 'Mezcla de prueba local', exact: true }).waitFor({ timeout: 20000 });
+  await page.locator('#publish').click();
+  await page.waitForFunction(() => document.querySelector('#notice').textContent.startsWith('Publicado.'));
+  const catalog = await (await context.request.get(`${base}/api/catalogo`)).json();
+  const changed = catalog.teas.find(tea => tea.id === 'sueno-del-bosque');
+  assert.equal(changed.precio, 11.25);
+  assert.equal(changed.plantas.length, expectedCount);
+  await page.screenshot({ path: path.join(output, 'studio-desktop.png'), fullPage: true });
+  await page.goto(`${base}/clasica/tes/sueno-del-bosque`);
+  await page.getByRole('heading', { name: 'Mezcla de prueba local', exact: true }).waitFor();
+  await page.getByText(/Arándano de prueba local/).first().waitFor();
+  await page.screenshot({ path: path.join(output, 'ficha-cinco-ingredientes.png'), fullPage: true });
+  await page.getByRole('button', { name: 'Añadir a la cesta', exact: true }).first().click();
+  await page.goto(`${base}/clasica/cesta`);
+  await page.getByRole('button', { name: /Pagar con tarjeta/ }).click();
+  await page.getByRole('button', { name: /Pagar con tarjeta/ }).click();
+  await page.getByRole('alert').waitFor();
+  assert.ok(page.url().endsWith('/clasica/cesta'));
+  assert.ok(await page.getByText('Mezcla de prueba local', { exact: true }).count());
+  await page.goto(`${base}/te?q=low`);
+  await page.waitForFunction(() => window.__petraUi);
+  await page.evaluate(() => window.__petraUi.getState().focusTea('sueno-del-bosque'));
+  await page.getByRole('button', { name: /Arándano de prueba local/ }).first().waitFor();
+  await page.waitForFunction(() => { let count = 0; window.__scene?.traverse(object => { if (object.name.startsWith('specimen-')) count++; }); return count >= 5; });
+  await page.waitForTimeout(2500);
+  await page.screenshot({ path: path.join(output, 'tarro-cinco-ingredientes.png') });
+  await page.getByRole('button', { name: /Volver a la sala/ }).click();
+  await page.getByRole('button', { name: 'Salón', exact: true }).click();
+  await page.waitForURL('**/salon');
+  for (const width of [390, 768, 1440]) {
+    await page.setViewportSize({ width, height: 900 });
+    for (const route of ['/studio/index.html', '/clasica/tes', '/clasica/tes/sueno-del-bosque']) {
+      await page.goto(base + route);
+      await page.locator('h1').first().waitFor();
+      const overflow = await page.evaluate(() => document.documentElement.scrollWidth - innerWidth);
+      assert.ok(overflow <= 2, `${width} ${route}: horizontal overflow ${overflow}`);
+    }
+    await page.screenshot({ path: path.join(output, `ficha-${width}.png`), fullPage: true });
+  }
+  assert.deepEqual(errors, []);
+  fs.writeFileSync(path.join(output, 'studio-tests.json'), JSON.stringify({ status: 'PASS', tests: ['session', 'preview', 'custom ingredient', 'stable id', 'publish', 'classic receipt price', 'checkout failure preserves basket', '3d ingredients', 'door navigation', '390/768/1440 responsive'], errors }, null, 2));
+  console.log('PASS: Studio publish, preview, ingredients, cart protection, doors and responsive layouts');
+  await browser.close();
+})().catch(error => { console.error(error); process.exit(1); });

@@ -15,7 +15,7 @@
 // confirmar el pago en el servidor y disparar el recibo.
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
-import { teaById } from "@/data/teas";
+import { TEAS } from "@/data/teas";
 import { cajaById } from "@/data/boxes";
 import { precioCaja } from "@/lib/season";
 import { extraById, PRECIO_CUCHARA } from "@/data/extras";
@@ -40,16 +40,16 @@ function paisesEnvio(): Stripe.Checkout.SessionCreateParams.ShippingAddressColle
 
 /** Precio y nombre los decide SIEMPRE el servidor: el cliente solo dice qué y cuánto. */
 async function resolver(l: Linea): Promise<{ nombre: string; precio: number } | null> {
+  const vivo = await catalogoVivo();
+  if (l.kind === "tea") {
+    const tea = vivo.teas.find((item) => item.id === l.id) ?? TEAS.find((item) => item.id === l.id);
+    return tea && Number.isFinite(tea.precio) && tea.precio > 0 ? { nombre: tea.nombre, precio: tea.precio } : null;
+  }
   try {
-    if (l.kind === "tea") { const t = teaById(l.id); return { nombre: t.nombre, precio: t.precio }; }
     if (l.kind === "caja") { const c = cajaById(l.id); return { nombre: c.nombre, precio: precioCaja(c) }; }
     const e = extraById(l.id); return { nombre: e.nombre, precio: PRECIO_CUCHARA };
   } catch { /* no está en el catálogo del código: puede ser del taller */ }
-  const vivo = await catalogoVivo();
-  if (l.kind === "tea") {
-    const t = vivo.teas.find((x) => x.id === l.id);
-    if (t && Number.isFinite(t.precio) && t.precio > 0) return { nombre: t.nombre, precio: t.precio };
-  } else if (l.kind === "cuchara") {
+  if (l.kind === "cuchara") {
     const e = vivo.extras.find((x) => x.id === l.id);
     if (e) return { nombre: e.nombre, precio: PRECIO_CUCHARA };
   }
@@ -61,7 +61,7 @@ export async function POST(req: Request) {
   if (tope) return tope;
 
   const key = process.env.STRIPE_SECRET_KEY;
-  let body: { lines?: Linea[]; cupon?: string | null };
+  let body: { lines?: Linea[]; cupon?: string | null; email?: string; clasica?: boolean };
   try { body = await req.json(); } catch {
     return NextResponse.json({ error: "cuerpo no válido (se espera JSON)" }, { status: 400 });
   }
@@ -81,7 +81,9 @@ export async function POST(req: Request) {
     resueltas.push({ ...r, qty: l.qty });
   }
 
-  if (!key) return NextResponse.json({ demo: true });
+  if (!key) return NextResponse.json({ error: "Los pagos no están disponibles todavía." }, { status: 503 });
+  if (key.startsWith("sk_live_") && (process.env.STRIPE_LIVE_ENABLED !== "true" || !process.env.STRIPE_WEBHOOK_SECRET || !process.env.PEDIDOS_EMAIL_TO || !process.env.RESEND_API_KEY))
+    return NextResponse.json({ error: "La tienda todavía no ha activado los pagos reales." }, { status: 503 });
   const stripe = new Stripe(key);
   // La dirección de vuelta la manda el SERVIDOR, nunca la cabecera Origin del cliente.
   const base = (process.env.NEXT_PUBLIC_SITE_URL ?? new URL(req.url).origin).replace(/\/+$/, "");
@@ -91,17 +93,28 @@ export async function POST(req: Request) {
   }));
   const discounts = typeof cupon === "string" && /^[A-Za-z0-9_-]{1,40}$/.test(cupon) ? [{ coupon: cupon }] : undefined;
   try {
+    const subtotal = resueltas.reduce((sum, item) => sum + Math.round(item.precio * 100) * item.qty, 0);
+    let discount = 0;
+    if (discounts) {
+      const coupon = await stripe.coupons.retrieve(discounts[0].coupon);
+      if (!coupon.valid || coupon.applies_to?.products?.length || (coupon.amount_off && coupon.currency !== "eur"))
+        return NextResponse.json({ error: "Ese cupón no está disponible para esta compra." }, { status: 400 });
+      discount = coupon.percent_off ? Math.round(subtotal * coupon.percent_off / 100) : Math.min(subtotal, coupon.amount_off || 0);
+    }
+    const shipping = subtotal - discount >= 5000 ? 0 : 490;
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
+      metadata: { app: "petra" },
+      customer_email: typeof body.email === "string" && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(body.email.trim()) ? body.email.trim().slice(0, 320) : undefined,
       line_items,
       discounts,
       shipping_address_collection: { allowed_countries: paisesEnvio() },
       phone_number_collection: { enabled: true },
       shipping_options: [
-        { shipping_rate_data: { display_name: "Envío", type: "fixed_amount", fixed_amount: { amount: 490, currency: "eur" } } },
+        { shipping_rate_data: { display_name: "Delivery / Dostava / Envío", type: "fixed_amount", fixed_amount: { amount: shipping, currency: "eur" } } },
       ],
-      success_url: `${base}/gracias?paid=1`,
-      cancel_url: `${base}/carrito`,
+      success_url: `${base}/gracias?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${base}${body.clasica ? "/clasica/cesta" : "/carrito"}`,
     });
     return NextResponse.json({ url: session.url });
   } catch (e) {

@@ -31,10 +31,10 @@ export default function Nav() {
             <span className="italic text-[28px]">P</span>
             <span className="text-[19px] font-normal mx-[8px]">+</span>
             <span className="italic text-[28px]">E</span>
-            <span className="text-[18px] font-normal ml-[1px]">-espe</span>
+            <span className="text-[18px] font-normal ml-[1px]">-sp</span>
           </span>
         </Link>
-        <nav className="hidden md:flex gap-3.5 text-[13.5px] items-center" aria-label={T.cl.navA11y}>
+        <nav className="hidden xl:flex gap-3.5 text-[13.5px] items-center" aria-label={T.cl.navA11y}>
           {S.map((s) => (
             <Link key={s.href} href={s.href}
               className={`whitespace-nowrap inline-flex items-center min-h-10 hover:opacity-100 transition-opacity ${path.startsWith(s.href) ? "opacity-100 underline underline-offset-8 decoration-[var(--miel)]" : "opacity-70"}`}>
@@ -62,7 +62,7 @@ export default function Nav() {
         </div>
       </div>
       {/* nav móvil */}
-      <nav className="md:hidden flex gap-3 px-4 pb-1 text-[13px] overflow-x-auto" aria-label={T.cl.navA11y}>
+      <nav className="xl:hidden flex gap-3 px-4 pb-1 text-[13px] overflow-x-auto" aria-label={T.cl.navA11y}>
         {S.map((s) => (
           <Link key={s.href} href={s.href} className={`whitespace-nowrap inline-flex items-center min-h-10 ${path.startsWith(s.href) ? "underline underline-offset-4 decoration-[var(--miel)]" : "opacity-70"}`}>{s.t}</Link>
         ))}

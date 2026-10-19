@@ -5,8 +5,10 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useT, useLang } from "@/i18n";
 import { eur } from "@/lib/format";
+import { useCart } from "@/lib/cart";
 
 interface Receipt {
+  test: boolean;
   metodo: string; fecha: string; cupon: string | null;
   entrada?: string;
   lineas: { nombre: string; qty: number; precio: number }[];
@@ -20,39 +22,28 @@ export default function ReceiptView() {
   const { lang } = useLang();
   const LOCALE = { es: "es-ES", en: "en-GB", sl: "sl-SI" }[lang];
   const [r, setR] = useState<Receipt | null | "none">(null);
+  const [failed, setFailed] = useState(false);
+  const clear = useCart((state) => state.clear);
+  const checking = { es: "No hemos podido confirmar el pago. Si ya pagaste, no repitas la compra: vuelve a comprobarlo en unos momentos.", en: "We could not confirm payment. If you already paid, do not pay again: check back in a moment.", sl: "Plačila ni bilo mogoče potrditi. Če ste že plačali, ne plačujte znova: preverite čez nekaj trenutkov." }[lang];
   useEffect(() => {
-    let receipt: Receipt | null = null;
-    try {
-      const raw = sessionStorage.getItem("petra-last-order");
-      receipt = raw ? (JSON.parse(raw) as Receipt) : null;
-    } catch { receipt = null; }
-    setR(receipt ?? "none");
-    if (!receipt) return;
-
-    // 2-sep-2026 (auditoría, fallo funcional): con Stripe de verdad el navegador se va a pagar
-    // y vuelve aquí con ?paid=1. ESE es el momento de mandar el recibo por correo (antes no se
-    // mandaba nunca en pago real). La marca «correo-enviado» evita mandarlo dos veces.
-    const pagado = new URLSearchParams(window.location.search).get("paid") === "1";
-    if (!pagado) return;
-    let correo = "", yaEnviado = "";
-    try {
-      correo = sessionStorage.getItem("petra-last-email") ?? "";
-      yaEnviado = sessionStorage.getItem("petra-correo-enviado") ?? "";
-    } catch { /* sin almacenamiento */ }
-    if (!correo || yaEnviado === receipt.entrada) return;
-    try { sessionStorage.setItem("petra-correo-enviado", receipt.entrada ?? ""); } catch { /* sin almacenamiento */ }
-    const frases = T.gracias.bienvenidas;
-    fetch("/api/pedido-email", {
-      method: "POST", headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...receipt, email: correo, frase: frases[(receipt.fraseIdx ?? 0) % frases.length] }),
-    }).catch(() => {});
-  }, [T]);
+    const id = new URLSearchParams(window.location.search).get("session_id");
+    if (!id) { setR("none"); return; }
+    let cancelled = false;
+    fetch(`/api/pedido?session_id=${encodeURIComponent(id)}`, { cache: "no-store" })
+      .then(async (response) => {
+        if (!response.ok) throw new Error("not_confirmed");
+        const receipt = await response.json();
+        if (!cancelled) { setR(receipt); clear(); }
+      })
+      .catch(() => { if (!cancelled) { setR("none"); setFailed(true); } });
+    return () => { cancelled = true; };
+  }, [clear]);
 
   return (
     <main className="fixed inset-0 overflow-y-auto bg-[var(--madera-oscura)] pt-14 pb-8 px-4">
       <div className="max-w-md mx-auto">
         <h1 className="font-display text-3xl text-[var(--crema)] text-center drop-shadow">{T.gracias.titulo}</h1>
-        <p className="text-sm text-[var(--crema)]/80 text-center mt-2">{T.gracias.cuerpo}</p>
+        {r && r !== "none" && <p className="text-sm text-[var(--crema)]/80 text-center mt-2">{r.test ? "TEST · PRUEBA · PREIZKUS — 0 real charges" : T.gracias.cuerpo}</p>}
 
         {r && r !== "none" ? (
           <div className="panel mt-6 p-5 float-in font-mono text-sm">
@@ -74,7 +65,7 @@ export default function ReceiptView() {
             <div className="flex justify-between"><span>{T.carrito.envio}</span><span>{r.ship === 0 ? T.carrito.envioGratis : eur(r.ship)}</span></div>
             <div className="flex justify-between font-bold text-base mt-1"><span>{T.carrito.total}</span><span>{eur(r.total)}</span></div>
             <div className="text-center text-xs opacity-60 mt-3">
-              {r.metodo === "tarjeta" ? T.gracias.pagadoTarjeta : T.gracias.pagadoPaypal}
+              {r.test ? "Stripe TEST" : "Stripe ✓"}
             </div>
             {r.cuchara && (
               <div className="mt-3 p-3 rounded-lg border border-dashed border-[var(--miel)] bg-[var(--crema)] font-sans">
@@ -92,7 +83,8 @@ export default function ReceiptView() {
         ) : r === "none" ? (
           // visita directa sin pedido: mensaje amable y las dos puertas, nunca una pantalla rota
           <div className="panel mt-6 p-5 float-in text-center">
-            <p className="text-sm">{T.gracias.sinPedido} 🍃</p>
+            <p role="status" className="text-sm">{failed ? checking : T.gracias.sinPedido} 🍃</p>
+            {failed && <button className="btn-miel px-4 py-2 mt-3" onClick={() => window.location.reload()}>↻</button>}
           </div>
         ) : null}
 

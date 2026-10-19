@@ -209,9 +209,9 @@ export const TEAS: Tea[] = [
 ];
 
 export const teaById = (id: string): Tea => {
-  const t = TEAS.find((x) => x.id === id) ?? getVivo().teas.find((x) => x.id === id);
+  const t = getVivo().teas.find((x) => x.id === id) ?? TEAS.find((x) => x.id === id);
   if (!t) throw new Error(`Té desconocido: ${id}`);
   return t;
 };
-export const teasBySala = (sala: Tea["sala"]) =>
-  [...TEAS, ...getVivo().teas].filter((t) => t.sala === sala);
+export const todasLasTeas = () => Array.from(new Map([...TEAS, ...getVivo().teas].map((tea) => [tea.id, tea])).values());
+export const teasBySala = (sala: Tea["sala"]) => todasLasTeas().filter((tea) => tea.sala === sala);

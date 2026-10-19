@@ -1,0 +1,2516 @@
+{
+  "teas": [
+    {
+      "id": "sueno-del-bosque",
+      "nombre": "Sueño del Bosque",
+      "sala": "te",
+      "precio": 7.5,
+      "gramos": 60,
+      "colorHoja": "#C9B36A",
+      "paraQueSirve": "Para la última hora del día: afloja el cuerpo y apaga el ruido de la cabeza antes de dormir.",
+      "plantas": [
+        {
+          "plantaId": "manzanilla",
+          "porQueEnEsteMix": "Aquí es la base que calma el estómago nervioso de antes de acostarse, para que el cuerpo deje de pedir atención."
+        },
+        {
+          "plantaId": "tila",
+          "porQueEnEsteMix": "Suaviza el pulso acelerado del final del día; es la que hace que el sueño llegue sin pelear."
+        },
+        {
+          "plantaId": "lavanda",
+          "porQueEnEsteMix": "Una pizca solo por su aroma: le dice a la cabeza que ya no hay nada más que resolver hoy."
+        },
+        {
+          "plantaId": "melisa",
+          "porQueEnEsteMix": "Redondea el sabor y desata el nudo del pecho cuando el día ha sido largo."
+        }
+      ]
+    },
+    {
+      "id": "manana-clara",
+      "nombre": "Mañana Clara",
+      "sala": "te",
+      "precio": 7,
+      "gramos": 60,
+      "colorHoja": "#9DB56B",
+      "paraQueSirve": "El despertar sin café: despeja y pone en marcha sin acelerar de golpe.",
+      "plantas": [
+        {
+          "plantaId": "menta",
+          "porQueEnEsteMix": "Es la bofetada amable de la mañana: abre la respiración y espabila desde el primer sorbo."
+        },
+        {
+          "plantaId": "romero",
+          "porQueEnEsteMix": "En este mix está para la memoria de primera hora, cuando la cabeza aún arranca en frío."
+        },
+        {
+          "plantaId": "hierbaluisa",
+          "porQueEnEsteMix": "Pone el toque de limón que hace la mezcla fresca en vez de amarga."
+        }
+      ]
+    },
+    {
+      "id": "estomago-contento",
+      "nombre": "Estómago Contento",
+      "sala": "te",
+      "precio": 7.5,
+      "gramos": 60,
+      "colorHoja": "#C4B54F",
+      "paraQueSirve": "Después de comer mucho o comer tarde: ayuda a digerir y deshincha.",
+      "plantas": [
+        {
+          "plantaId": "hinojo",
+          "porQueEnEsteMix": "El que trabaja de verdad contra la hinchazón después del plato grande; por eso lleva la mayor parte."
+        },
+        {
+          "plantaId": "anis",
+          "porQueEnEsteMix": "Acompaña al hinojo y endulza el trago sin azúcar: la sobremesa se hace amable."
+        },
+        {
+          "plantaId": "menta",
+          "porQueEnEsteMix": "Aquí no despierta: refresca la boca y asienta el estómago pesado."
+        },
+        {
+          "plantaId": "manzanilla",
+          "porQueEnEsteMix": "En este mix va de escolta: calma el ardor cuando la comida fue más abundante que la prudencia."
+        }
+      ]
+    },
+    {
+      "id": "garganta-de-invierno",
+      "nombre": "Garganta de Invierno",
+      "sala": "te",
+      "precio": 8,
+      "gramos": 60,
+      "colorHoja": "#B4713C",
+      "paraQueSirve": "Para los días de frío, voz rasposa y nariz cerrada.",
+      "plantas": [
+        {
+          "plantaId": "tomillo",
+          "porQueEnEsteMix": "El guardián del pecho: aquí está por la tos y por esa garganta que raspa al hablar."
+        },
+        {
+          "plantaId": "jengibre",
+          "porQueEnEsteMix": "Enciende el fuego por dentro; en este mix su picor es el abrigo."
+        },
+        {
+          "plantaId": "escaramujo",
+          "porQueEnEsteMix": "La vitamina del rosal silvestre: refuerza justo cuando el cuerpo anda defendiéndose."
+        },
+        {
+          "plantaId": "regaliz",
+          "porQueEnEsteMix": "Endulza y suaviza la garganta irritada; es la capa de miel de esta mezcla, sin miel."
+        }
+      ]
+    },
+    {
+      "id": "tarde-en-calma",
+      "nombre": "Tarde en Calma",
+      "sala": "te",
+      "precio": 7,
+      "gramos": 60,
+      "colorHoja": "#A8BF86",
+      "paraQueSirve": "Para la ansiedad pequeña de media tarde: seguir con el día, pero más ligero.",
+      "plantas": [
+        {
+          "plantaId": "melisa",
+          "porQueEnEsteMix": "Aquí es la protagonista: baja el runrún sin dar sueño, que aún queda día por delante."
+        },
+        {
+          "plantaId": "azahar",
+          "porQueEnEsteMix": "El azahar pone la parte de consuelo: huele a que todo va a salir bien."
+        },
+        {
+          "plantaId": "salvia",
+          "porQueEnEsteMix": "Sostiene el ánimo parejo y evita que la calma se vuelva modorra."
+        }
+      ]
+    },
+    {
+      "id": "monte-limpio",
+      "nombre": "Monte Limpio",
+      "sala": "te",
+      "precio": 7.5,
+      "gramos": 60,
+      "colorHoja": "#6F8F5A",
+      "paraQueSirve": "Depurativo de temporada: para cuando el cuerpo pide un barrido.",
+      "plantas": [
+        {
+          "plantaId": "ortiga",
+          "porQueEnEsteMix": "La escoba del mix: aquí va por su fama de limpiar por dentro y remineralizar."
+        },
+        {
+          "plantaId": "colacaballo",
+          "porQueEnEsteMix": "Acompaña a la ortiga tirando del agua que sobra; juntas hacen el barrido completo."
+        },
+        {
+          "plantaId": "menta",
+          "porQueEnEsteMix": "En esta mezcla es puro sabor: sin ella, el barrido sabría a campo mojado."
+        }
+      ]
+    },
+    {
+      "id": "abrazo-de-frutas",
+      "nombre": "Abrazo de Frutas",
+      "sala": "te",
+      "precio": 8,
+      "gramos": 70,
+      "colorHoja": "#B5533C",
+      "paraQueSirve": "El té de los que no querían té: afrutado, rojizo, gusta a los niños y a las visitas.",
+      "plantas": [
+        {
+          "plantaId": "escaramujo",
+          "porQueEnEsteMix": "Aquí pone el cuerpo y el color rojizo del vaso; es la fruta de esta taza."
+        },
+        {
+          "plantaId": "frambuesa",
+          "porQueEnEsteMix": "La hoja del frambueso da el fondo verde que evita el empalago."
+        },
+        {
+          "plantaId": "rosa",
+          "porQueEnEsteMix": "Los pétalos son la sonrisa del tarro: perfuman y lo hacen bonito al abrirlo."
+        },
+        {
+          "plantaId": "canela",
+          "porQueEnEsteMix": "Media vuelta de canela para que la fruta sepa a tarta y no a zumo."
+        }
+      ]
+    },
+    {
+      "id": "respiro-de-sauco",
+      "nombre": "Respiro de Saúco",
+      "sala": "te",
+      "precio": 7.5,
+      "gramos": 60,
+      "colorHoja": "#D8CFA8",
+      "paraQueSirve": "Para primaveras de estornudos y narices que gotean.",
+      "plantas": [
+        {
+          "plantaId": "saúco",
+          "porQueEnEsteMix": "La flor de saúco es aquí la llave: la de siempre para los resfriados de primavera."
+        },
+        {
+          "plantaId": "escaramujo",
+          "porQueEnEsteMix": "En este mix apoya las defensas mientras el saúco hace su trabajo."
+        },
+        {
+          "plantaId": "hierbaluisa",
+          "porQueEnEsteMix": "Su limón fresco despeja la nariz por el aroma antes que el trago."
+        }
+      ]
+    },
+    {
+      "id": "oro-de-otono",
+      "nombre": "Oro de Otoño",
+      "sala": "te-premium",
+      "precio": 14,
+      "gramos": 80,
+      "colorHoja": "#C0862F",
+      "paraQueSirve": "La reserva de la casa: rooibos y especias nobles, la taza de las ocasiones.",
+      "plantas": [
+        {
+          "plantaId": "rooibos",
+          "porQueEnEsteMix": "El rooibos sudafricano es la seda de este mix: cuerpo dulce y ni gota de teína."
+        },
+        {
+          "plantaId": "cardamomo",
+          "porQueEnEsteMix": "Machacado a mano al envasar: aquí es el lujo que se huele antes de abrir el agua."
+        },
+        {
+          "plantaId": "canela",
+          "porQueEnEsteMix": "Canela de Ceilán en rama, no molida: en esta mezcla manda la elegancia, no el dulzor."
+        },
+        {
+          "plantaId": "calendula",
+          "porQueEnEsteMix": "Sus pétalos naranjas son el oro visible del nombre: se sirven en la taza."
+        }
+      ]
+    },
+    {
+      "id": "jardin-de-petra",
+      "nombre": "El Jardín de Petra",
+      "sala": "te-premium",
+      "precio": 15,
+      "gramos": 70,
+      "colorHoja": "#C97C8E",
+      "paraQueSirve": "El mix con el que empezó todo: flores del jardín de casa, en pequeñas cosechas numeradas.",
+      "plantas": [
+        {
+          "plantaId": "rosa",
+          "porQueEnEsteMix": "Las rosas son del rosal que plantó la abuela de Petra: cada pétalo se seca a la sombra, nunca al sol."
+        },
+        {
+          "plantaId": "lavanda",
+          "porQueEnEsteMix": "La lavanda de la entrada de casa: aquí no ayuda a dormir, ayuda a recordar."
+        },
+        {
+          "plantaId": "melisa",
+          "porQueEnEsteMix": "Crece sola junto al pozo; es la frescura que evita que el jardín empalague."
+        },
+        {
+          "plantaId": "calendula",
+          "porQueEnEsteMix": "La caléndula guarda el color del verano para las tazas de enero."
+        }
+      ]
+    },
+    {
+      "id": "raiz-y-fuego",
+      "nombre": "Raíz y Fuego",
+      "sala": "te-premium",
+      "precio": 13.5,
+      "gramos": 80,
+      "colorHoja": "#A65A2E",
+      "paraQueSirve": "El chai de la casa: raíces y especias para los que quieren una taza con carácter.",
+      "plantas": [
+        {
+          "plantaId": "jengibre",
+          "porQueEnEsteMix": "Aquí el jengibre no abriga: MANDA. Cortado grueso para que el fuego dure toda la taza."
+        },
+        {
+          "plantaId": "canela",
+          "porQueEnEsteMix": "En este mix es leña del fuego del jengibre, no perfume."
+        },
+        {
+          "plantaId": "cardamomo",
+          "porQueEnEsteMix": "El contrapunto verde que impide que el fuego queme: orden dentro del carácter."
+        },
+        {
+          "plantaId": "regaliz",
+          "porQueEnEsteMix": "El final dulce de cada sorbo, para que el fuego despida bien."
+        }
+      ]
+    },
+    {
+      "id": "niebla-blanca",
+      "nombre": "Niebla Blanca",
+      "sala": "te-premium",
+      "precio": 16,
+      "gramos": 50,
+      "colorHoja": "#E4DDC4",
+      "paraQueSirve": "El más delicado de la casa: flores pálidas para beber despacio y en silencio.",
+      "plantas": [
+        {
+          "plantaId": "azahar",
+          "porQueEnEsteMix": "El azahar es la niebla del nombre: se recoge al amanecer, cuando aún no pesa el sol."
+        },
+        {
+          "plantaId": "saúco",
+          "porQueEnEsteMix": "Aquí el saúco no cura resfriados: pone la nota de pera blanca que sostiene al azahar."
+        },
+        {
+          "plantaId": "tila",
+          "porQueEnEsteMix": "La tila da el fondo sedoso; es el silencio de esta taza."
+        }
+      ]
+    },
+    {
+      "id": "vispera-de-fiesta",
+      "nombre": "Víspera de Fiesta",
+      "sala": "te-premium",
+      "precio": 14.5,
+      "gramos": 70,
+      "colorHoja": "#B04A56",
+      "paraQueSirve": "Para regalar: el tarro que se abre en la mesa y hace ooh.",
+      "plantas": [
+        {
+          "plantaId": "escaramujo",
+          "porQueEnEsteMix": "El rojo profundo de la infusión: en la mesa parece vino especiado."
+        },
+        {
+          "plantaId": "rosa",
+          "porQueEnEsteMix": "Pétalos enteros, no rotos: este tarro se compra tanto por los ojos como por la taza."
+        },
+        {
+          "plantaId": "canela",
+          "porQueEnEsteMix": "El aroma de fiesta al levantar la tapa: es la primera impresión del regalo."
+        },
+        {
+          "plantaId": "jengibre",
+          "porQueEnEsteMix": "Un fondo picante muy leve, el secreto que hace preguntar «¿qué lleva?»."
+        }
+      ]
+    },
+    {
+      "id": "rubi-de-hibisco",
+      "nombre": "Rubí de Hibisco",
+      "sala": "te",
+      "precio": 7.5,
+      "gramos": 60,
+      "colorHoja": "#a8283c",
+      "paraQueSirve": "Rojo intenso y ácido fresquito: frío en verano es la joya de la jarra.",
+      "plantas": [
+        {
+          "plantaId": "hibisco",
+          "porQueEnEsteMix": "El hibisco pone el rubí: color, acidez y frescura — es el alma entera de esta jarra."
+        },
+        {
+          "plantaId": "naranjaseca",
+          "porQueEnEsteMix": "La naranja seca redondea el ácido del hibisco con su dulzor tostado."
+        },
+        {
+          "plantaId": "menta",
+          "porQueEnEsteMix": "Aquí la menta es el hielo: el final fresco que pide el verano."
+        }
+      ]
+    },
+    {
+      "id": "prado-azul",
+      "nombre": "Prado Azul",
+      "sala": "te",
+      "precio": 8,
+      "gramos": 60,
+      "colorHoja": "#7c94b8",
+      "paraQueSirve": "Para las tardes de leer junto a la ventana: florecillas azules y calma.",
+      "plantas": [
+        {
+          "plantaId": "aciano",
+          "porQueEnEsteMix": "El aciano pinta el prado de azul en la taza — y suaviza los ojos cansados de leer."
+        },
+        {
+          "plantaId": "malva",
+          "porQueEnEsteMix": "La malva es el terciopelo de este prado: suaviza garganta y ánimo."
+        },
+        {
+          "plantaId": "melisa",
+          "porQueEnEsteMix": "La melisa pone la brisa: sin ella el prado sería solo bonito, no tranquilo."
+        }
+      ]
+    },
+    {
+      "id": "manzana-del-horno",
+      "nombre": "Manzana del Horno",
+      "sala": "te",
+      "precio": 7.5,
+      "gramos": 70,
+      "colorHoja": "#b98a4e",
+      "paraQueSirve": "Sabe a tarta de manzana recién hecha: el té de las meriendas de domingo.",
+      "plantas": [
+        {
+          "plantaId": "manzanaseca",
+          "porQueEnEsteMix": "La manzana seca es la tarta: dulzor de fruta asada sin una pizca de azúcar."
+        },
+        {
+          "plantaId": "canela",
+          "porQueEnEsteMix": "Aquí la canela es la del horno de casa: la que huele a domingo por la tarde."
+        },
+        {
+          "plantaId": "escaramujo",
+          "porQueEnEsteMix": "El escaramujo pone el puntito ácido que evita el empalago de la tarta."
+        }
+      ]
+    },
+    {
+      "id": "bosque-de-invierno",
+      "nombre": "Bosque de Invierno",
+      "sala": "te",
+      "precio": 8,
+      "gramos": 60,
+      "colorHoja": "#4a6a55",
+      "paraQueSirve": "Un paseo por el bosque nevado: resina, frescor y abrigo.",
+      "plantas": [
+        {
+          "plantaId": "abeto",
+          "porQueEnEsteMix": "Los brotes de abeto son el bosque mismo: resina fresca que abre el pecho."
+        },
+        {
+          "plantaId": "eucalipto",
+          "porQueEnEsteMix": "El eucalipto despeja la nariz helada del paseo — es la bufanda de este mix."
+        },
+        {
+          "plantaId": "jengibre",
+          "porQueEnEsteMix": "El jengibre es la lumbre esperando en casa al volver del bosque."
+        }
+      ]
+    },
+    {
+      "id": "noche-de-reyes",
+      "nombre": "Noche de Reyes",
+      "sala": "te-premium",
+      "precio": 15.5,
+      "gramos": 70,
+      "colorHoja": "#4a3a5f",
+      "paraQueSirve": "La reserva más rara de la casa: jengibre negro tailandés y especias de leyenda.",
+      "plantas": [
+        {
+          "plantaId": "jengibrenegro",
+          "porQueEnEsteMix": "El jengibre negro es la joya oscura: raro, profundo, casi misterioso — solo va en este tarro."
+        },
+        {
+          "plantaId": "cardamomo",
+          "porQueEnEsteMix": "El cardamomo escolta al rey oscuro con su perfume verde."
+        },
+        {
+          "plantaId": "curcuma",
+          "porQueEnEsteMix": "La cúrcuma dora la taza: el oro de los reyes en el fondo."
+        },
+        {
+          "plantaId": "canela",
+          "porQueEnEsteMix": "La canela une la comitiva: sin ella cada especia iría por su lado."
+        }
+      ]
+    },
+    {
+      "id": "colina-de-brezo",
+      "nombre": "Colina de Brezo",
+      "sala": "te-premium",
+      "precio": 14,
+      "gramos": 60,
+      "colorHoja": "#b87f9e",
+      "paraQueSirve": "Las colinas rosadas del norte en flor: delicado, silvestre, para beber despacio.",
+      "plantas": [
+        {
+          "plantaId": "brezo",
+          "porQueEnEsteMix": "El brezo es la colina entera: se cosecha a mano cuando rosa el monte."
+        },
+        {
+          "plantaId": "hiperico",
+          "porQueEnEsteMix": "El hipérico trae el sol que dora esas colinas — la alegría del mix."
+        },
+        {
+          "plantaId": "verbena",
+          "porQueEnEsteMix": "La verbena pone el atardecer: cierra el sorbo con calma lila."
+        }
+      ]
+    }
+  ],
+  "plants": [
+    {
+      "id": "manzanilla",
+      "nombre": "Manzanilla",
+      "latin": "Matricaria chamomilla",
+      "color": "#ffffff",
+      "color2": "#f2c94c",
+      "forma": "margarita"
+    },
+    {
+      "id": "melisa",
+      "nombre": "Melisa",
+      "latin": "Melissa officinalis",
+      "color": "#9dbb61",
+      "color2": "#7a9a4a",
+      "forma": "hoja"
+    },
+    {
+      "id": "tila",
+      "nombre": "Tila",
+      "latin": "Tilia cordata",
+      "color": "#e5e0b0",
+      "color2": "#a9bd7a",
+      "forma": "tallo"
+    },
+    {
+      "id": "lavanda",
+      "nombre": "Lavanda",
+      "latin": "Lavandula angustifolia",
+      "color": "#8d79c9",
+      "color2": "#8fa382",
+      "forma": "espiga"
+    },
+    {
+      "id": "menta",
+      "nombre": "Menta piperita",
+      "latin": "Mentha × piperita",
+      "color": "#4f9e64",
+      "color2": "#3d7d4e",
+      "forma": "hoja"
+    },
+    {
+      "id": "hinojo",
+      "nombre": "Hinojo",
+      "latin": "Foeniculum vulgare",
+      "color": "#e8d35f",
+      "color2": "#9db76a",
+      "forma": "umbela"
+    },
+    {
+      "id": "anis",
+      "nombre": "Anís verde",
+      "latin": "Pimpinella anisum",
+      "color": "#f0ead0",
+      "color2": "#b8c48a",
+      "forma": "umbela"
+    },
+    {
+      "id": "jengibre",
+      "nombre": "Jengibre",
+      "latin": "Zingiber officinale",
+      "color": "#d9a44c",
+      "color2": "#c08a35",
+      "forma": "rizoma"
+    },
+    {
+      "id": "escaramujo",
+      "nombre": "Escaramujo",
+      "latin": "Rosa canina",
+      "color": "#c7402e",
+      "color2": "#6f8f5a",
+      "forma": "baya"
+    },
+    {
+      "id": "saúco",
+      "nombre": "Flor de saúco",
+      "latin": "Sambucus nigra",
+      "color": "#f6efd8",
+      "color2": "#87a066",
+      "forma": "umbela"
+    },
+    {
+      "id": "tomillo",
+      "nombre": "Tomillo",
+      "latin": "Thymus vulgaris",
+      "color": "#b9a0c9",
+      "color2": "#7e8f68",
+      "forma": "aguja"
+    },
+    {
+      "id": "salvia",
+      "nombre": "Salvia",
+      "latin": "Salvia officinalis",
+      "color": "#a7b7a0",
+      "color2": "#8ba184",
+      "forma": "hoja"
+    },
+    {
+      "id": "ortiga",
+      "nombre": "Ortiga",
+      "latin": "Urtica dioica",
+      "color": "#57804f",
+      "color2": "#436a3d",
+      "forma": "hoja"
+    },
+    {
+      "id": "colacaballo",
+      "nombre": "Cola de caballo",
+      "latin": "Equisetum arvense",
+      "color": "#6f8f5a",
+      "color2": "#5a7a48",
+      "forma": "tallo"
+    },
+    {
+      "id": "romero",
+      "nombre": "Romero",
+      "latin": "Rosmarinus officinalis",
+      "color": "#7c9484",
+      "color2": "#5f7a68",
+      "forma": "aguja"
+    },
+    {
+      "id": "hierbaluisa",
+      "nombre": "Hierbaluisa",
+      "latin": "Aloysia citrodora",
+      "color": "#b5ce7c",
+      "color2": "#8fb35a",
+      "forma": "hoja"
+    },
+    {
+      "id": "calendula",
+      "nombre": "Caléndula",
+      "latin": "Calendula officinalis",
+      "color": "#f0942e",
+      "color2": "#d97a1f",
+      "forma": "margarita"
+    },
+    {
+      "id": "rooibos",
+      "nombre": "Rooibos",
+      "latin": "Aspalathus linearis",
+      "color": "#b4552d",
+      "color2": "#94421f",
+      "forma": "aguja"
+    },
+    {
+      "id": "canela",
+      "nombre": "Canela de Ceilán",
+      "latin": "Cinnamomum verum",
+      "color": "#a96a3b",
+      "color2": "#8a5028",
+      "forma": "corteza"
+    },
+    {
+      "id": "cardamomo",
+      "nombre": "Cardamomo",
+      "latin": "Elettaria cardamomum",
+      "color": "#9fb56e",
+      "color2": "#7e9a52",
+      "forma": "vaina"
+    },
+    {
+      "id": "rosa",
+      "nombre": "Pétalos de rosa",
+      "latin": "Rosa damascena",
+      "color": "#d98a9e",
+      "color2": "#b56a7e",
+      "forma": "petalos"
+    },
+    {
+      "id": "azahar",
+      "nombre": "Azahar",
+      "latin": "Citrus aurantium",
+      "color": "#f8f2dd",
+      "color2": "#7fa060",
+      "forma": "flor5"
+    },
+    {
+      "id": "regaliz",
+      "nombre": "Regaliz",
+      "latin": "Glycyrrhiza glabra",
+      "color": "#8c7350",
+      "color2": "#6f5a3d",
+      "forma": "raiz"
+    },
+    {
+      "id": "frambuesa",
+      "nombre": "Hoja de frambueso",
+      "latin": "Rubus idaeus",
+      "color": "#7e9e62",
+      "color2": "#63834c",
+      "forma": "hoja"
+    },
+    {
+      "id": "hibisco",
+      "nombre": "Hibisco",
+      "latin": "Hibiscus sabdariffa",
+      "color": "#b3243c",
+      "color2": "#7e9e62",
+      "forma": "caliz"
+    },
+    {
+      "id": "jazmin",
+      "nombre": "Jazmín",
+      "latin": "Jasminum officinale",
+      "color": "#f8f4e6",
+      "color2": "#7fa060",
+      "forma": "flor5"
+    },
+    {
+      "id": "verbena",
+      "nombre": "Verbena",
+      "latin": "Verbena officinalis",
+      "color": "#c1a8d9",
+      "color2": "#8fa382",
+      "forma": "espiga"
+    },
+    {
+      "id": "amapola",
+      "nombre": "Amapola",
+      "latin": "Papaver rhoeas",
+      "color": "#d0342c",
+      "color2": "#6f8f5a",
+      "forma": "flor5"
+    },
+    {
+      "id": "aciano",
+      "nombre": "Aciano",
+      "latin": "Centaurea cyanus",
+      "color": "#4a6fd9",
+      "color2": "#8ba184",
+      "forma": "margarita"
+    },
+    {
+      "id": "naranjaseca",
+      "nombre": "Naranja seca",
+      "latin": "Citrus sinensis",
+      "color": "#e08a2e",
+      "color2": "#c9701f",
+      "forma": "citrico"
+    },
+    {
+      "id": "manzanaseca",
+      "nombre": "Manzana seca",
+      "latin": "Malus domestica",
+      "color": "#c9a26a",
+      "color2": "#a8875a",
+      "forma": "fruta-seca"
+    },
+    {
+      "id": "curcuma",
+      "nombre": "Cúrcuma",
+      "latin": "Curcuma longa",
+      "color": "#e0921f",
+      "color2": "#c9791a",
+      "forma": "rizoma"
+    },
+    {
+      "id": "jengibrenegro",
+      "nombre": "Jengibre negro",
+      "latin": "Kaempferia parviflora",
+      "color": "#5a4a6f",
+      "color2": "#463a56",
+      "forma": "rizoma"
+    },
+    {
+      "id": "hiperico",
+      "nombre": "Hipérico",
+      "latin": "Hypericum perforatum",
+      "color": "#f2c832",
+      "color2": "#8a9b6e",
+      "forma": "margarita"
+    },
+    {
+      "id": "milenrama",
+      "nombre": "Milenrama",
+      "latin": "Achillea millefolium",
+      "color": "#f2ede0",
+      "color2": "#87a066",
+      "forma": "umbela"
+    },
+    {
+      "id": "malva",
+      "nombre": "Malva",
+      "latin": "Malva sylvestris",
+      "color": "#b87fc9",
+      "color2": "#7e8f68",
+      "forma": "flor5"
+    },
+    {
+      "id": "brezo",
+      "nombre": "Brezo",
+      "latin": "Calluna vulgaris",
+      "color": "#d987b3",
+      "color2": "#6f7a5a",
+      "forma": "espiga"
+    },
+    {
+      "id": "abeto",
+      "nombre": "Brotes de abeto",
+      "latin": "Abies alba",
+      "color": "#3f6a4a",
+      "color2": "#2e5238",
+      "forma": "aguja"
+    },
+    {
+      "id": "laurel",
+      "nombre": "Laurel",
+      "latin": "Laurus nobilis",
+      "color": "#4a6a3f",
+      "color2": "#3a5632",
+      "forma": "hoja"
+    },
+    {
+      "id": "eucalipto",
+      "nombre": "Eucalipto",
+      "latin": "Eucalyptus globulus",
+      "color": "#8fa89a",
+      "color2": "#748a7e",
+      "forma": "hoja"
+    },
+    {
+      "id": "herbario-te-negro-assam",
+      "nombre": "Té negro Assam",
+      "nombres": {
+        "en": "Assam black tea",
+        "sl": "Črni čaj Assam"
+      },
+      "grupo": "Tés y bases",
+      "latin": "",
+      "forma": "te-seco",
+      "color": "#504532",
+      "color2": "#85734e"
+    },
+    {
+      "id": "herbario-te-negro-darjeeling",
+      "nombre": "Té negro Darjeeling",
+      "nombres": {
+        "en": "Darjeeling black tea",
+        "sl": "Črni čaj Darjeeling"
+      },
+      "grupo": "Tés y bases",
+      "latin": "",
+      "forma": "te-seco",
+      "color": "#504532",
+      "color2": "#85734e"
+    },
+    {
+      "id": "herbario-te-negro-de-ceilan",
+      "nombre": "Té negro de Ceilán",
+      "nombres": {
+        "en": "Ceylon black tea",
+        "sl": "Cejlonski črni čaj"
+      },
+      "grupo": "Tés y bases",
+      "latin": "",
+      "forma": "te-seco",
+      "color": "#504532",
+      "color2": "#85734e"
+    },
+    {
+      "id": "herbario-te-negro-keemun",
+      "nombre": "Té negro Keemun",
+      "nombres": {
+        "en": "Keemun black tea",
+        "sl": "Črni čaj Keemun"
+      },
+      "grupo": "Tés y bases",
+      "latin": "",
+      "forma": "te-seco",
+      "color": "#504532",
+      "color2": "#85734e"
+    },
+    {
+      "id": "herbario-te-negro-de-yunnan",
+      "nombre": "Té negro de Yunnan",
+      "nombres": {
+        "en": "Yunnan black tea",
+        "sl": "Črni čaj Yunnan"
+      },
+      "grupo": "Tés y bases",
+      "latin": "",
+      "forma": "te-seco",
+      "color": "#504532",
+      "color2": "#85734e"
+    },
+    {
+      "id": "herbario-te-negro-de-kenia",
+      "nombre": "Té negro de Kenia",
+      "nombres": {
+        "en": "Kenyan black tea",
+        "sl": "Kenijski črni čaj"
+      },
+      "grupo": "Tés y bases",
+      "latin": "",
+      "forma": "te-seco",
+      "color": "#504532",
+      "color2": "#85734e"
+    },
+    {
+      "id": "herbario-te-negro-de-nepal",
+      "nombre": "Té negro de Nepal",
+      "nombres": {
+        "en": "Nepalese black tea",
+        "sl": "Nepalski črni čaj"
+      },
+      "grupo": "Tés y bases",
+      "latin": "",
+      "forma": "te-seco",
+      "color": "#504532",
+      "color2": "#85734e"
+    },
+    {
+      "id": "herbario-lapsang-souchong",
+      "nombre": "Lapsang Souchong",
+      "nombres": {
+        "en": "Lapsang Souchong",
+        "sl": "Lapsang Souchong"
+      },
+      "grupo": "Tés y bases",
+      "latin": "",
+      "forma": "te-seco",
+      "color": "#504532",
+      "color2": "#85734e"
+    },
+    {
+      "id": "herbario-te-negro-descafeinado",
+      "nombre": "Té negro descafeinado",
+      "nombres": {
+        "en": "Decaffeinated black tea",
+        "sl": "Črni čaj brez kofeina"
+      },
+      "grupo": "Tés y bases",
+      "latin": "",
+      "forma": "te-seco",
+      "color": "#504532",
+      "color2": "#85734e"
+    },
+    {
+      "id": "herbario-pu-erh-shou",
+      "nombre": "Pu-erh shou",
+      "nombres": {
+        "en": "Shou pu-erh",
+        "sl": "Pu-erh shou"
+      },
+      "grupo": "Tés y bases",
+      "latin": "",
+      "forma": "te-seco",
+      "color": "#504532",
+      "color2": "#85734e"
+    },
+    {
+      "id": "herbario-pu-erh-sheng",
+      "nombre": "Pu-erh sheng",
+      "nombres": {
+        "en": "Sheng pu-erh",
+        "sl": "Pu-erh sheng"
+      },
+      "grupo": "Tés y bases",
+      "latin": "",
+      "forma": "te-seco",
+      "color": "#7b7954",
+      "color2": "#85734e"
+    },
+    {
+      "id": "herbario-sencha",
+      "nombre": "Sencha",
+      "nombres": {
+        "en": "Sencha",
+        "sl": "Sencha"
+      },
+      "grupo": "Tés y bases",
+      "latin": "",
+      "forma": "te-seco",
+      "color": "#789052",
+      "color2": "#85734e"
+    },
+    {
+      "id": "herbario-bancha",
+      "nombre": "Bancha",
+      "nombres": {
+        "en": "Bancha",
+        "sl": "Bancha"
+      },
+      "grupo": "Tés y bases",
+      "latin": "",
+      "forma": "te-seco",
+      "color": "#8b995b",
+      "color2": "#85734e"
+    },
+    {
+      "id": "herbario-gyokuro",
+      "nombre": "Gyokuro",
+      "nombres": {
+        "en": "Gyokuro",
+        "sl": "Gyokuro"
+      },
+      "grupo": "Tés y bases",
+      "latin": "",
+      "forma": "te-seco",
+      "color": "#476c45",
+      "color2": "#85734e"
+    },
+    {
+      "id": "herbario-long-jing",
+      "nombre": "Long Jing",
+      "nombres": {
+        "en": "Long Jing",
+        "sl": "Long Jing"
+      },
+      "grupo": "Tés y bases",
+      "latin": "",
+      "forma": "te-seco",
+      "color": "#859b56",
+      "color2": "#85734e"
+    },
+    {
+      "id": "herbario-mao-feng-verde",
+      "nombre": "Mao Feng verde",
+      "nombres": {
+        "en": "Green Mao Feng",
+        "sl": "Zeleni Mao Feng"
+      },
+      "grupo": "Tés y bases",
+      "latin": "",
+      "forma": "te-seco",
+      "color": "#7e9362",
+      "color2": "#85734e"
+    },
+    {
+      "id": "herbario-chun-mee",
+      "nombre": "Chun Mee",
+      "nombres": {
+        "en": "Chun Mee",
+        "sl": "Chun Mee"
+      },
+      "grupo": "Tés y bases",
+      "latin": "",
+      "forma": "te-seco",
+      "color": "#718358",
+      "color2": "#85734e"
+    },
+    {
+      "id": "herbario-gunpowder-verde",
+      "nombre": "Gunpowder verde",
+      "nombres": {
+        "en": "Green gunpowder tea",
+        "sl": "Zeleni čaj Gunpowder"
+      },
+      "grupo": "Tés y bases",
+      "latin": "",
+      "forma": "te-bola",
+      "color": "#6e7950",
+      "color2": "#85734e"
+    },
+    {
+      "id": "herbario-perlas-de-jazmin",
+      "nombre": "Perlas de jazmín",
+      "nombres": {
+        "en": "Jasmine pearls",
+        "sl": "Jasminovi biseri"
+      },
+      "grupo": "Tés y bases",
+      "latin": "",
+      "forma": "te-bola",
+      "color": "#a1a275",
+      "color2": "#85734e"
+    },
+    {
+      "id": "herbario-matcha",
+      "nombre": "Matcha",
+      "nombres": {
+        "en": "Matcha powder",
+        "sl": "Matcha v prahu"
+      },
+      "grupo": "Tés y bases",
+      "latin": "",
+      "forma": "polvo",
+      "color": "#719545",
+      "color2": "#85734e"
+    },
+    {
+      "id": "herbario-hojicha",
+      "nombre": "Hojicha",
+      "nombres": {
+        "en": "Hojicha",
+        "sl": "Hojicha"
+      },
+      "grupo": "Tés y bases",
+      "latin": "",
+      "forma": "te-seco",
+      "color": "#986c48",
+      "color2": "#85734e"
+    },
+    {
+      "id": "herbario-kukicha",
+      "nombre": "Kukicha",
+      "nombres": {
+        "en": "Kukicha",
+        "sl": "Kukicha"
+      },
+      "grupo": "Tés y bases",
+      "latin": "",
+      "forma": "hebras",
+      "color": "#a0a26c",
+      "color2": "#85734e"
+    },
+    {
+      "id": "herbario-te-blanco-bai-mu-dan",
+      "nombre": "Té blanco Bai Mu Dan",
+      "nombres": {
+        "en": "Bai Mu Dan white tea",
+        "sl": "Beli čaj Bai Mu Dan"
+      },
+      "grupo": "Tés y bases",
+      "latin": "",
+      "forma": "te-seco",
+      "color": "#a5ad8e",
+      "color2": "#85734e"
+    },
+    {
+      "id": "herbario-te-blanco-silver-needle",
+      "nombre": "Té blanco Silver Needle",
+      "nombres": {
+        "en": "Silver Needle white tea",
+        "sl": "Beli čaj Silver Needle"
+      },
+      "grupo": "Tés y bases",
+      "latin": "",
+      "forma": "hebras",
+      "color": "#c6c7ac",
+      "color2": "#85734e"
+    },
+    {
+      "id": "herbario-te-blanco-shou-mei",
+      "nombre": "Té blanco Shou Mei",
+      "nombres": {
+        "en": "Shou Mei white tea",
+        "sl": "Beli čaj Shou Mei"
+      },
+      "grupo": "Tés y bases",
+      "latin": "",
+      "forma": "te-seco",
+      "color": "#9a875f",
+      "color2": "#85734e"
+    },
+    {
+      "id": "herbario-oolong-tie-guan-yin",
+      "nombre": "Oolong Tie Guan Yin",
+      "nombres": {
+        "en": "Tie Guan Yin oolong",
+        "sl": "Oolong Tie Guan Yin"
+      },
+      "grupo": "Tés y bases",
+      "latin": "",
+      "forma": "te-bola",
+      "color": "#6c7851",
+      "color2": "#85734e"
+    },
+    {
+      "id": "herbario-oolong-dong-ding",
+      "nombre": "Oolong Dong Ding",
+      "nombres": {
+        "en": "Dong Ding oolong",
+        "sl": "Oolong Dong Ding"
+      },
+      "grupo": "Tés y bases",
+      "latin": "",
+      "forma": "te-bola",
+      "color": "#7b764b",
+      "color2": "#85734e"
+    },
+    {
+      "id": "herbario-oolong-da-hong-pao",
+      "nombre": "Oolong Da Hong Pao",
+      "nombres": {
+        "en": "Da Hong Pao oolong",
+        "sl": "Oolong Da Hong Pao"
+      },
+      "grupo": "Tés y bases",
+      "latin": "",
+      "forma": "te-seco",
+      "color": "#70553c",
+      "color2": "#85734e"
+    },
+    {
+      "id": "herbario-oolong-oriental-beauty",
+      "nombre": "Oolong Oriental Beauty",
+      "nombres": {
+        "en": "Oriental Beauty oolong",
+        "sl": "Oolong Oriental Beauty"
+      },
+      "grupo": "Tés y bases",
+      "latin": "",
+      "forma": "te-seco",
+      "color": "#9c8258",
+      "color2": "#85734e"
+    },
+    {
+      "id": "herbario-te-amarillo",
+      "nombre": "Té amarillo",
+      "nombres": {
+        "en": "Yellow tea",
+        "sl": "Rumeni čaj"
+      },
+      "grupo": "Tés y bases",
+      "latin": "",
+      "forma": "te-seco",
+      "color": "#aca772",
+      "color2": "#85734e"
+    },
+    {
+      "id": "herbario-rooibos-verde",
+      "nombre": "Rooibos verde",
+      "nombres": {
+        "en": "Green rooibos",
+        "sl": "Zeleni rooibos"
+      },
+      "grupo": "Tés y bases",
+      "latin": "",
+      "forma": "hebras",
+      "color": "#97945f",
+      "color2": "#85734e"
+    },
+    {
+      "id": "herbario-honeybush",
+      "nombre": "Honeybush",
+      "nombres": {
+        "en": "Honeybush",
+        "sl": "Honeybush"
+      },
+      "grupo": "Tés y bases",
+      "latin": "",
+      "forma": "hebras",
+      "color": "#b47942",
+      "color2": "#85734e"
+    },
+    {
+      "id": "herbario-yerba-mate",
+      "nombre": "Yerba mate",
+      "nombres": {
+        "en": "Yerba mate",
+        "sl": "Yerba mate"
+      },
+      "grupo": "Tés y bases",
+      "latin": "",
+      "forma": "te-seco",
+      "color": "#8c975b",
+      "color2": "#85734e"
+    },
+    {
+      "id": "herbario-yerba-mate-tostada",
+      "nombre": "Yerba mate tostada",
+      "nombres": {
+        "en": "Roasted yerba mate",
+        "sl": "Pražena yerba mate"
+      },
+      "grupo": "Tés y bases",
+      "latin": "",
+      "forma": "te-seco",
+      "color": "#8a6748",
+      "color2": "#85734e"
+    },
+    {
+      "id": "herbario-mango-deshidratado",
+      "nombre": "Mango deshidratado",
+      "nombres": {
+        "en": "Dried mango",
+        "sl": "Sušen mango"
+      },
+      "grupo": "Frutas",
+      "latin": "",
+      "forma": "trozos",
+      "color": "#e5ad5d",
+      "color2": "#b88343"
+    },
+    {
+      "id": "herbario-pina-deshidratada",
+      "nombre": "Piña deshidratada",
+      "nombres": {
+        "en": "Dried pineapple",
+        "sl": "Sušen ananas"
+      },
+      "grupo": "Frutas",
+      "latin": "",
+      "forma": "trozos",
+      "color": "#e7c66a",
+      "color2": "#b88343"
+    },
+    {
+      "id": "herbario-papaya-deshidratada",
+      "nombre": "Papaya deshidratada",
+      "nombres": {
+        "en": "Dried papaya",
+        "sl": "Sušena papaja"
+      },
+      "grupo": "Frutas",
+      "latin": "",
+      "forma": "trozos",
+      "color": "#e39757",
+      "color2": "#b88343"
+    },
+    {
+      "id": "herbario-melocoton-deshidratado",
+      "nombre": "Melocotón deshidratado",
+      "nombres": {
+        "en": "Dried peach",
+        "sl": "Sušena breskev"
+      },
+      "grupo": "Frutas",
+      "latin": "",
+      "forma": "trozos",
+      "color": "#dca46f",
+      "color2": "#b88343"
+    },
+    {
+      "id": "herbario-albaricoque-deshidratado",
+      "nombre": "Albaricoque deshidratado",
+      "nombres": {
+        "en": "Dried apricot",
+        "sl": "Sušena marelica"
+      },
+      "grupo": "Frutas",
+      "latin": "",
+      "forma": "trozos",
+      "color": "#d68a43",
+      "color2": "#b88343"
+    },
+    {
+      "id": "herbario-pera-deshidratada",
+      "nombre": "Pera deshidratada",
+      "nombres": {
+        "en": "Dried pear",
+        "sl": "Sušena hruška"
+      },
+      "grupo": "Frutas",
+      "latin": "",
+      "forma": "trozos",
+      "color": "#c9b47d",
+      "color2": "#b88343"
+    },
+    {
+      "id": "herbario-platano-deshidratado",
+      "nombre": "Plátano deshidratado",
+      "nombres": {
+        "en": "Dried banana",
+        "sl": "Sušena banana"
+      },
+      "grupo": "Frutas",
+      "latin": "",
+      "forma": "fruta-seca",
+      "color": "#e6d09b",
+      "color2": "#b88343"
+    },
+    {
+      "id": "herbario-higo-seco",
+      "nombre": "Higo seco",
+      "nombres": {
+        "en": "Dried fig",
+        "sl": "Sušena figa"
+      },
+      "grupo": "Frutas",
+      "latin": "",
+      "forma": "trozos",
+      "color": "#b18a65",
+      "color2": "#b88343"
+    },
+    {
+      "id": "herbario-datil-troceado",
+      "nombre": "Dátil troceado",
+      "nombres": {
+        "en": "Chopped date",
+        "sl": "Koščki datljev"
+      },
+      "grupo": "Frutas",
+      "latin": "",
+      "forma": "trozos",
+      "color": "#895333",
+      "color2": "#b88343"
+    },
+    {
+      "id": "herbario-ciruela-deshidratada",
+      "nombre": "Ciruela deshidratada",
+      "nombres": {
+        "en": "Dried plum",
+        "sl": "Sušena sliva"
+      },
+      "grupo": "Frutas",
+      "latin": "",
+      "forma": "trozos",
+      "color": "#725358",
+      "color2": "#b88343"
+    },
+    {
+      "id": "herbario-cereza-deshidratada",
+      "nombre": "Cereza deshidratada",
+      "nombres": {
+        "en": "Dried cherry",
+        "sl": "Sušena češnja"
+      },
+      "grupo": "Frutas",
+      "latin": "",
+      "forma": "baya",
+      "color": "#a6494e",
+      "color2": "#b88343"
+    },
+    {
+      "id": "herbario-guinda-deshidratada",
+      "nombre": "Guinda deshidratada",
+      "nombres": {
+        "en": "Dried sour cherry",
+        "sl": "Sušena višnja"
+      },
+      "grupo": "Frutas",
+      "latin": "",
+      "forma": "baya",
+      "color": "#8f3b49",
+      "color2": "#b88343"
+    },
+    {
+      "id": "herbario-kiwi-deshidratado",
+      "nombre": "Kiwi deshidratado",
+      "nombres": {
+        "en": "Dried kiwi",
+        "sl": "Sušen kivi"
+      },
+      "grupo": "Frutas",
+      "latin": "",
+      "forma": "fruta-seca",
+      "color": "#b1b770",
+      "color2": "#9b8455"
+    },
+    {
+      "id": "herbario-melon-deshidratado",
+      "nombre": "Melón deshidratado",
+      "nombres": {
+        "en": "Dried melon",
+        "sl": "Sušena melona"
+      },
+      "grupo": "Frutas",
+      "latin": "",
+      "forma": "trozos",
+      "color": "#dcbf78",
+      "color2": "#b88343"
+    },
+    {
+      "id": "herbario-guayaba-deshidratada",
+      "nombre": "Guayaba deshidratada",
+      "nombres": {
+        "en": "Dried guava",
+        "sl": "Sušena guava"
+      },
+      "grupo": "Frutas",
+      "latin": "",
+      "forma": "trozos",
+      "color": "#d89e8d",
+      "color2": "#b88343"
+    },
+    {
+      "id": "herbario-guanabana-deshidratada",
+      "nombre": "Guanábana deshidratada",
+      "nombres": {
+        "en": "Dried soursop",
+        "sl": "Sušena graviola"
+      },
+      "grupo": "Frutas",
+      "latin": "",
+      "forma": "trozos",
+      "color": "#dfd5ad",
+      "color2": "#b88343"
+    },
+    {
+      "id": "herbario-maracuya-deshidratado",
+      "nombre": "Maracuyá deshidratado",
+      "nombres": {
+        "en": "Dried passion fruit",
+        "sl": "Sušena pasijonka"
+      },
+      "grupo": "Frutas",
+      "latin": "",
+      "forma": "trozos",
+      "color": "#d7a848",
+      "color2": "#b88343"
+    },
+    {
+      "id": "herbario-lichi-deshidratado",
+      "nombre": "Lichi deshidratado",
+      "nombres": {
+        "en": "Dried lychee",
+        "sl": "Sušen liči"
+      },
+      "grupo": "Frutas",
+      "latin": "",
+      "forma": "trozos",
+      "color": "#e5c7a1",
+      "color2": "#b88343"
+    },
+    {
+      "id": "herbario-uvas-pasas",
+      "nombre": "Uvas pasas",
+      "nombres": {
+        "en": "Raisins",
+        "sl": "Rozine"
+      },
+      "grupo": "Frutas",
+      "latin": "",
+      "forma": "baya",
+      "color": "#956a41",
+      "color2": "#b88343"
+    },
+    {
+      "id": "herbario-gajos-de-manzana",
+      "nombre": "Gajos de manzana",
+      "nombres": {
+        "en": "Apple pieces",
+        "sl": "Koščki jabolka"
+      },
+      "grupo": "Frutas",
+      "latin": "",
+      "forma": "trozos",
+      "color": "#d9c398",
+      "color2": "#b88343"
+    },
+    {
+      "id": "herbario-arandano-azul",
+      "nombre": "Arándano azul",
+      "nombres": {
+        "en": "Blueberry",
+        "sl": "Borovnica"
+      },
+      "grupo": "Bayas",
+      "latin": "",
+      "forma": "baya",
+      "color": "#77638e",
+      "color2": "#6c8055"
+    },
+    {
+      "id": "herbario-arandano-rojo",
+      "nombre": "Arándano rojo",
+      "nombres": {
+        "en": "Cranberry",
+        "sl": "Brusnica"
+      },
+      "grupo": "Bayas",
+      "latin": "",
+      "forma": "baya",
+      "color": "#b65658",
+      "color2": "#6c8055"
+    },
+    {
+      "id": "herbario-grosella-negra",
+      "nombre": "Grosella negra",
+      "nombres": {
+        "en": "Blackcurrant",
+        "sl": "Črni ribez"
+      },
+      "grupo": "Bayas",
+      "latin": "",
+      "forma": "baya",
+      "color": "#4f465d",
+      "color2": "#6c8055"
+    },
+    {
+      "id": "herbario-grosella-roja",
+      "nombre": "Grosella roja",
+      "nombres": {
+        "en": "Redcurrant",
+        "sl": "Rdeči ribez"
+      },
+      "grupo": "Bayas",
+      "latin": "",
+      "forma": "baya",
+      "color": "#be4d46",
+      "color2": "#6c8055"
+    },
+    {
+      "id": "herbario-grosella-blanca",
+      "nombre": "Grosella blanca",
+      "nombres": {
+        "en": "Whitecurrant",
+        "sl": "Beli ribez"
+      },
+      "grupo": "Bayas",
+      "latin": "",
+      "forma": "baya",
+      "color": "#ddd2a3",
+      "color2": "#6c8055"
+    },
+    {
+      "id": "herbario-uva-espina",
+      "nombre": "Uva espina",
+      "nombres": {
+        "en": "Gooseberry",
+        "sl": "Kosmulja"
+      },
+      "grupo": "Bayas",
+      "latin": "",
+      "forma": "baya",
+      "color": "#9caa6e",
+      "color2": "#6c8055"
+    },
+    {
+      "id": "herbario-frambuesa-deshidratada",
+      "nombre": "Frambuesa deshidratada",
+      "nombres": {
+        "en": "Dried raspberry",
+        "sl": "Sušena malina"
+      },
+      "grupo": "Bayas",
+      "latin": "",
+      "forma": "frambuesa",
+      "color": "#be6572",
+      "color2": "#6c8055"
+    },
+    {
+      "id": "herbario-mora-deshidratada",
+      "nombre": "Mora deshidratada",
+      "nombres": {
+        "en": "Dried blackberry",
+        "sl": "Sušena robida"
+      },
+      "grupo": "Bayas",
+      "latin": "",
+      "forma": "frambuesa",
+      "color": "#67516c",
+      "color2": "#6c8055"
+    },
+    {
+      "id": "herbario-fresa-en-laminas",
+      "nombre": "Fresa en láminas",
+      "nombres": {
+        "en": "Strawberry slices",
+        "sl": "Rezine jagod"
+      },
+      "grupo": "Bayas",
+      "latin": "",
+      "forma": "fresa",
+      "color": "#cb7a79",
+      "color2": "#6c8055"
+    },
+    {
+      "id": "herbario-fresa-silvestre",
+      "nombre": "Fresa silvestre",
+      "nombres": {
+        "en": "Wild strawberry",
+        "sl": "Gozdna jagoda"
+      },
+      "grupo": "Bayas",
+      "latin": "",
+      "forma": "fresa",
+      "color": "#c76364",
+      "color2": "#6c8055"
+    },
+    {
+      "id": "herbario-bayas-de-goji",
+      "nombre": "Bayas de goji",
+      "nombres": {
+        "en": "Goji berries",
+        "sl": "Goji jagode"
+      },
+      "grupo": "Bayas",
+      "latin": "",
+      "forma": "semilla",
+      "color": "#cf6c43",
+      "color2": "#6c8055"
+    },
+    {
+      "id": "herbario-aronia",
+      "nombre": "Aronia",
+      "nombres": {
+        "en": "Aronia berries",
+        "sl": "Aronija"
+      },
+      "grupo": "Bayas",
+      "latin": "",
+      "forma": "baya",
+      "color": "#5e4a65",
+      "color2": "#6c8055"
+    },
+    {
+      "id": "herbario-mora-de-morera-blanca",
+      "nombre": "Mora de morera blanca",
+      "nombres": {
+        "en": "White mulberry",
+        "sl": "Bela murva"
+      },
+      "grupo": "Bayas",
+      "latin": "",
+      "forma": "frambuesa",
+      "color": "#c9bc8c",
+      "color2": "#6c8055"
+    },
+    {
+      "id": "herbario-granada-deshidratada",
+      "nombre": "Granada deshidratada",
+      "nombres": {
+        "en": "Dried pomegranate arils",
+        "sl": "Sušena zrna granatnega jabolka"
+      },
+      "grupo": "Bayas",
+      "latin": "",
+      "forma": "semilla",
+      "color": "#ae4c62",
+      "color2": "#6c8055"
+    },
+    {
+      "id": "herbario-piel-de-limon",
+      "nombre": "Piel de limón",
+      "nombres": {
+        "en": "Lemon peel",
+        "sl": "Limonina lupina"
+      },
+      "grupo": "Cítricos y pieles",
+      "latin": "",
+      "forma": "piel",
+      "color": "#dfbd45",
+      "color2": "#8c9c5b"
+    },
+    {
+      "id": "herbario-piel-de-naranja",
+      "nombre": "Piel de naranja",
+      "nombres": {
+        "en": "Orange peel",
+        "sl": "Pomarančna lupina"
+      },
+      "grupo": "Cítricos y pieles",
+      "latin": "",
+      "forma": "piel",
+      "color": "#e49740",
+      "color2": "#8c9c5b"
+    },
+    {
+      "id": "herbario-piel-de-mandarina",
+      "nombre": "Piel de mandarina",
+      "nombres": {
+        "en": "Mandarin peel",
+        "sl": "Mandarinina lupina"
+      },
+      "grupo": "Cítricos y pieles",
+      "latin": "",
+      "forma": "piel",
+      "color": "#e69f3b",
+      "color2": "#8c9c5b"
+    },
+    {
+      "id": "herbario-piel-de-lima",
+      "nombre": "Piel de lima",
+      "nombres": {
+        "en": "Lime peel",
+        "sl": "Limetina lupina"
+      },
+      "grupo": "Cítricos y pieles",
+      "latin": "",
+      "forma": "piel",
+      "color": "#9eaf54",
+      "color2": "#8c9c5b"
+    },
+    {
+      "id": "herbario-piel-de-pomelo",
+      "nombre": "Piel de pomelo",
+      "nombres": {
+        "en": "Grapefruit peel",
+        "sl": "Grenivkina lupina"
+      },
+      "grupo": "Cítricos y pieles",
+      "latin": "",
+      "forma": "piel",
+      "color": "#e6b776",
+      "color2": "#8c9c5b"
+    },
+    {
+      "id": "herbario-piel-de-bergamota",
+      "nombre": "Piel de bergamota",
+      "nombres": {
+        "en": "Bergamot peel",
+        "sl": "Bergamotkina lupina"
+      },
+      "grupo": "Cítricos y pieles",
+      "latin": "",
+      "forma": "piel",
+      "color": "#bac36b",
+      "color2": "#8c9c5b"
+    },
+    {
+      "id": "herbario-piel-de-yuzu",
+      "nombre": "Piel de yuzu",
+      "nombres": {
+        "en": "Yuzu peel",
+        "sl": "Lupina yuzuja"
+      },
+      "grupo": "Cítricos y pieles",
+      "latin": "",
+      "forma": "piel",
+      "color": "#e4ca55",
+      "color2": "#8c9c5b"
+    },
+    {
+      "id": "herbario-limon-en-rodajas",
+      "nombre": "Limón en rodajas",
+      "nombres": {
+        "en": "Lemon slices",
+        "sl": "Limonine rezine"
+      },
+      "grupo": "Cítricos y pieles",
+      "latin": "",
+      "forma": "citrico",
+      "color": "#e6ce69",
+      "color2": "#c6a243"
+    },
+    {
+      "id": "herbario-lima-en-rodajas",
+      "nombre": "Lima en rodajas",
+      "nombres": {
+        "en": "Lime slices",
+        "sl": "Limetine rezine"
+      },
+      "grupo": "Cítricos y pieles",
+      "latin": "",
+      "forma": "citrico",
+      "color": "#d3d698",
+      "color2": "#8b9b54"
+    },
+    {
+      "id": "herbario-mandarina-en-rodajas",
+      "nombre": "Mandarina en rodajas",
+      "nombres": {
+        "en": "Mandarin slices",
+        "sl": "Mandarinine rezine"
+      },
+      "grupo": "Cítricos y pieles",
+      "latin": "",
+      "forma": "citrico",
+      "color": "#e8b66c",
+      "color2": "#d48c3f"
+    },
+    {
+      "id": "herbario-pomelo-en-rodajas",
+      "nombre": "Pomelo en rodajas",
+      "nombres": {
+        "en": "Grapefruit slices",
+        "sl": "Grenivkine rezine"
+      },
+      "grupo": "Cítricos y pieles",
+      "latin": "",
+      "forma": "citrico",
+      "color": "#df9a82",
+      "color2": "#d5b46a"
+    },
+    {
+      "id": "herbario-kumquat-en-rodajas",
+      "nombre": "Kumquat en rodajas",
+      "nombres": {
+        "en": "Kumquat slices",
+        "sl": "Rezine kumkvata"
+      },
+      "grupo": "Cítricos y pieles",
+      "latin": "",
+      "forma": "citrico",
+      "color": "#e5b966",
+      "color2": "#d49544"
+    },
+    {
+      "id": "herbario-capullos-de-rosa",
+      "nombre": "Capullos de rosa",
+      "nombres": {
+        "en": "Rosebuds",
+        "sl": "Vrtnični popki"
+      },
+      "grupo": "Flores y pétalos",
+      "latin": "",
+      "forma": "flor5",
+      "color": "#c8889b",
+      "color2": "#829862"
+    },
+    {
+      "id": "herbario-petalos-de-cartamo",
+      "nombre": "Pétalos de cártamo",
+      "nombres": {
+        "en": "Safflower petals",
+        "sl": "Cvetni listi barvilnega rumenika"
+      },
+      "grupo": "Flores y pétalos",
+      "latin": "",
+      "forma": "hebras",
+      "color": "#e4a14b",
+      "color2": "#829862"
+    },
+    {
+      "id": "herbario-osmanthus",
+      "nombre": "Osmanthus",
+      "nombres": {
+        "en": "Osmanthus flowers",
+        "sl": "Cvetovi osmantusa"
+      },
+      "grupo": "Flores y pétalos",
+      "latin": "",
+      "forma": "umbela",
+      "color": "#dfc47e",
+      "color2": "#829862"
+    },
+    {
+      "id": "herbario-crisantemo",
+      "nombre": "Crisantemo",
+      "nombres": {
+        "en": "Chrysanthemum flowers",
+        "sl": "Cvetovi krizanteme"
+      },
+      "grupo": "Flores y pétalos",
+      "latin": "",
+      "forma": "margarita",
+      "color": "#f0dfae",
+      "color2": "#829862"
+    },
+    {
+      "id": "herbario-petalos-de-girasol",
+      "nombre": "Pétalos de girasol",
+      "nombres": {
+        "en": "Sunflower petals",
+        "sl": "Sončnični cvetni listi"
+      },
+      "grupo": "Flores y pétalos",
+      "latin": "",
+      "forma": "petalos",
+      "color": "#dfb454",
+      "color2": "#829862"
+    },
+    {
+      "id": "herbario-petalos-de-peonia",
+      "nombre": "Pétalos de peonía",
+      "nombres": {
+        "en": "Peony petals",
+        "sl": "Cvetni listi potonike"
+      },
+      "grupo": "Flores y pétalos",
+      "latin": "",
+      "forma": "petalos",
+      "color": "#d5a4ab",
+      "color2": "#829862"
+    },
+    {
+      "id": "herbario-petalos-de-melocotonero",
+      "nombre": "Pétalos de melocotonero",
+      "nombres": {
+        "en": "Peach blossom petals",
+        "sl": "Cvetni listi breskve"
+      },
+      "grupo": "Flores y pétalos",
+      "latin": "",
+      "forma": "petalos",
+      "color": "#e1b1b7",
+      "color2": "#829862"
+    },
+    {
+      "id": "herbario-petalos-de-violeta",
+      "nombre": "Pétalos de violeta",
+      "nombres": {
+        "en": "Violet petals",
+        "sl": "Vijolični cvetni listi"
+      },
+      "grupo": "Flores y pétalos",
+      "latin": "",
+      "forma": "petalos",
+      "color": "#a58bb7",
+      "color2": "#829862"
+    },
+    {
+      "id": "herbario-hierba-limon",
+      "nombre": "Hierba limón",
+      "nombres": {
+        "en": "Lemongrass",
+        "sl": "Limonska trava"
+      },
+      "grupo": "Hojas y tallos",
+      "latin": "",
+      "forma": "hebras",
+      "color": "#b4bc7e",
+      "color2": "#607e4f"
+    },
+    {
+      "id": "herbario-hoja-de-zarzamora",
+      "nombre": "Hoja de zarzamora",
+      "nombres": {
+        "en": "Blackberry leaf",
+        "sl": "Robidov list"
+      },
+      "grupo": "Hojas y tallos",
+      "latin": "",
+      "forma": "hoja",
+      "color": "#8ea56d",
+      "color2": "#607e4f"
+    },
+    {
+      "id": "herbario-hierbabuena",
+      "nombre": "Hierbabuena",
+      "nombres": {
+        "en": "Spearmint",
+        "sl": "Klasasta meta"
+      },
+      "grupo": "Hojas y tallos",
+      "latin": "",
+      "forma": "hoja",
+      "color": "#8ea56d",
+      "color2": "#607e4f"
+    },
+    {
+      "id": "herbario-menta-de-manzana",
+      "nombre": "Menta de manzana",
+      "nombres": {
+        "en": "Apple mint",
+        "sl": "Jabolčna meta"
+      },
+      "grupo": "Hojas y tallos",
+      "latin": "",
+      "forma": "hoja",
+      "color": "#8ea56d",
+      "color2": "#607e4f"
+    },
+    {
+      "id": "herbario-albahaca",
+      "nombre": "Albahaca",
+      "nombres": {
+        "en": "Basil",
+        "sl": "Bazilika"
+      },
+      "grupo": "Hojas y tallos",
+      "latin": "",
+      "forma": "hoja",
+      "color": "#8ea56d",
+      "color2": "#607e4f"
+    },
+    {
+      "id": "herbario-tulsi",
+      "nombre": "Tulsi",
+      "nombres": {
+        "en": "Tulsi",
+        "sl": "Tulsi"
+      },
+      "grupo": "Hojas y tallos",
+      "latin": "",
+      "forma": "hoja",
+      "color": "#8ea56d",
+      "color2": "#607e4f"
+    },
+    {
+      "id": "herbario-hoja-de-pandan",
+      "nombre": "Hoja de pandan",
+      "nombres": {
+        "en": "Pandan leaf",
+        "sl": "Pandanov list"
+      },
+      "grupo": "Hojas y tallos",
+      "latin": "",
+      "forma": "hebras",
+      "color": "#729251",
+      "color2": "#607e4f"
+    },
+    {
+      "id": "herbario-hoja-de-limonero",
+      "nombre": "Hoja de limonero",
+      "nombres": {
+        "en": "Lemon leaf",
+        "sl": "Limonov list"
+      },
+      "grupo": "Hojas y tallos",
+      "latin": "",
+      "forma": "hoja",
+      "color": "#8ea56d",
+      "color2": "#607e4f"
+    },
+    {
+      "id": "herbario-hoja-de-grosellero-negro",
+      "nombre": "Hoja de grosellero negro",
+      "nombres": {
+        "en": "Blackcurrant leaf",
+        "sl": "List črnega ribeza"
+      },
+      "grupo": "Hojas y tallos",
+      "latin": "",
+      "forma": "hoja",
+      "color": "#8ea56d",
+      "color2": "#607e4f"
+    },
+    {
+      "id": "herbario-hoja-de-fresa",
+      "nombre": "Hoja de fresa",
+      "nombres": {
+        "en": "Strawberry leaf",
+        "sl": "Jagodni list"
+      },
+      "grupo": "Hojas y tallos",
+      "latin": "",
+      "forma": "hoja",
+      "color": "#8ea56d",
+      "color2": "#607e4f"
+    },
+    {
+      "id": "herbario-raiz-de-achicoria-tostada",
+      "nombre": "Raíz de achicoria tostada",
+      "nombres": {
+        "en": "Roasted chicory root",
+        "sl": "Pražena korenina cikorije"
+      },
+      "grupo": "Raíces y rizomas",
+      "latin": "",
+      "forma": "raiz",
+      "color": "#b89463",
+      "color2": "#927247"
+    },
+    {
+      "id": "herbario-raiz-de-diente-de-leon",
+      "nombre": "Raíz de diente de león",
+      "nombres": {
+        "en": "Dandelion root",
+        "sl": "Regratova korenina"
+      },
+      "grupo": "Raíces y rizomas",
+      "latin": "",
+      "forma": "raiz",
+      "color": "#b89463",
+      "color2": "#927247"
+    },
+    {
+      "id": "herbario-galanga",
+      "nombre": "Galanga",
+      "nombres": {
+        "en": "Galangal",
+        "sl": "Galangal"
+      },
+      "grupo": "Raíces y rizomas",
+      "latin": "",
+      "forma": "rizoma",
+      "color": "#d1af80",
+      "color2": "#927247"
+    },
+    {
+      "id": "herbario-jengibre-en-rodajas",
+      "nombre": "Jengibre en rodajas",
+      "nombres": {
+        "en": "Ginger slices",
+        "sl": "Ingverjeve rezine"
+      },
+      "grupo": "Raíces y rizomas",
+      "latin": "",
+      "forma": "fruta-seca",
+      "color": "#d6bc87",
+      "color2": "#927247"
+    },
+    {
+      "id": "herbario-curcuma-en-polvo",
+      "nombre": "Cúrcuma en polvo",
+      "nombres": {
+        "en": "Turmeric powder",
+        "sl": "Kurkuma v prahu"
+      },
+      "grupo": "Raíces y rizomas",
+      "latin": "",
+      "forma": "polvo",
+      "color": "#dca23c",
+      "color2": "#927247"
+    },
+    {
+      "id": "herbario-anis-estrellado",
+      "nombre": "Anís estrellado",
+      "nombres": {
+        "en": "Star anise",
+        "sl": "Zvezdasti janež"
+      },
+      "grupo": "Especias y semillas",
+      "latin": "",
+      "forma": "estrella",
+      "color": "#9c6a45",
+      "color2": "#796140"
+    },
+    {
+      "id": "herbario-clavo-de-olor",
+      "nombre": "Clavo de olor",
+      "nombres": {
+        "en": "Cloves",
+        "sl": "Nageljnove žbice"
+      },
+      "grupo": "Especias y semillas",
+      "latin": "",
+      "forma": "clavo",
+      "color": "#8e6849",
+      "color2": "#796140"
+    },
+    {
+      "id": "herbario-pimienta-negra",
+      "nombre": "Pimienta negra",
+      "nombres": {
+        "en": "Black peppercorns",
+        "sl": "Črni poper"
+      },
+      "grupo": "Especias y semillas",
+      "latin": "",
+      "forma": "te-bola",
+      "color": "#665a4b",
+      "color2": "#796140"
+    },
+    {
+      "id": "herbario-pimienta-rosa",
+      "nombre": "Pimienta rosa",
+      "nombres": {
+        "en": "Pink peppercorns",
+        "sl": "Rožnati poper"
+      },
+      "grupo": "Especias y semillas",
+      "latin": "",
+      "forma": "baya",
+      "color": "#ba7376",
+      "color2": "#796140"
+    },
+    {
+      "id": "herbario-pimienta-blanca",
+      "nombre": "Pimienta blanca",
+      "nombres": {
+        "en": "White peppercorns",
+        "sl": "Beli poper"
+      },
+      "grupo": "Especias y semillas",
+      "latin": "",
+      "forma": "te-bola",
+      "color": "#cdbf9c",
+      "color2": "#796140"
+    },
+    {
+      "id": "herbario-pimienta-de-jamaica",
+      "nombre": "Pimienta de Jamaica",
+      "nombres": {
+        "en": "Allspice",
+        "sl": "Piment"
+      },
+      "grupo": "Especias y semillas",
+      "latin": "",
+      "forma": "te-bola",
+      "color": "#9b7857",
+      "color2": "#796140"
+    },
+    {
+      "id": "herbario-vainilla-en-vaina",
+      "nombre": "Vainilla en vaina",
+      "nombres": {
+        "en": "Vanilla pod",
+        "sl": "Vaniljev strok"
+      },
+      "grupo": "Especias y semillas",
+      "latin": "",
+      "forma": "vaina",
+      "color": "#72513f",
+      "color2": "#796140"
+    },
+    {
+      "id": "herbario-nuez-moscada",
+      "nombre": "Nuez moscada",
+      "nombres": {
+        "en": "Nutmeg",
+        "sl": "Muškatni orešček"
+      },
+      "grupo": "Especias y semillas",
+      "latin": "",
+      "forma": "nuez",
+      "color": "#aa8a65",
+      "color2": "#796140"
+    },
+    {
+      "id": "herbario-macis",
+      "nombre": "Macis",
+      "nombres": {
+        "en": "Mace",
+        "sl": "Muškatni cvet"
+      },
+      "grupo": "Especias y semillas",
+      "latin": "",
+      "forma": "petalos",
+      "color": "#c99b65",
+      "color2": "#796140"
+    },
+    {
+      "id": "herbario-semillas-de-hinojo",
+      "nombre": "Semillas de hinojo",
+      "nombres": {
+        "en": "Fennel seeds",
+        "sl": "Semena komarčka"
+      },
+      "grupo": "Especias y semillas",
+      "latin": "",
+      "forma": "semilla",
+      "color": "#a68b62",
+      "color2": "#796140"
+    },
+    {
+      "id": "herbario-semillas-de-anis-verde",
+      "nombre": "Semillas de anís verde",
+      "nombres": {
+        "en": "Anise seeds",
+        "sl": "Janeževa semena"
+      },
+      "grupo": "Especias y semillas",
+      "latin": "",
+      "forma": "semilla",
+      "color": "#a68b62",
+      "color2": "#796140"
+    },
+    {
+      "id": "herbario-semillas-de-cilantro",
+      "nombre": "Semillas de cilantro",
+      "nombres": {
+        "en": "Coriander seeds",
+        "sl": "Koriandrova semena"
+      },
+      "grupo": "Especias y semillas",
+      "latin": "",
+      "forma": "te-bola",
+      "color": "#c4ab77",
+      "color2": "#796140"
+    },
+    {
+      "id": "herbario-alcaravea",
+      "nombre": "Alcaravea",
+      "nombres": {
+        "en": "Caraway seeds",
+        "sl": "Kumina"
+      },
+      "grupo": "Especias y semillas",
+      "latin": "",
+      "forma": "semilla",
+      "color": "#a68b62",
+      "color2": "#796140"
+    },
+    {
+      "id": "herbario-semillas-de-cardamomo",
+      "nombre": "Semillas de cardamomo",
+      "nombres": {
+        "en": "Cardamom seeds",
+        "sl": "Semena kardamoma"
+      },
+      "grupo": "Especias y semillas",
+      "latin": "",
+      "forma": "grano",
+      "color": "#776247",
+      "color2": "#796140"
+    },
+    {
+      "id": "herbario-nibs-de-cacao",
+      "nombre": "Nibs de cacao",
+      "nombres": {
+        "en": "Cacao nibs",
+        "sl": "Kakavova zrna"
+      },
+      "grupo": "Cacao, cereales y frutos secos",
+      "latin": "",
+      "forma": "trozos",
+      "color": "#886044",
+      "color2": "#765338"
+    },
+    {
+      "id": "herbario-cascara-de-cacao",
+      "nombre": "Cáscara de cacao",
+      "nombres": {
+        "en": "Cacao husks",
+        "sl": "Kakavove luščine"
+      },
+      "grupo": "Cacao, cereales y frutos secos",
+      "latin": "",
+      "forma": "coco",
+      "color": "#a17657",
+      "color2": "#765338"
+    },
+    {
+      "id": "herbario-coco-en-laminas",
+      "nombre": "Coco en láminas",
+      "nombres": {
+        "en": "Coconut flakes",
+        "sl": "Kokosovi lističi"
+      },
+      "grupo": "Cacao, cereales y frutos secos",
+      "latin": "",
+      "forma": "coco",
+      "color": "#f0e5c9",
+      "color2": "#b8936c"
+    },
+    {
+      "id": "herbario-algarroba-troceada",
+      "nombre": "Algarroba troceada",
+      "nombres": {
+        "en": "Carob pieces",
+        "sl": "Koščki rožiča"
+      },
+      "grupo": "Cacao, cereales y frutos secos",
+      "latin": "",
+      "forma": "trozos",
+      "color": "#896347",
+      "color2": "#765338"
+    },
+    {
+      "id": "herbario-arroz-tostado",
+      "nombre": "Arroz tostado",
+      "nombres": {
+        "en": "Roasted rice",
+        "sl": "Pražen riž"
+      },
+      "grupo": "Cacao, cereales y frutos secos",
+      "latin": "",
+      "forma": "grano",
+      "color": "#d7b47a",
+      "color2": "#765338"
+    },
+    {
+      "id": "herbario-cebada-tostada",
+      "nombre": "Cebada tostada",
+      "nombres": {
+        "en": "Roasted barley",
+        "sl": "Pražen ječmen"
+      },
+      "grupo": "Cacao, cereales y frutos secos",
+      "latin": "",
+      "forma": "grano",
+      "color": "#ba945d",
+      "color2": "#765338"
+    },
+    {
+      "id": "herbario-trigo-sarraceno-tostado",
+      "nombre": "Trigo sarraceno tostado",
+      "nombres": {
+        "en": "Roasted buckwheat",
+        "sl": "Pražena ajda"
+      },
+      "grupo": "Cacao, cereales y frutos secos",
+      "latin": "",
+      "forma": "grano",
+      "color": "#b39060",
+      "color2": "#765338"
+    },
+    {
+      "id": "herbario-almendra-laminada",
+      "nombre": "Almendra laminada",
+      "nombres": {
+        "en": "Flaked almond",
+        "sl": "Mandljevi lističi"
+      },
+      "grupo": "Cacao, cereales y frutos secos",
+      "latin": "",
+      "forma": "nuez",
+      "color": "#dfc8a0",
+      "color2": "#765338"
+    },
+    {
+      "id": "herbario-avellana-troceada",
+      "nombre": "Avellana troceada",
+      "nombres": {
+        "en": "Chopped hazelnut",
+        "sl": "Sesekljan lešnik"
+      },
+      "grupo": "Cacao, cereales y frutos secos",
+      "latin": "",
+      "forma": "nuez",
+      "color": "#b9976d",
+      "color2": "#765338"
+    },
+    {
+      "id": "herbario-pistacho-troceado",
+      "nombre": "Pistacho troceado",
+      "nombres": {
+        "en": "Chopped pistachio",
+        "sl": "Sesekljana pistacija"
+      },
+      "grupo": "Cacao, cereales y frutos secos",
+      "latin": "",
+      "forma": "nuez",
+      "color": "#b2ad75",
+      "color2": "#765338"
+    }
+  ],
+  "drawings": {
+    "margarita": "<svg viewBox=\"0 0 100 100\" width=\"84\" height=\"84\" aria-hidden=\"true\" style=\"color:var(--tinta-suave, #4a3826)\" stroke=\"currentColor\" stroke-linecap=\"round\"><path d=\"M50 95 C 48 74.2, 52 58.6, 50 43\" fill=\"none\" stroke-width=\"1.6\"></path><path d=\"M42 32 q-8 -3 -9 -11 q8 0 11 7 z M50 28 q-2 -9 4 -15 q4 7 -1 14 z M58 33 q8 -4 10 -12 q-9 0 -12 8 z M45 40 q-9 2 -14 -3 q6 -6 13 -2 z M56 40 q9 2 14 -4 q-7 -5 -13 -1 z\" fill=\"none\" stroke-width=\"1.3\"></path><circle cx=\"50\" cy=\"35\" r=\"4.5\" fill=\"#ddeeff\" stroke=\"none\" opacity=\"0.9\"></circle><path d=\"M38 70 q10 4 16 -2\" fill=\"none\" stroke-width=\"1.2\"></path></svg>",
+    "espiga": "<svg viewBox=\"0 0 100 100\" width=\"84\" height=\"84\" aria-hidden=\"true\" style=\"color:var(--tinta-suave, #4a3826)\" stroke=\"currentColor\" stroke-linecap=\"round\"><path d=\"M50 95 C 48 71.8, 52 54.400000000000006, 50 37\" fill=\"none\" stroke-width=\"1.6\"></path><g><ellipse cx=\"46\" cy=\"52\" rx=\"3.1\" ry=\"1.9\" fill=\"#aabbcc\" opacity=\"0.75\" stroke=\"none\" transform=\"rotate(-24 46 52)\"></ellipse><ellipse cx=\"54\" cy=\"49\" rx=\"3.1\" ry=\"1.9\" fill=\"#aabbcc\" opacity=\"0.75\" stroke=\"none\" transform=\"rotate(24 54 49)\"></ellipse></g><g><ellipse cx=\"45.4\" cy=\"46\" rx=\"3.1\" ry=\"1.9\" fill=\"#aabbcc\" opacity=\"0.69\" stroke=\"none\" transform=\"rotate(-24 45.4 46)\"></ellipse><ellipse cx=\"54.6\" cy=\"43\" rx=\"3.1\" ry=\"1.9\" fill=\"#aabbcc\" opacity=\"0.69\" stroke=\"none\" transform=\"rotate(24 54.6 43)\"></ellipse></g><g><ellipse cx=\"44.8\" cy=\"40\" rx=\"3.1\" ry=\"1.9\" fill=\"#aabbcc\" opacity=\"0.63\" stroke=\"none\" transform=\"rotate(-24 44.8 40)\"></ellipse><ellipse cx=\"55.2\" cy=\"37\" rx=\"3.1\" ry=\"1.9\" fill=\"#aabbcc\" opacity=\"0.63\" stroke=\"none\" transform=\"rotate(24 55.2 37)\"></ellipse></g><g><ellipse cx=\"44.2\" cy=\"34\" rx=\"3.1\" ry=\"1.9\" fill=\"#aabbcc\" opacity=\"0.5700000000000001\" stroke=\"none\" transform=\"rotate(-24 44.2 34)\"></ellipse><ellipse cx=\"55.8\" cy=\"31\" rx=\"3.1\" ry=\"1.9\" fill=\"#aabbcc\" opacity=\"0.5700000000000001\" stroke=\"none\" transform=\"rotate(24 55.8 31)\"></ellipse></g><g><ellipse cx=\"43.6\" cy=\"28\" rx=\"3.1\" ry=\"1.9\" fill=\"#aabbcc\" opacity=\"0.51\" stroke=\"none\" transform=\"rotate(-24 43.6 28)\"></ellipse><ellipse cx=\"56.4\" cy=\"25\" rx=\"3.1\" ry=\"1.9\" fill=\"#aabbcc\" opacity=\"0.51\" stroke=\"none\" transform=\"rotate(24 56.4 25)\"></ellipse></g><path d=\"M40 78 q6 5 12 0 M48 86 q5 4 10 -1\" fill=\"none\" stroke-width=\"1.1\"></path></svg>",
+    "hoja": "<svg viewBox=\"0 0 100 100\" width=\"84\" height=\"84\" aria-hidden=\"true\" style=\"color:var(--tinta-suave, #4a3826)\" stroke=\"currentColor\" stroke-linecap=\"round\"><path d=\"M50 95 C 48 73, 52 56.5, 50 40\" fill=\"none\" stroke-width=\"1.6\"></path><path d=\"M50 40 C 34 36, 30 22, 38 12 C 50 16, 56 28, 50 40 Z\" fill=\"#aabbcc\" opacity=\"0.22\" stroke-width=\"1.4\"></path><path d=\"M50 40 C 34 36, 30 22, 38 12 C 50 16, 56 28, 50 40 Z M46 34 L 40 20\" fill=\"none\" stroke-width=\"1.4\"></path><path d=\"M50 62 C 64 60, 70 48, 64 38 C 53 41, 47 52, 50 62 Z M55 56 L 62 44\" fill=\"none\" stroke-width=\"1.3\"></path><path d=\"M50 62 C 64 60, 70 48, 64 38 C 53 41, 47 52, 50 62 Z\" fill=\"#aabbcc\" opacity=\"0.16\" stroke=\"none\"></path></svg>",
+    "flor5": "<svg viewBox=\"0 0 100 100\" width=\"84\" height=\"84\" aria-hidden=\"true\" style=\"color:var(--tinta-suave, #4a3826)\" stroke=\"currentColor\" stroke-linecap=\"round\"><path d=\"M50 95 C 48 75, 52 60, 50 45\" fill=\"none\" stroke-width=\"1.6\"></path><ellipse cx=\"50\" cy=\"30\" rx=\"5\" ry=\"3.4\" fill=\"#ddeeff\" opacity=\"0.55\" stroke=\"currentColor\" stroke-width=\"0.9\" transform=\"rotate(0 50 30)\"></ellipse><ellipse cx=\"57.60845213036123\" cy=\"35.52786404500042\" rx=\"5\" ry=\"3.4\" fill=\"#ddeeff\" opacity=\"0.55\" stroke=\"currentColor\" stroke-width=\"0.9\" transform=\"rotate(72 57.60845213036123 35.52786404500042)\"></ellipse><ellipse cx=\"54.70228201833979\" cy=\"44.47213595499958\" rx=\"5\" ry=\"3.4\" fill=\"#ddeeff\" opacity=\"0.55\" stroke=\"currentColor\" stroke-width=\"0.9\" transform=\"rotate(144 54.70228201833979 44.47213595499958)\"></ellipse><ellipse cx=\"45.29771798166021\" cy=\"44.47213595499958\" rx=\"5\" ry=\"3.4\" fill=\"#ddeeff\" opacity=\"0.55\" stroke=\"currentColor\" stroke-width=\"0.9\" transform=\"rotate(216 45.29771798166021 44.47213595499958)\"></ellipse><ellipse cx=\"42.39154786963877\" cy=\"35.52786404500042\" rx=\"5\" ry=\"3.4\" fill=\"#ddeeff\" opacity=\"0.55\" stroke=\"currentColor\" stroke-width=\"0.9\" transform=\"rotate(288 42.39154786963877 35.52786404500042)\"></ellipse><circle cx=\"50\" cy=\"38\" r=\"3\" fill=\"#aabbcc\" stroke=\"none\" opacity=\"0.9\"></circle></svg>",
+    "baya": "<svg viewBox=\"0 0 100 100\" width=\"84\" height=\"84\" aria-hidden=\"true\" style=\"color:var(--tinta-suave, #4a3826)\" stroke=\"currentColor\" stroke-linecap=\"round\"><path d=\"M50 95 C 48 75, 52 60, 50 45\" fill=\"none\" stroke-width=\"1.6\"></path><path d=\"M50 45 q-12 -2 -16 -12 q10 -3 16 5 z\" fill=\"#aabbcc\" opacity=\"0.2\" stroke-width=\"1.3\"></path><path d=\"M50 45 q-12 -2 -16 -12 q10 -3 16 5 z\" fill=\"none\" stroke-width=\"1.3\"></path><circle cx=\"57\" cy=\"34\" r=\"5\" fill=\"#ddeeff\" stroke=\"none\" opacity=\"0.85\"></circle><circle cx=\"64\" cy=\"42\" r=\"4.2\" fill=\"#ddeeff\" stroke=\"none\" opacity=\"0.7\"></circle><circle cx=\"59\" cy=\"47\" r=\"3.6\" fill=\"#ddeeff\" stroke=\"none\" opacity=\"0.8\"></circle><circle cx=\"57\" cy=\"34\" r=\"5\" fill=\"none\" stroke-width=\"1\"></circle></svg>",
+    "umbela": "<svg viewBox=\"0 0 100 100\" width=\"84\" height=\"84\" aria-hidden=\"true\" style=\"color:var(--tinta-suave, #4a3826)\" stroke=\"currentColor\" stroke-linecap=\"round\"><path d=\"M50 95 C 48 73, 52 56.5, 50 40\" fill=\"none\" stroke-width=\"1.6\"></path><g><path d=\"M50 40 L 36 26\" fill=\"none\" stroke-width=\"1\"></path><circle cx=\"36\" cy=\"24\" r=\"2.6\" fill=\"#ddeeff\" stroke=\"none\" opacity=\"0.8\"></circle><circle cx=\"33.900000000000006\" cy=\"20\" r=\"1.7\" fill=\"#ddeeff\" stroke=\"none\" opacity=\"0.6\"></circle></g><g><path d=\"M50 40 L 43 26\" fill=\"none\" stroke-width=\"1\"></path><circle cx=\"43\" cy=\"24\" r=\"2.6\" fill=\"#ddeeff\" stroke=\"none\" opacity=\"0.8\"></circle><circle cx=\"41.95\" cy=\"20\" r=\"1.7\" fill=\"#ddeeff\" stroke=\"none\" opacity=\"0.6\"></circle></g><g><path d=\"M50 40 L 50 26\" fill=\"none\" stroke-width=\"1\"></path><circle cx=\"50\" cy=\"24\" r=\"2.6\" fill=\"#ddeeff\" stroke=\"none\" opacity=\"0.8\"></circle><circle cx=\"50\" cy=\"20\" r=\"1.7\" fill=\"#ddeeff\" stroke=\"none\" opacity=\"0.6\"></circle></g><g><path d=\"M50 40 L 57 26\" fill=\"none\" stroke-width=\"1\"></path><circle cx=\"57\" cy=\"24\" r=\"2.6\" fill=\"#ddeeff\" stroke=\"none\" opacity=\"0.8\"></circle><circle cx=\"58.05\" cy=\"20\" r=\"1.7\" fill=\"#ddeeff\" stroke=\"none\" opacity=\"0.6\"></circle></g><g><path d=\"M50 40 L 64 26\" fill=\"none\" stroke-width=\"1\"></path><circle cx=\"64\" cy=\"24\" r=\"2.6\" fill=\"#ddeeff\" stroke=\"none\" opacity=\"0.8\"></circle><circle cx=\"66.1\" cy=\"20\" r=\"1.7\" fill=\"#ddeeff\" stroke=\"none\" opacity=\"0.6\"></circle></g></svg>",
+    "raiz": "<svg viewBox=\"0 0 100 100\" width=\"84\" height=\"84\" aria-hidden=\"true\" style=\"color:var(--tinta-suave, #4a3826)\" stroke=\"currentColor\" stroke-linecap=\"round\"><path d=\"M44 19 Q40 37 45 49 L38 64 L42 80 L49 62 L52 49 Q61 37 58 20Z\" fill=\"#aabbcc\" fill-opacity=\".5\" stroke-width=\"1.4\"></path><path d=\"M44 39 Q23 42 27 59 L18 70 M53 50 Q74 52 70 71 L79 82 M42 66 L31 83 M48 60 L54 91 M28 57 L36 67 M70 69 L63 83\" fill=\"none\" stroke-width=\"1.5\"></path><path d=\"M43 28 L57 30 M43 34 L55 36 M45 43 L53 45 M43 53 L49 55\" fill=\"none\" stroke-width=\".7\"></path><ellipse cx=\"51\" cy=\"20\" rx=\"7\" ry=\"3\" fill=\"#ebd9b0\" stroke-width=\"1\"></ellipse></svg>",
+    "corteza": "<svg viewBox=\"0 0 100 100\" width=\"84\" height=\"84\" aria-hidden=\"true\" style=\"color:var(--tinta-suave, #4a3826)\" stroke=\"currentColor\" stroke-linecap=\"round\"><path d=\"M40 18 C 36 40, 44 60, 38 88 L 46 88 C 52 60, 44 40, 48 18 Z\" fill=\"#aabbcc\" opacity=\"0.2\" stroke-width=\"1.4\"></path><path d=\"M40 18 C 36 40, 44 60, 38 88 L 46 88 C 52 60, 44 40, 48 18 Z\" fill=\"none\" stroke-width=\"1.4\"></path><path d=\"M56 24 C 60 44, 54 64, 60 84\" fill=\"none\" stroke-width=\"1.6\"></path><path d=\"M42 34 q3 2 5 0 M40 52 q3 2 5 0 M41 70 q3 2 5 0\" fill=\"none\" stroke-width=\"1\"></path></svg>",
+    "vaina": "<svg viewBox=\"0 0 100 100\" width=\"84\" height=\"84\" aria-hidden=\"true\" style=\"color:var(--tinta-suave, #4a3826)\" stroke=\"currentColor\" stroke-linecap=\"round\"><path d=\"M50 95 C 48 75.8, 52 61.400000000000006, 50 47\" fill=\"none\" stroke-width=\"1.6\"></path><path d=\"M50 46 C 40 38, 38 24, 46 14 C 56 20, 58 36, 50 46 Z\" fill=\"#aabbcc\" opacity=\"0.18\" stroke-width=\"1.4\"></path><path d=\"M50 46 C 40 38, 38 24, 46 14 C 56 20, 58 36, 50 46 Z\" fill=\"none\" stroke-width=\"1.4\"></path><circle cx=\"47.5\" cy=\"38\" r=\"1.8\" fill=\"#ddeeff\" stroke=\"none\" opacity=\"0.8\"></circle><circle cx=\"49\" cy=\"30\" r=\"1.8\" fill=\"#ddeeff\" stroke=\"none\" opacity=\"0.8\"></circle><circle cx=\"50.5\" cy=\"22\" r=\"1.8\" fill=\"#ddeeff\" stroke=\"none\" opacity=\"0.8\"></circle></svg>",
+    "aguja": "<svg viewBox=\"0 0 100 100\" width=\"84\" height=\"84\" aria-hidden=\"true\" style=\"color:var(--tinta-suave, #4a3826)\" stroke=\"currentColor\" stroke-linecap=\"round\"><path d=\"M50 95 C 48 71, 52 53, 50 35\" fill=\"none\" stroke-width=\"1.6\"></path><path d=\"M50 78 L 38 70 M50 78 L 62 69\" fill=\"none\" stroke-width=\"1.1\" opacity=\"0.85\"></path><path d=\"M50 71 L 37 63 M50 71 L 63 62\" fill=\"none\" stroke-width=\"1.1\" opacity=\"0.78\"></path><path d=\"M50 64 L 36 56 M50 64 L 64 55\" fill=\"none\" stroke-width=\"1.1\" opacity=\"0.71\"></path><path d=\"M50 57 L 35 49 M50 57 L 65 48\" fill=\"none\" stroke-width=\"1.1\" opacity=\"0.6399999999999999\"></path><path d=\"M50 50 L 34 42 M50 50 L 66 41\" fill=\"none\" stroke-width=\"1.1\" opacity=\"0.57\"></path><path d=\"M50 43 L 33 35 M50 43 L 67 34\" fill=\"none\" stroke-width=\"1.1\" opacity=\"0.49999999999999994\"></path><path d=\"M50 36 L 32 28 M50 36 L 68 27\" fill=\"none\" stroke-width=\"1.1\" opacity=\"0.42999999999999994\"></path></svg>",
+    "tallo": "<svg viewBox=\"0 0 100 100\" width=\"84\" height=\"84\" aria-hidden=\"true\" style=\"color:var(--tinta-suave, #4a3826)\" stroke=\"currentColor\" stroke-linecap=\"round\"><path d=\"M50 95 C 48 70.2, 52 51.6, 50 33\" fill=\"none\" stroke-width=\"1.6\"></path><path d=\"M50 70 q-10 -2 -13 -10 M50 55 q10 -3 12 -11 M50 42 q-9 -2 -11 -9\" fill=\"none\" stroke-width=\"1.3\"></path><ellipse cx=\"37\" cy=\"59\" rx=\"4.5\" ry=\"2\" fill=\"#aabbcc\" opacity=\"0.3\" stroke=\"none\" transform=\"rotate(-28 37 59)\"></ellipse><ellipse cx=\"62\" cy=\"43\" rx=\"4.5\" ry=\"2\" fill=\"#aabbcc\" opacity=\"0.3\" stroke=\"none\" transform=\"rotate(24 62 43)\"></ellipse><ellipse cx=\"39\" cy=\"32\" rx=\"4\" ry=\"1.8\" fill=\"#aabbcc\" opacity=\"0.3\" stroke=\"none\" transform=\"rotate(-24 39 32)\"></ellipse></svg>",
+    "fruta": "<svg viewBox=\"0 0 100 100\" width=\"84\" height=\"84\" aria-hidden=\"true\" style=\"color:var(--tinta-suave, #4a3826)\" stroke=\"currentColor\" stroke-linecap=\"round\"><path d=\"M50 32 C26 17 12 43 23 66 C37 93 69 88 80 63 C91 37 70 18 50 32Z\" fill=\"#aabbcc\" fill-opacity=\".55\" stroke-width=\"1.5\"></path><path d=\"M49 34 Q49 22 56 13 M52 24 Q70 8 76 19 Q67 33 52 24\" fill=\"#ddeeff\" stroke-width=\"1.4\"></path><path d=\"M30 42 Q24 55 34 68\" fill=\"none\" stroke=\"#fffdf3\" stroke-width=\"3\"></path></svg>",
+    "piel": "<svg viewBox=\"0 0 100 100\" width=\"84\" height=\"84\" aria-hidden=\"true\" style=\"color:var(--tinta-suave, #4a3826)\" stroke=\"currentColor\" stroke-linecap=\"round\"><path d=\"M16 39 Q29 12 54 17 L65 31 Q39 23 30 49 Z\" fill=\"#aabbcc\" fill-opacity=\".72\" stroke-width=\"1.2\"></path><path d=\"M30 49 Q39 23 65 31 L62 36 Q43 29 34 54 Z\" fill=\"#fff5d1\" stroke-width=\".8\"></path><path d=\"M37 64 Q59 38 80 48 L88 62 Q68 52 49 79 Z\" fill=\"#aabbcc\" fill-opacity=\".75\" stroke-width=\"1.2\"></path><path d=\"M49 79 Q68 52 88 62 L84 68 Q69 60 53 83Z\" fill=\"#fff5d1\" stroke-width=\".8\"></path><circle cx=\"26\" cy=\"34\" r=\".8\" fill=\"currentColor\" stroke=\"none\" opacity=\".5\"></circle><circle cx=\"31\" cy=\"26\" r=\".8\" fill=\"currentColor\" stroke=\"none\" opacity=\".5\"></circle><circle cx=\"40\" cy=\"23\" r=\".8\" fill=\"currentColor\" stroke=\"none\" opacity=\".5\"></circle><circle cx=\"48\" cy=\"26\" r=\".8\" fill=\"currentColor\" stroke=\"none\" opacity=\".5\"></circle><circle cx=\"44\" cy=\"62\" r=\".8\" fill=\"currentColor\" stroke=\"none\" opacity=\".5\"></circle><circle cx=\"52\" cy=\"55\" r=\".8\" fill=\"currentColor\" stroke=\"none\" opacity=\".5\"></circle><circle cx=\"61\" cy=\"51\" r=\".8\" fill=\"currentColor\" stroke=\"none\" opacity=\".5\"></circle><circle cx=\"70\" cy=\"54\" r=\".8\" fill=\"currentColor\" stroke=\"none\" opacity=\".5\"></circle></svg>",
+    "fruta-seca": "<svg viewBox=\"0 0 100 100\" width=\"84\" height=\"84\" aria-hidden=\"true\" style=\"color:var(--tinta-suave, #4a3826)\" stroke=\"currentColor\" stroke-linecap=\"round\"><g transform=\"translate(-12 -9) rotate(-20 50 50)\"><ellipse cx=\"50\" cy=\"48\" rx=\"24\" ry=\"29\" fill=\"#aabbcc\" fill-opacity=\".55\" stroke=\"#ddeeff\" stroke-width=\"3\"></ellipse><ellipse cx=\"50\" cy=\"48\" rx=\"5\" ry=\"7\" fill=\"#fbf3e4\" stroke-width=\"1\"></ellipse><path d=\"M50 38 L50 23\" transform=\"rotate(0 50 48)\" fill=\"none\" stroke-width=\".8\" opacity=\".6\"></path><path d=\"M50 38 L50 23\" transform=\"rotate(60 50 48)\" fill=\"none\" stroke-width=\".8\" opacity=\".6\"></path><path d=\"M50 38 L50 23\" transform=\"rotate(120 50 48)\" fill=\"none\" stroke-width=\".8\" opacity=\".6\"></path><path d=\"M50 38 L50 23\" transform=\"rotate(180 50 48)\" fill=\"none\" stroke-width=\".8\" opacity=\".6\"></path><path d=\"M50 38 L50 23\" transform=\"rotate(240 50 48)\" fill=\"none\" stroke-width=\".8\" opacity=\".6\"></path><path d=\"M50 38 L50 23\" transform=\"rotate(300 50 48)\" fill=\"none\" stroke-width=\".8\" opacity=\".6\"></path></g><g transform=\"translate(13 17) rotate(18 50 50)\"><ellipse cx=\"50\" cy=\"48\" rx=\"24\" ry=\"29\" fill=\"#aabbcc\" fill-opacity=\".55\" stroke=\"#ddeeff\" stroke-width=\"3\"></ellipse><ellipse cx=\"50\" cy=\"48\" rx=\"5\" ry=\"7\" fill=\"#fbf3e4\" stroke-width=\"1\"></ellipse><path d=\"M50 38 L50 23\" transform=\"rotate(0 50 48)\" fill=\"none\" stroke-width=\".8\" opacity=\".6\"></path><path d=\"M50 38 L50 23\" transform=\"rotate(60 50 48)\" fill=\"none\" stroke-width=\".8\" opacity=\".6\"></path><path d=\"M50 38 L50 23\" transform=\"rotate(120 50 48)\" fill=\"none\" stroke-width=\".8\" opacity=\".6\"></path><path d=\"M50 38 L50 23\" transform=\"rotate(180 50 48)\" fill=\"none\" stroke-width=\".8\" opacity=\".6\"></path><path d=\"M50 38 L50 23\" transform=\"rotate(240 50 48)\" fill=\"none\" stroke-width=\".8\" opacity=\".6\"></path><path d=\"M50 38 L50 23\" transform=\"rotate(300 50 48)\" fill=\"none\" stroke-width=\".8\" opacity=\".6\"></path></g></svg>",
+    "fresa": "<svg viewBox=\"0 0 100 100\" width=\"84\" height=\"84\" aria-hidden=\"true\" style=\"color:var(--tinta-suave, #4a3826)\" stroke=\"currentColor\" stroke-linecap=\"round\"><path d=\"M24 31 Q32 15 50 25 Q67 16 77 31 C83 48 62 73 51 85 C37 77 17 49 24 31Z\" fill=\"#aabbcc\" fill-opacity=\".65\" stroke-width=\"1.5\"></path><path d=\"M50 29 Q39 49 51 73 Q61 48 50 29Z\" fill=\"#f4c1ac\" stroke-width=\".7\"></path><ellipse cx=\"32\" cy=\"34\" rx=\"1.2\" ry=\"2.3\" fill=\"#f1cc7b\" stroke-width=\".5\"></ellipse><ellipse cx=\"65\" cy=\"33\" rx=\"1.2\" ry=\"2.3\" fill=\"#f1cc7b\" stroke-width=\".5\"></ellipse><ellipse cx=\"28\" cy=\"45\" rx=\"1.2\" ry=\"2.3\" fill=\"#f1cc7b\" stroke-width=\".5\"></ellipse><ellipse cx=\"71\" cy=\"45\" rx=\"1.2\" ry=\"2.3\" fill=\"#f1cc7b\" stroke-width=\".5\"></ellipse><ellipse cx=\"34\" cy=\"56\" rx=\"1.2\" ry=\"2.3\" fill=\"#f1cc7b\" stroke-width=\".5\"></ellipse><ellipse cx=\"65\" cy=\"57\" rx=\"1.2\" ry=\"2.3\" fill=\"#f1cc7b\" stroke-width=\".5\"></ellipse><ellipse cx=\"42\" cy=\"68\" rx=\"1.2\" ry=\"2.3\" fill=\"#f1cc7b\" stroke-width=\".5\"></ellipse><ellipse cx=\"57\" cy=\"70\" rx=\"1.2\" ry=\"2.3\" fill=\"#f1cc7b\" stroke-width=\".5\"></ellipse></svg>",
+    "caliz": "<svg viewBox=\"0 0 100 100\" width=\"84\" height=\"84\" aria-hidden=\"true\" style=\"color:var(--tinta-suave, #4a3826)\" stroke=\"currentColor\" stroke-linecap=\"round\"><path d=\"M48 76 Q22 69 27 49 L17 27 L39 42 L44 16 L54 40 L77 22 L69 49 L85 54 L64 66 Q57 79 48 76Z\" fill=\"#aabbcc\" fill-opacity=\".65\" stroke-width=\"1.3\"></path><path d=\"M49 73 L44 25 M49 73 L23 35 M49 73 L72 30 M49 73 L76 55\" fill=\"none\" stroke-width=\"1.1\"></path></svg>",
+    "petalos": "<svg viewBox=\"0 0 100 100\" width=\"84\" height=\"84\" aria-hidden=\"true\" style=\"color:var(--tinta-suave, #4a3826)\" stroke=\"currentColor\" stroke-linecap=\"round\"><g transform=\"translate(0 0) rotate(-20 50 40)\"><path d=\"M50 62 C44 53 27 49 32 32 Q35 21 49 27 Q64 17 69 32 C74 46 57 57 50 62Z\" fill=\"#aabbcc\" fill-opacity=\".45\" stroke-width=\"1.1\"></path><path d=\"M50 59 Q44 41 37 33 M50 59 Q55 39 64 30\" fill=\"none\" stroke-width=\".6\" opacity=\".7\"></path></g><g transform=\"translate(-19 20) rotate(-65 50 40)\"><path d=\"M50 62 C44 53 27 49 32 32 Q35 21 49 27 Q64 17 69 32 C74 46 57 57 50 62Z\" fill=\"#aabbcc\" fill-opacity=\".45\" stroke-width=\"1.1\"></path><path d=\"M50 59 Q44 41 37 33 M50 59 Q55 39 64 30\" fill=\"none\" stroke-width=\".6\" opacity=\".7\"></path></g><g transform=\"translate(20 27) rotate(30 50 40)\"><path d=\"M50 62 C44 53 27 49 32 32 Q35 21 49 27 Q64 17 69 32 C74 46 57 57 50 62Z\" fill=\"#aabbcc\" fill-opacity=\".45\" stroke-width=\"1.1\"></path><path d=\"M50 59 Q44 41 37 33 M50 59 Q55 39 64 30\" fill=\"none\" stroke-width=\".6\" opacity=\".7\"></path></g></svg>",
+    "rizoma": "<svg viewBox=\"0 0 100 100\" width=\"84\" height=\"84\" aria-hidden=\"true\" style=\"color:var(--tinta-suave, #4a3826)\" stroke=\"currentColor\" stroke-linecap=\"round\"><path d=\"M18 57 Q11 45 25 40 L34 41 L31 27 Q34 18 43 25 L48 42 L57 38 L61 23 Q70 16 73 28 L69 46 Q88 43 87 55 Q87 66 71 65 L59 61 L57 78 Q49 88 43 77 L42 61 L29 66 Q19 68 18 57Z\" fill=\"#aabbcc\" fill-opacity=\".5\" stroke-width=\"1.4\"></path><path d=\"M24 43 L26 60 M34 43 L36 60 M47 47 L49 62 M60 44 L63 60 M34 31 L42 29 M62 32 L70 34\" fill=\"none\" stroke-width=\".8\" opacity=\".7\"></path><ellipse cx=\"80\" cy=\"77\" rx=\"10\" ry=\"7\" fill=\"#f1d9a2\" stroke-width=\"1.5\"></ellipse></svg>",
+    "semilla": "<svg viewBox=\"0 0 100 100\" width=\"84\" height=\"84\" aria-hidden=\"true\" style=\"color:var(--tinta-suave, #4a3826)\" stroke=\"currentColor\" stroke-linecap=\"round\"><g transform=\"translate(-18 -14) rotate(-30 50 50)\"><path d=\"M50 30 Q68 52 50 69 Q32 52 50 30Z\" fill=\"#aabbcc\" fill-opacity=\".65\" stroke-width=\"1.3\"></path><path d=\"M50 35 L50 64\" fill=\"none\" stroke-width=\"1\"></path></g><g transform=\"translate(10 -8) rotate(25 50 50)\"><path d=\"M50 30 Q68 52 50 69 Q32 52 50 30Z\" fill=\"#aabbcc\" fill-opacity=\".65\" stroke-width=\"1.3\"></path><path d=\"M50 35 L50 64\" fill=\"none\" stroke-width=\"1\"></path></g><g transform=\"translate(-8 14) rotate(-10 50 50)\"><path d=\"M50 30 Q68 52 50 69 Q32 52 50 30Z\" fill=\"#aabbcc\" fill-opacity=\".65\" stroke-width=\"1.3\"></path><path d=\"M50 35 L50 64\" fill=\"none\" stroke-width=\"1\"></path></g><g transform=\"translate(23 21) rotate(45 50 50)\"><path d=\"M50 30 Q68 52 50 69 Q32 52 50 30Z\" fill=\"#aabbcc\" fill-opacity=\".65\" stroke-width=\"1.3\"></path><path d=\"M50 35 L50 64\" fill=\"none\" stroke-width=\"1\"></path></g></svg>",
+    "te-seco": "<svg viewBox=\"0 0 100 100\" width=\"84\" height=\"84\" aria-hidden=\"true\" style=\"color:var(--tinta-suave, #4a3826)\" stroke=\"currentColor\" stroke-linecap=\"round\"><g transform=\"translate(29 28) rotate(-45)\"><path d=\"M0 -17 Q12 -8 4 4 Q-5 13 0 18 Q-13 7 -5 -5 Q0 -11 0 -17Z\" fill=\"#aabbcc\" fill-opacity=\".65\" stroke-width=\"1\"></path><path d=\"M0 -12 Q5 -2 -2 10\" fill=\"none\" stroke-width=\".7\"></path></g><g transform=\"translate(61 25) rotate(30)\"><path d=\"M0 -17 Q12 -8 4 4 Q-5 13 0 18 Q-13 7 -5 -5 Q0 -11 0 -17Z\" fill=\"#aabbcc\" fill-opacity=\".65\" stroke-width=\"1\"></path><path d=\"M0 -12 Q5 -2 -2 10\" fill=\"none\" stroke-width=\".7\"></path></g><g transform=\"translate(42 51) rotate(10)\"><path d=\"M0 -17 Q12 -8 4 4 Q-5 13 0 18 Q-13 7 -5 -5 Q0 -11 0 -17Z\" fill=\"#aabbcc\" fill-opacity=\".65\" stroke-width=\"1\"></path><path d=\"M0 -12 Q5 -2 -2 10\" fill=\"none\" stroke-width=\".7\"></path></g><g transform=\"translate(72 60) rotate(-40)\"><path d=\"M0 -17 Q12 -8 4 4 Q-5 13 0 18 Q-13 7 -5 -5 Q0 -11 0 -17Z\" fill=\"#aabbcc\" fill-opacity=\".65\" stroke-width=\"1\"></path><path d=\"M0 -12 Q5 -2 -2 10\" fill=\"none\" stroke-width=\".7\"></path></g><g transform=\"translate(25 74) rotate(50)\"><path d=\"M0 -17 Q12 -8 4 4 Q-5 13 0 18 Q-13 7 -5 -5 Q0 -11 0 -17Z\" fill=\"#aabbcc\" fill-opacity=\".65\" stroke-width=\"1\"></path><path d=\"M0 -12 Q5 -2 -2 10\" fill=\"none\" stroke-width=\".7\"></path></g><g transform=\"translate(56 81) rotate(70)\"><path d=\"M0 -17 Q12 -8 4 4 Q-5 13 0 18 Q-13 7 -5 -5 Q0 -11 0 -17Z\" fill=\"#aabbcc\" fill-opacity=\".65\" stroke-width=\"1\"></path><path d=\"M0 -12 Q5 -2 -2 10\" fill=\"none\" stroke-width=\".7\"></path></g></svg>",
+    "te-bola": "<svg viewBox=\"0 0 100 100\" width=\"84\" height=\"84\" aria-hidden=\"true\" style=\"color:var(--tinta-suave, #4a3826)\" stroke=\"currentColor\" stroke-linecap=\"round\"><g><circle cx=\"29\" cy=\"30\" r=\"10\" fill=\"#aabbcc\" fill-opacity=\".65\" stroke-width=\"1.2\"></circle><path d=\"M23 33 Q38 31 30 24\" fill=\"none\" stroke-width=\".7\"></path></g><g><circle cx=\"58\" cy=\"24\" r=\"10\" fill=\"#aabbcc\" fill-opacity=\".65\" stroke-width=\"1.2\"></circle><path d=\"M52 27 Q67 25 59 18\" fill=\"none\" stroke-width=\".7\"></path></g><g><circle cx=\"45\" cy=\"53\" r=\"10\" fill=\"#aabbcc\" fill-opacity=\".65\" stroke-width=\"1.2\"></circle><path d=\"M39 56 Q54 54 46 47\" fill=\"none\" stroke-width=\".7\"></path></g><g><circle cx=\"73\" cy=\"55\" r=\"10\" fill=\"#aabbcc\" fill-opacity=\".65\" stroke-width=\"1.2\"></circle><path d=\"M67 58 Q82 56 74 49\" fill=\"none\" stroke-width=\".7\"></path></g><g><circle cx=\"24\" cy=\"75\" r=\"10\" fill=\"#aabbcc\" fill-opacity=\".65\" stroke-width=\"1.2\"></circle><path d=\"M18 78 Q33 76 25 69\" fill=\"none\" stroke-width=\".7\"></path></g><g><circle cx=\"60\" cy=\"81\" r=\"10\" fill=\"#aabbcc\" fill-opacity=\".65\" stroke-width=\"1.2\"></circle><path d=\"M54 84 Q69 82 61 75\" fill=\"none\" stroke-width=\".7\"></path></g></svg>",
+    "polvo": "<svg viewBox=\"0 0 100 100\" width=\"84\" height=\"84\" aria-hidden=\"true\" style=\"color:var(--tinta-suave, #4a3826)\" stroke=\"currentColor\" stroke-linecap=\"round\"><path d=\"M13 73 Q25 66 35 47 Q48 30 59 50 Q69 66 87 73 Q53 91 13 73Z\" fill=\"#aabbcc\" fill-opacity=\".7\" stroke-width=\"1.2\"></path><circle cx=\"22\" cy=\"64\" r=\".8\" fill=\"#aabbcc\" stroke=\"none\"></circle><circle cx=\"39\" cy=\"71\" r=\".8\" fill=\"#aabbcc\" stroke=\"none\"></circle><circle cx=\"56\" cy=\"64\" r=\".8\" fill=\"#aabbcc\" stroke=\"none\"></circle><circle cx=\"73\" cy=\"71\" r=\".8\" fill=\"#aabbcc\" stroke=\"none\"></circle><circle cx=\"34\" cy=\"64\" r=\".8\" fill=\"#aabbcc\" stroke=\"none\"></circle><circle cx=\"51\" cy=\"71\" r=\".8\" fill=\"#aabbcc\" stroke=\"none\"></circle><circle cx=\"68\" cy=\"64\" r=\".8\" fill=\"#aabbcc\" stroke=\"none\"></circle><circle cx=\"29\" cy=\"71\" r=\".8\" fill=\"#aabbcc\" stroke=\"none\"></circle><circle cx=\"46\" cy=\"64\" r=\".8\" fill=\"#aabbcc\" stroke=\"none\"></circle><circle cx=\"63\" cy=\"71\" r=\".8\" fill=\"#aabbcc\" stroke=\"none\"></circle><circle cx=\"24\" cy=\"64\" r=\".8\" fill=\"#aabbcc\" stroke=\"none\"></circle><circle cx=\"41\" cy=\"71\" r=\".8\" fill=\"#aabbcc\" stroke=\"none\"></circle><circle cx=\"58\" cy=\"64\" r=\".8\" fill=\"#aabbcc\" stroke=\"none\"></circle><circle cx=\"75\" cy=\"71\" r=\".8\" fill=\"#aabbcc\" stroke=\"none\"></circle><circle cx=\"36\" cy=\"64\" r=\".8\" fill=\"#aabbcc\" stroke=\"none\"></circle><circle cx=\"53\" cy=\"71\" r=\".8\" fill=\"#aabbcc\" stroke=\"none\"></circle><circle cx=\"70\" cy=\"64\" r=\".8\" fill=\"#aabbcc\" stroke=\"none\"></circle><circle cx=\"31\" cy=\"71\" r=\".8\" fill=\"#aabbcc\" stroke=\"none\"></circle><path d=\"M34 65 Q46 41 54 53\" fill=\"none\" stroke=\"#fff5da\" stroke-width=\"1\"></path></svg>",
+    "trozos": "<svg viewBox=\"0 0 100 100\" width=\"84\" height=\"84\" aria-hidden=\"true\" style=\"color:var(--tinta-suave, #4a3826)\" stroke=\"currentColor\" stroke-linecap=\"round\"><g transform=\"translate(10 15) rotate(-14 15 14)\"><path d=\"M3 7 L24 2 L31 23 L12 32 L0 24Z\" fill=\"#aabbcc\" fill-opacity=\".65\" stroke-width=\"1.1\"></path><path d=\"M3 7 L12 15 L24 2 M12 15 L12 32 M12 15 L31 23\" fill=\"none\" stroke=\"#ddeeff\" stroke-width=\".8\"></path></g><g transform=\"translate(49 17) rotate(12 15 14)\"><path d=\"M3 7 L24 2 L31 23 L12 32 L0 24Z\" fill=\"#aabbcc\" fill-opacity=\".65\" stroke-width=\"1.1\"></path><path d=\"M3 7 L12 15 L24 2 M12 15 L12 32 M12 15 L31 23\" fill=\"none\" stroke=\"#ddeeff\" stroke-width=\".8\"></path></g><g transform=\"translate(25 54) rotate(25 15 14)\"><path d=\"M3 7 L24 2 L31 23 L12 32 L0 24Z\" fill=\"#aabbcc\" fill-opacity=\".65\" stroke-width=\"1.1\"></path><path d=\"M3 7 L12 15 L24 2 M12 15 L12 32 M12 15 L31 23\" fill=\"none\" stroke=\"#ddeeff\" stroke-width=\".8\"></path></g></svg>",
+    "citrico": "<svg viewBox=\"0 0 100 100\" width=\"84\" height=\"84\" aria-hidden=\"true\" style=\"color:var(--tinta-suave, #4a3826)\" stroke=\"currentColor\" stroke-linecap=\"round\"><circle cx=\"50\" cy=\"49\" r=\"33\" fill=\"#aabbcc\" fill-opacity=\".5\" stroke=\"#ddeeff\" stroke-width=\"5\"></circle><circle cx=\"50\" cy=\"49\" r=\"28\" fill=\"none\" stroke=\"#fff8df\" stroke-width=\"2\"></circle><path d=\"M50 45 L50 22\" transform=\"rotate(0 50 49)\" stroke=\"#fff8df\" stroke-width=\"2\"></path><path d=\"M50 45 L50 22\" transform=\"rotate(40 50 49)\" stroke=\"#fff8df\" stroke-width=\"2\"></path><path d=\"M50 45 L50 22\" transform=\"rotate(80 50 49)\" stroke=\"#fff8df\" stroke-width=\"2\"></path><path d=\"M50 45 L50 22\" transform=\"rotate(120 50 49)\" stroke=\"#fff8df\" stroke-width=\"2\"></path><path d=\"M50 45 L50 22\" transform=\"rotate(160 50 49)\" stroke=\"#fff8df\" stroke-width=\"2\"></path><path d=\"M50 45 L50 22\" transform=\"rotate(200 50 49)\" stroke=\"#fff8df\" stroke-width=\"2\"></path><path d=\"M50 45 L50 22\" transform=\"rotate(240 50 49)\" stroke=\"#fff8df\" stroke-width=\"2\"></path><path d=\"M50 45 L50 22\" transform=\"rotate(280 50 49)\" stroke=\"#fff8df\" stroke-width=\"2\"></path><path d=\"M50 45 L50 22\" transform=\"rotate(320 50 49)\" stroke=\"#fff8df\" stroke-width=\"2\"></path><circle cx=\"50\" cy=\"49\" r=\"4\" fill=\"#fff8df\" stroke=\"none\"></circle></svg>",
+    "frambuesa": "<svg viewBox=\"0 0 100 100\" width=\"84\" height=\"84\" aria-hidden=\"true\" style=\"color:var(--tinta-suave, #4a3826)\" stroke=\"currentColor\" stroke-linecap=\"round\"><circle cx=\"40\" cy=\"24\" r=\"7\" fill=\"#aabbcc\" fill-opacity=\".65\" stroke-width=\".9\"></circle><circle cx=\"53\" cy=\"24\" r=\"7\" fill=\"#aabbcc\" fill-opacity=\".65\" stroke-width=\".9\"></circle><circle cx=\"33\" cy=\"35\" r=\"7\" fill=\"#aabbcc\" fill-opacity=\".65\" stroke-width=\".9\"></circle><circle cx=\"46\" cy=\"35\" r=\"7\" fill=\"#aabbcc\" fill-opacity=\".65\" stroke-width=\".9\"></circle><circle cx=\"59\" cy=\"35\" r=\"7\" fill=\"#aabbcc\" fill-opacity=\".65\" stroke-width=\".9\"></circle><circle cx=\"29\" cy=\"47\" r=\"7\" fill=\"#aabbcc\" fill-opacity=\".65\" stroke-width=\".9\"></circle><circle cx=\"42\" cy=\"47\" r=\"7\" fill=\"#aabbcc\" fill-opacity=\".65\" stroke-width=\".9\"></circle><circle cx=\"55\" cy=\"47\" r=\"7\" fill=\"#aabbcc\" fill-opacity=\".65\" stroke-width=\".9\"></circle><circle cx=\"66\" cy=\"47\" r=\"7\" fill=\"#aabbcc\" fill-opacity=\".65\" stroke-width=\".9\"></circle><circle cx=\"33\" cy=\"59\" r=\"7\" fill=\"#aabbcc\" fill-opacity=\".65\" stroke-width=\".9\"></circle><circle cx=\"46\" cy=\"59\" r=\"7\" fill=\"#aabbcc\" fill-opacity=\".65\" stroke-width=\".9\"></circle><circle cx=\"59\" cy=\"59\" r=\"7\" fill=\"#aabbcc\" fill-opacity=\".65\" stroke-width=\".9\"></circle><circle cx=\"40\" cy=\"70\" r=\"7\" fill=\"#aabbcc\" fill-opacity=\".65\" stroke-width=\".9\"></circle><circle cx=\"52\" cy=\"70\" r=\"7\" fill=\"#aabbcc\" fill-opacity=\".65\" stroke-width=\".9\"></circle><path d=\"M37 18 L45 12 L54 18\" fill=\"none\" stroke-width=\"1.1\"></path></svg>",
+    "estrella": "<svg viewBox=\"0 0 100 100\" width=\"84\" height=\"84\" aria-hidden=\"true\" style=\"color:var(--tinta-suave, #4a3826)\" stroke=\"currentColor\" stroke-linecap=\"round\"><g transform=\"rotate(0 50 50)\"><path d=\"M50 50 Q35 31 50 12 Q65 31 50 50Z\" fill=\"#aabbcc\" fill-opacity=\".65\" stroke-width=\"1.1\"></path><path d=\"M50 45 L50 19\" stroke-width=\".8\"></path><ellipse cx=\"50\" cy=\"31\" rx=\"3\" ry=\"6\" fill=\"#6f452e\" stroke=\"none\"></ellipse></g><g transform=\"rotate(45 50 50)\"><path d=\"M50 50 Q35 31 50 12 Q65 31 50 50Z\" fill=\"#aabbcc\" fill-opacity=\".65\" stroke-width=\"1.1\"></path><path d=\"M50 45 L50 19\" stroke-width=\".8\"></path><ellipse cx=\"50\" cy=\"31\" rx=\"3\" ry=\"6\" fill=\"#6f452e\" stroke=\"none\"></ellipse></g><g transform=\"rotate(90 50 50)\"><path d=\"M50 50 Q35 31 50 12 Q65 31 50 50Z\" fill=\"#aabbcc\" fill-opacity=\".65\" stroke-width=\"1.1\"></path><path d=\"M50 45 L50 19\" stroke-width=\".8\"></path><ellipse cx=\"50\" cy=\"31\" rx=\"3\" ry=\"6\" fill=\"#6f452e\" stroke=\"none\"></ellipse></g><g transform=\"rotate(135 50 50)\"><path d=\"M50 50 Q35 31 50 12 Q65 31 50 50Z\" fill=\"#aabbcc\" fill-opacity=\".65\" stroke-width=\"1.1\"></path><path d=\"M50 45 L50 19\" stroke-width=\".8\"></path><ellipse cx=\"50\" cy=\"31\" rx=\"3\" ry=\"6\" fill=\"#6f452e\" stroke=\"none\"></ellipse></g><g transform=\"rotate(180 50 50)\"><path d=\"M50 50 Q35 31 50 12 Q65 31 50 50Z\" fill=\"#aabbcc\" fill-opacity=\".65\" stroke-width=\"1.1\"></path><path d=\"M50 45 L50 19\" stroke-width=\".8\"></path><ellipse cx=\"50\" cy=\"31\" rx=\"3\" ry=\"6\" fill=\"#6f452e\" stroke=\"none\"></ellipse></g><g transform=\"rotate(225 50 50)\"><path d=\"M50 50 Q35 31 50 12 Q65 31 50 50Z\" fill=\"#aabbcc\" fill-opacity=\".65\" stroke-width=\"1.1\"></path><path d=\"M50 45 L50 19\" stroke-width=\".8\"></path><ellipse cx=\"50\" cy=\"31\" rx=\"3\" ry=\"6\" fill=\"#6f452e\" stroke=\"none\"></ellipse></g><g transform=\"rotate(270 50 50)\"><path d=\"M50 50 Q35 31 50 12 Q65 31 50 50Z\" fill=\"#aabbcc\" fill-opacity=\".65\" stroke-width=\"1.1\"></path><path d=\"M50 45 L50 19\" stroke-width=\".8\"></path><ellipse cx=\"50\" cy=\"31\" rx=\"3\" ry=\"6\" fill=\"#6f452e\" stroke=\"none\"></ellipse></g><g transform=\"rotate(315 50 50)\"><path d=\"M50 50 Q35 31 50 12 Q65 31 50 50Z\" fill=\"#aabbcc\" fill-opacity=\".65\" stroke-width=\"1.1\"></path><path d=\"M50 45 L50 19\" stroke-width=\".8\"></path><ellipse cx=\"50\" cy=\"31\" rx=\"3\" ry=\"6\" fill=\"#6f452e\" stroke=\"none\"></ellipse></g></svg>",
+    "clavo": "<svg viewBox=\"0 0 100 100\" width=\"84\" height=\"84\" aria-hidden=\"true\" style=\"color:var(--tinta-suave, #4a3826)\" stroke=\"currentColor\" stroke-linecap=\"round\"><g transform=\"translate(-15 0) rotate(-20 50 50)\"><path d=\"M44 37 L47 78 Q50 84 53 78 L56 37Z\" fill=\"#aabbcc\" fill-opacity=\".65\" stroke-width=\"1.1\"></path><path d=\"M42 36 L40 28 L48 29 L50 22 L55 29 L62 28 L58 37Z\" fill=\"#aabbcc\" fill-opacity=\".7\" stroke-width=\"1.1\"></path><circle cx=\"50\" cy=\"27\" r=\"7\" fill=\"#aabbcc\" stroke-width=\"1\"></circle></g><g transform=\"translate(14 13) rotate(25 50 50)\"><path d=\"M44 37 L47 78 Q50 84 53 78 L56 37Z\" fill=\"#aabbcc\" fill-opacity=\".65\" stroke-width=\"1.1\"></path><path d=\"M42 36 L40 28 L48 29 L50 22 L55 29 L62 28 L58 37Z\" fill=\"#aabbcc\" fill-opacity=\".7\" stroke-width=\"1.1\"></path><circle cx=\"50\" cy=\"27\" r=\"7\" fill=\"#aabbcc\" stroke-width=\"1\"></circle></g></svg>",
+    "coco": "<svg viewBox=\"0 0 100 100\" width=\"84\" height=\"84\" aria-hidden=\"true\" style=\"color:var(--tinta-suave, #4a3826)\" stroke=\"currentColor\" stroke-linecap=\"round\"><g transform=\"translate(0 0) rotate(-12 40 35)\"><path d=\"M18 23 Q47 33 70 19 L64 40 Q42 54 13 37Z\" fill=\"#aabbcc\" stroke-width=\"1.1\"></path><path d=\"M13 37 Q42 54 64 40 L63 44 Q40 58 12 41Z\" fill=\"#ddeeff\" stroke-width=\".7\"></path></g><g transform=\"translate(17 34) rotate(24 40 35)\"><path d=\"M18 23 Q47 33 70 19 L64 40 Q42 54 13 37Z\" fill=\"#aabbcc\" stroke-width=\"1.1\"></path><path d=\"M13 37 Q42 54 64 40 L63 44 Q40 58 12 41Z\" fill=\"#ddeeff\" stroke-width=\".7\"></path></g></svg>",
+    "grano": "<svg viewBox=\"0 0 100 100\" width=\"84\" height=\"84\" aria-hidden=\"true\" style=\"color:var(--tinta-suave, #4a3826)\" stroke=\"currentColor\" stroke-linecap=\"round\"><g transform=\"translate(25 29) rotate(30)\"><ellipse rx=\"5\" ry=\"13\" fill=\"#aabbcc\" fill-opacity=\".65\" stroke-width=\"1\"></ellipse><path d=\"M0 -9 L0 9\" fill=\"none\" stroke-width=\".6\"></path></g><g transform=\"translate(52 24) rotate(-20)\"><ellipse rx=\"5\" ry=\"13\" fill=\"#aabbcc\" fill-opacity=\".65\" stroke-width=\"1\"></ellipse><path d=\"M0 -9 L0 9\" fill=\"none\" stroke-width=\".6\"></path></g><g transform=\"translate(72 47) rotate(50)\"><ellipse rx=\"5\" ry=\"13\" fill=\"#aabbcc\" fill-opacity=\".65\" stroke-width=\"1\"></ellipse><path d=\"M0 -9 L0 9\" fill=\"none\" stroke-width=\".6\"></path></g><g transform=\"translate(41 51) rotate(10)\"><ellipse rx=\"5\" ry=\"13\" fill=\"#aabbcc\" fill-opacity=\".65\" stroke-width=\"1\"></ellipse><path d=\"M0 -9 L0 9\" fill=\"none\" stroke-width=\".6\"></path></g><g transform=\"translate(25 76) rotate(-40)\"><ellipse rx=\"5\" ry=\"13\" fill=\"#aabbcc\" fill-opacity=\".65\" stroke-width=\"1\"></ellipse><path d=\"M0 -9 L0 9\" fill=\"none\" stroke-width=\".6\"></path></g><g transform=\"translate(59 78) rotate(55)\"><ellipse rx=\"5\" ry=\"13\" fill=\"#aabbcc\" fill-opacity=\".65\" stroke-width=\"1\"></ellipse><path d=\"M0 -9 L0 9\" fill=\"none\" stroke-width=\".6\"></path></g></svg>",
+    "nuez": "<svg viewBox=\"0 0 100 100\" width=\"84\" height=\"84\" aria-hidden=\"true\" style=\"color:var(--tinta-suave, #4a3826)\" stroke=\"currentColor\" stroke-linecap=\"round\"><g transform=\"translate(0 0) rotate(-18 40 40)\"><path d=\"M40 15 Q69 42 40 65 Q11 42 40 15Z\" fill=\"#aabbcc\" fill-opacity=\".6\" stroke-width=\"1.2\"></path><path d=\"M40 23 Q30 43 40 57 M45 26 Q52 41 45 53\" fill=\"none\" stroke-width=\".7\"></path></g><g transform=\"translate(23 27) rotate(25 40 40)\"><path d=\"M40 15 Q69 42 40 65 Q11 42 40 15Z\" fill=\"#aabbcc\" fill-opacity=\".6\" stroke-width=\"1.2\"></path><path d=\"M40 23 Q30 43 40 57 M45 26 Q52 41 45 53\" fill=\"none\" stroke-width=\".7\"></path></g></svg>",
+    "hebras": "<svg viewBox=\"0 0 100 100\" width=\"84\" height=\"84\" aria-hidden=\"true\" style=\"color:var(--tinta-suave, #4a3826)\" stroke=\"currentColor\" stroke-linecap=\"round\"><path d=\"M18 78 Q30 49 21 18\" fill=\"none\" stroke=\"#aabbcc\" stroke-width=\"2.6\"></path><path d=\"M25 70 Q35 49 28 23\" fill=\"none\" stroke=\"#aabbcc\" stroke-width=\"2.6\"></path><path d=\"M32 62 Q40 49 35 28\" fill=\"none\" stroke=\"#aabbcc\" stroke-width=\"2.6\"></path><path d=\"M39 78 Q45 49 42 33\" fill=\"none\" stroke=\"#aabbcc\" stroke-width=\"2.6\"></path><path d=\"M46 70 Q50 49 49 18\" fill=\"none\" stroke=\"#aabbcc\" stroke-width=\"2.6\"></path><path d=\"M53 62 Q55 49 56 23\" fill=\"none\" stroke=\"#aabbcc\" stroke-width=\"2.6\"></path><path d=\"M60 78 Q60 49 63 28\" fill=\"none\" stroke=\"#aabbcc\" stroke-width=\"2.6\"></path><path d=\"M67 70 Q65 49 70 33\" fill=\"none\" stroke=\"#aabbcc\" stroke-width=\"2.6\"></path><path d=\"M74 62 Q70 49 77 18\" fill=\"none\" stroke=\"#aabbcc\" stroke-width=\"2.6\"></path></svg>"
+  },
+  "formas": {
+    "margarita": "Flor de margarita",
+    "espiga": "Espiga floral",
+    "hoja": "Hoja",
+    "flor5": "Flor de cinco pétalos",
+    "baya": "Baya",
+    "umbela": "Flor en umbela",
+    "raiz": "Raíz ramificada",
+    "corteza": "Corteza",
+    "vaina": "Vaina",
+    "aguja": "Hojas finas",
+    "tallo": "Tallo",
+    "fruta": "Fruto entero",
+    "piel": "Piel de cítrico",
+    "fruta-seca": "Rodaja de manzana",
+    "fresa": "Fresa en láminas",
+    "caliz": "Cáliz de hibisco",
+    "petalos": "Pétalos sueltos",
+    "rizoma": "Rizoma",
+    "semilla": "Semillas",
+    "te-seco": "Hojas de té seco",
+    "te-bola": "Perlas de té",
+    "polvo": "Polvo fino",
+    "trozos": "Trozos de fruta",
+    "citrico": "Rodaja cítrica",
+    "frambuesa": "Frambuesa / mora",
+    "estrella": "Anís estrellado",
+    "clavo": "Clavo de olor",
+    "coco": "Láminas de coco",
+    "grano": "Granos",
+    "nuez": "Fruto seco",
+    "hebras": "Hebras finas"
+  }
+}

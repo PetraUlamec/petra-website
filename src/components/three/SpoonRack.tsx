@@ -5,6 +5,8 @@ import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { useEffect, useRef, useState } from "react";
 import { cucharas } from "@/data/extras";
+import { useLang } from "@/i18n";
+import { trExtra } from "@/i18n/catalogo";
 import { subscribeVivo, getVivoVersion } from "@/lib/vivoStore";
 import { useUi } from "@/lib/ui";
 import { WOOD } from "./Room";
@@ -85,6 +87,7 @@ function Spoon({ x, i, id, nombre }: { x: number; i: number; id: string; nombre:
   return (
     <group position={[x, -0.32, 0.06]} rotation={[0, 0, Math.sin(i * 2.1) * 0.045]}>
       <group
+        name={`spoon-${id}`}
         ref={g}
         onClick={(e) => {
           e.stopPropagation();
@@ -113,9 +116,10 @@ function Spoon({ x, i, id, nombre }: { x: number; i: number; id: string; nombre:
 }
 
 export default function SpoonRack({ position, rotY = 0 }: { position: [number, number, number]; rotY?: number }) {
+  const { lang } = useLang();
   const [, setV] = useState(0);
   useEffect(() => subscribeVivo(() => setV(getVivoVersion())), []);
-  const list = cucharas();
+  const list = cucharas().map(spoon => trExtra(spoon, lang));
   const w = list.length * 0.42 + 0.3;
   return (
     <group position={position} rotation={[0, rotY, 0]}>

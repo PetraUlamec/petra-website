@@ -256,36 +256,36 @@ export const TR_CAJAS: Record<string, TrCaja> = {
   "caja-general": {
     nombre: { en: "The House Box", sl: "Domača škatla" },
     descripcion: {
-      en: "The box of always, available all year round: one tea from the tea room, one of Erik's teaspoons at random and the cheese made at home.",
-      sl: "Škatla za vse čase, na voljo vse leto: čaj iz čajnice, naključna Erikova žlička in doma narejen sir.",
+      en: "Available all year: one house tea chosen at random and cheese. No spoon included.",
+      sl: "Na voljo vse leto: naključno izbran hišni čaj in sir. Brez žličke.",
     },
   },
   "caja-verano": {
     nombre: { en: "Summer Box", sl: "Poletna škatla" },
     descripcion: {
-      en: "The house box plus the raspberry lemonade: lemons from the orchard by the sea and raspberries from the forest's edge.",
-      sl: "Domača škatla in k njej malinova limonada: limone iz sadovnjaka ob morju in maline z gozdnega roba.",
+      en: "One house tea chosen at random, lemonade and one of Erik's spoons chosen at random. No cheese.",
+      sl: "Naključno izbran hišni čaj, limonada in naključno izbrana Erikova žlička. Brez sira.",
     },
   },
   "caja-invierno": {
     nombre: { en: "Winter Box", sl: "Zimska škatla" },
     descripcion: {
-      en: "The house box plus something from the valley's winter slaughter: beech-smoked sausage or loin cured in mountain air.",
-      sl: "Domača škatla in k njej nekaj od zimskih kolin iz doline: klobasa, prekajena na bukovini, ali file, sušen v gorskem zraku.",
+      en: "One house tea chosen at random, meat, cheese and one of Erik's spoons chosen at random.",
+      sl: "Naključno izbran hišni čaj, meso, sir in naključno izbrana Erikova žlička.",
     },
   },
   "caja-primavera": {
     nombre: { en: "Spring Box", sl: "Pomladna škatla" },
     descripcion: {
-      en: "The house box plus wildflower honey from the high meadow, freshly harvested.",
-      sl: "Domača škatla in k njej sveže točen cvetlični med z visokega travnika.",
+      en: "One house tea chosen at random, blossom honey and one of Erik's spoons chosen at random. No cheese.",
+      sl: "Naključno izbran hišni čaj, cvetlični med in naključno izbrana Erikova žlička. Brez sira.",
     },
   },
   "caja-otono": {
     nombre: { en: "Autumn Box", sl: "Jesenska škatla" },
     descripcion: {
-      en: "The house box plus October chestnut honey: dark, serious, unforgettable.",
-      sl: "Domača škatla in k njej oktobrski kostanjev med: temen, resen, nepozaben.",
+      en: "One house tea chosen at random, chestnut honey and one of Erik's spoons chosen at random. No cheese.",
+      sl: "Naključno izbran hišni čaj, kostanjev med in naključno izbrana Erikova žlička. Brez sira.",
     },
   },
 };
@@ -444,7 +444,7 @@ const TODO_EL_ANO: Record<Lang, string> = { es: "todo el año", en: "all year ro
 
 // ── HELPERS (fallback ES siempre: si falta la traducción, se ve el original) ─
 export function trTea(t: Tea, lang: Lang): Tea {
-  if (lang === "es") return t;
+  if (lang === "es" || t.editado) return t;
   const d = TR_TEAS[t.id];
   if (!d) return t; // té del taller u otro sin traducción → ES entero
   return {
@@ -482,6 +482,7 @@ export function trExtra(e: Extra, lang: Lang): Extra {
 
 export function trPlanta(p: Plant, lang: Lang): Plant {
   if (lang === "es") return p;
+  if (p.nombres?.[lang]) return { ...p, nombre: p.nombres[lang] };
   const d = TR_PLANTS[p.id];
   if (!d) return p;
   return { ...p, nombre: d[lang] ?? p.nombre };

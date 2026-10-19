@@ -21,6 +21,7 @@ export const T_SL = {
     cajas: "Sezonske škatle, na mizi",
   },
   sala: {
+    mezclas: "Hišne mešanice",
     te: "Čajna soba", tePremium: "Soba premium čaja",
     pistaTarros: "Dotakni se kozarca in se odpre. Dotakni se rastlin: vsaka pove svojo zgodbo.",
     volver: "Nazaj v sobo",
@@ -48,7 +49,7 @@ export const T_SL = {
     cupon: "Imaš kupon?", cuponAplicar: "Uporabi",
     cuponInvalido: "Ta kupon ne obstaja (poskusi PETRA10)",
     pagarTarjeta: "Plačaj s kartico", pagarPaypal: "Plačaj s PayPal",
-    demoAviso: "DEMO NAČIN — nič se ne zaračuna. Stripe in PayPal bosta povezana, ko bo trgovina imela svojo domeno.",
+    demoAviso: "Plačilo zaključite na strani Stripe. Oznaka TEST pomeni preizkus brez prave bremenitve. Plačilne podatke vnesite samo na Stripe.",
     quitar: "Odstrani",
   },
   gracias: {
@@ -71,15 +72,17 @@ export const T_SL = {
     irClasica: "V klasično trgovino", ir3d: "Vstopi v 3D trgovino",
   },
   nosotros: {
+    historia: "O Petri in Eriku",
     titulo: "Petra + Erik",
     petra: "Petra pripravlja čaje in vse ostalo: mešanice, škatle, shrambo. Vsaka mešanica se preizkusi za domačo mizo, preden pride v kozarec.",
-    erik: "Erik obdeluje les. Njegove drobne žličke so izrezljane iz dreves z imenom in zgodbo; v vsaki škatli potuje ena, naključno.",
+    erik: "Erik obdeluje les. Vsakemu premium čaju in sezonski škatli priloži naključno izbrano ročno izrezljano žličko. Običajni čaji in celoletna domača škatla so brez žličke.",
   },
   contacto: {
     titulo: "Piši nam",
     nombre: "Tvoje ime", email: "Tvoj e-naslov", mensaje: "Tvoje sporočilo",
     enviar: "Pusti pismo",
-    enviado: "Pismo je na pisalni mizi. (Ko bo povezano, bo prišlo na e-naslov hiše.)",
+    enviado: "Sporočilo je poslano. Hvala, ker ste nam pisali.",
+    error: "Sporočila ni bilo mogoče poslati. Besedilo ostaja tukaj: poskusite znova.",
   },
   a11y: {
     escena: "Tridimenzionalna scena trgovine. Vsebina je na voljo tudi kot besedilo pod sceno.",
@@ -99,7 +102,7 @@ export const T_SL = {
     faqTitulo: "Prava vprašanja",
     faq: [
       { q: "Kdaj prispe moje naročilo?", a: "Naročila pripravljamo ob torkih in četrtkih — mešanice pakiramo isti dan. Slovenija: 2-3 delovne dni; ostala EU: 4-7. Brezplačna dostava od 50 €." },
-      { q: "Kaj je žlička 🥄? v škatlah?", a: "V vsaki škatli in premium čaju se skriva Erikova ročno rezljana žlička, izbrana naključno. Razkrije se na tvoji vstopnici, z zgodbo svojega drevesa." },
+      { q: "Kateri izdelki vključujejo Erikovo žličko?", a: "Vsak premium čaj in sezonska škatla vključujeta naključno izbrano Erikovo žličko. Običajni čaji in celoletna domača škatla s čajem in sirom so brez žličke." },
       { q: "Kako dolgo zdržijo mešanice?", a: "Vsaka vrečka nosi datum mešanja. V zaprtem kozarcu brez svetlobe okoli 12 mesecev. Potem ne škodi — a izgubi svoj zakaj." },
       { q: "Zakaj so škatle izven sezone +15 % dražje?", a: "Hraniti pridelek druge sezone zahteva prostor in skrb. Raje povemo: škatla trenutne sezone je vedno po pošteni ceni." },
       { q: "Lahko vrnem naročilo?", a: "14 dni od dostave, neodprto. Odprtega ne sprejemamo (hrana je), a če kaj prispe poškodovano, zamenjamo brez vprašanj." },
@@ -119,7 +122,7 @@ export const T_SL = {
       { t: "rezljati", d: "Erik rezlja padli ali obrezani les, nikoli zdravega drevesa. Vsaka žlička hrani ime svojega drevesa." },
     ],
     mezclasT: "Mešanice", maderaT: "Les", ahora: "zdaj", casiAgotado: "skoraj razprodano",
-    pagoSenal: "Varno plačilo: Kartica (Stripe) · PayPal — brezplačna dostava od 50 €",
+    pagoSenal: "Plačilo prek Stripe · brezplačna dostava od 50 €",
     entradaReclamo: "Tvoj nakup ustvari oštevilčeno VSTOPNICO hiše",
     entradaCuchara: "— in v njej potuje Erikova žlička 🥄?",
     teDeLaSala: "1 hišni čaj po izbiri",
@@ -151,7 +154,7 @@ export const T_SL = {
     cestaTitulo: "Tvoja košara", cestaVacia: "Košara je prazna. Čaji čakajo.",
     cupon: "Imaš kupon?", cuponEtiqueta: "Kupon", emailRecibo: "e-naslov (za račun)", aplicar: "Uporabi", subtotal: "Vmesni znesek", envio: "Dostava",
     envioGratis: "Brezplačna dostava od 50 €", total: "Skupaj", pagarTarjeta: "Plačaj s kartico",
-    demoAviso: "DEMO — nič se ne zaračuna. Stripe in PayPal se povežeta, ko bo trgovina imela domeno.",
+    demoAviso: "Plačilo zaključite na strani Stripe. Oznaka TEST pomeni preizkus brez prave bremenitve. Plačilne podatke vnesite samo na Stripe.",
     seguirComprando: "Nadaljuj z brskanjem",
     visita3d: "Obišči trgovino v 3D",
     pieLegal: "Pravno",

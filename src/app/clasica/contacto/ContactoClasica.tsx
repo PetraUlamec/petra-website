@@ -6,17 +6,18 @@ import { useT } from "@/i18n";
 
 export default function ContactoClasica() {
   const T = useT();
-  const [estado, setEstado] = useState<"idle" | "enviando" | "ok">("idle");
+  const [estado, setEstado] = useState<"idle" | "enviando" | "ok" | "error">("idle");
   const enviar = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setEstado("enviando");
     const f = new FormData(e.currentTarget);
     if (f.get("consiente") !== "on") { setEstado("idle"); return; } // el navegador ya lo exige (required); doble cierre
     try {
-      await fetch("/api/contacto", { method: "POST", headers: { "Content-Type": "application/json" },
+      const response = await fetch("/api/contacto", { method: "POST", headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ nombre: f.get("nombre"), email: f.get("email"), mensaje: f.get("mensaje"), consiente: true }) });
-    } catch { /* demo local */ }
-    setEstado("ok");
+      if (!response.ok || !(await response.json()).ok) throw new Error("send failed");
+      setEstado("ok");
+    } catch { setEstado("error"); }
   };
   return (
     <main className="max-w-2xl mx-auto px-4 sm:px-6 pt-12">
@@ -28,6 +29,7 @@ export default function ContactoClasica() {
         </div>
       ) : (
         <form onSubmit={enviar} className="lamina p-7 pt-8 mt-8 space-y-4">
+          {estado === "error" && <p role="alert" className="text-[var(--granate)]">{T.contacto.error}</p>}
           <label className="block">
             <span className="eyebrow">{T.contacto.nombre}</span>
             <input name="nombre" required className="mt-1 w-full border border-[rgba(58,37,19,0.25)] rounded-[3px] px-3 py-2.5 bg-white/60" />

@@ -21,6 +21,7 @@ export const T_EN = {
     cajas: "The seasonal boxes, on the table",
   },
   sala: {
+    mezclas: "House blends",
     te: "Tea Room", tePremium: "Premium Tea Room",
     pistaTarros: "Tap a jar and it opens. Tap its plants: each one tells its story.",
     volver: "Back to the room",
@@ -48,7 +49,7 @@ export const T_EN = {
     cupon: "Have a coupon?", cuponAplicar: "Apply",
     cuponInvalido: "That coupon doesn't exist (try PETRA10)",
     pagarTarjeta: "Pay by card", pagarPaypal: "Pay with PayPal",
-    demoAviso: "DEMO MODE — nothing is charged. Stripe and PayPal will be connected when the shop has its domain.",
+    demoAviso: "Payment is completed on Stripe. If TEST is shown, no real charge is made. Enter payment details only on Stripe.",
     quitar: "Remove",
   },
   gracias: {
@@ -71,15 +72,17 @@ export const T_EN = {
     irClasica: "Go to the classic shop", ir3d: "Enter the 3D shop",
   },
   nosotros: {
+    historia: "About Petra and Erik",
     titulo: "Petra + Erik",
     petra: "Petra makes the teas and prepares everything: the blends, the boxes, the pantry. Every blend is tasted at the kitchen table before it reaches a jar.",
-    erik: "Erik works the wood. His tiny spoons are carved from trees with a name and a story; one travels in every box, at random.",
+    erik: "Erik works the wood. One of his hand-carved spoons, chosen at random, accompanies every premium tea and seasonal box. Regular teas and the year-round House Box do not include a spoon.",
   },
   contacto: {
     titulo: "Write to us",
     nombre: "Your name", email: "Your email", mensaje: "Your message",
     enviar: "Leave the letter",
-    enviado: "Letter left on the desk. (Once connected, it will reach the house email.)",
+    enviado: "Your message has been sent. Thank you for writing to us.",
+    error: "Your message could not be sent. It is still here: please try again.",
   },
   a11y: {
     escena: "Three-dimensional scene of the shop. The content is also available as text below the scene.",
@@ -99,7 +102,7 @@ export const T_EN = {
     faqTitulo: "Real questions",
     faq: [
       { q: "When does my order arrive?", a: "We pack orders on Tuesdays and Thursdays — blends are bagged that same day. Slovenia: 2-3 working days; rest of the EU: 4-7. Free shipping from €50." },
-      { q: "What is the 🥄? spoon in the boxes?", a: "Every box and every premium tea hides one of Erik's carved spoons, chosen at random. It's revealed on your purchase ticket, with the story of its tree." },
+      { q: "Which products include one of Erik's spoons?", a: "Every premium tea and seasonal box includes one of Erik's spoons chosen at random. Regular teas and the year-round tea-and-cheese House Box do not include a spoon." },
       { q: "How long do the blends keep?", a: "Each bag carries its blending date. In a closed jar away from light, about 12 months at its best. After that it does no harm — but loses its why." },
       { q: "Why do out-of-season boxes cost +15%?", a: "Storing another season's produce takes space and care. We'd rather say it: the current season's box is always at its fair price." },
       { q: "Can I return an order?", a: "14 days from delivery, unopened. Opened food can't be returned, but if anything arrives wrong we replace it, no questions." },
@@ -119,7 +122,7 @@ export const T_EN = {
       { t: "carve", d: "Erik carves fallen or pruned wood, never a healthy tree. Each spoon keeps its tree's name." },
     ],
     mezclasT: "The blends", maderaT: "The wood", ahora: "now", casiAgotado: "almost gone",
-    pagoSenal: "Secure payment: Card (Stripe) · PayPal — free shipping from €50",
+    pagoSenal: "Payment through Stripe · free shipping from €50",
     entradaReclamo: "Your purchase creates a numbered HOUSE TICKET",
     entradaCuchara: "— and Erik's 🥄? spoon travels inside",
     teDeLaSala: "1 house tea of your choice",
@@ -151,7 +154,7 @@ export const T_EN = {
     cestaTitulo: "Your basket", cestaVacia: "The basket is empty. The teas are waiting.",
     cupon: "Have a coupon?", cuponEtiqueta: "Coupon", emailRecibo: "email (for the receipt)", aplicar: "Apply", subtotal: "Subtotal", envio: "Shipping",
     envioGratis: "Free shipping from €50", total: "Total", pagarTarjeta: "Pay by card",
-    demoAviso: "DEMO MODE — nothing is charged. Stripe and PayPal connect when the shop has its domain.",
+    demoAviso: "Payment is completed on Stripe. If TEST is shown, no real charge is made. Enter payment details only on Stripe.",
     seguirComprando: "Keep browsing",
     visita3d: "Visit the shop in 3D",
     pieLegal: "The legal bit",

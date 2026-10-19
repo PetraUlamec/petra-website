@@ -6,7 +6,7 @@ import { plantById } from "@/data/plants";
 import { eur } from "@/lib/format";
 import { useCart } from "@/lib/cart";
 import { useT, useLang } from "@/i18n";
-import { trTea } from "@/i18n/catalogo";
+import { trTea, trPlanta } from "@/i18n/catalogo";
 import type { Tea } from "@/lib/types";
 import PlantaSVG from "./PlantaSVG";
 
@@ -15,7 +15,7 @@ export default function Lamina({ tea: teaRaw, num }: { tea: Tea; num: number }) 
   const { lang } = useLang();
   const tea = trTea(teaRaw, lang); // catálogo en el idioma activo (fallback ES)
   const add = useCart((s) => s.add);
-  const plantas = tea.plantas.slice(0, 3).map((tp) => plantById(tp.plantaId));
+  const plantas = tea.plantas.map((tp) => trPlanta(plantById(tp.plantaId), lang));
   return (
     <article className="lamina p-5 pt-6 flex flex-col">
       <div className="flex items-baseline justify-between">
@@ -33,7 +33,7 @@ export default function Lamina({ tea: teaRaw, num }: { tea: Tea; num: number }) 
             </span>
           </div>
         ) : (
-          <div className="flex justify-center gap-1 my-3 min-h-[118px]">
+          <div className="flex flex-wrap justify-center gap-1 my-3 min-h-[118px]">
             {plantas.map((p, i) => (
               <PlantaSVG key={p.id} forma={p.forma} color={p.color} color2={p.color2} size={i === 1 ? 116 : 96} />
             ))}
@@ -41,7 +41,8 @@ export default function Lamina({ tea: teaRaw, num }: { tea: Tea; num: number }) 
         )}
         <h3 className="font-display text-2xl leading-tight group-hover:text-[var(--madera)] transition-colors">{tea.nombre}</h3>
       </Link>
-      <p className="latin text-xs mt-1">{plantas.map((p) => p.latin).join(" · ")}</p>
+      <p className="text-xs mt-2">{plantas.length} {T.cl.plantasDe}: {plantas.map((p) => p.nombre).join(" · ")}</p>
+      <p className="latin text-xs mt-1">{plantas.map((p) => p.latin).filter(Boolean).join(" · ")}</p>
       <p className="text-sm mt-2 opacity-85 leading-relaxed">{tea.paraQueSirve}</p>
       <hr className="regla my-3" />
       <div className="mt-auto flex items-center justify-between">

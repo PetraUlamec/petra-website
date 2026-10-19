@@ -14,7 +14,7 @@ export default function FichaVivaOEstatica({ id }: { id: string }) {
   const [listo, setListo] = useState(!!TEAS.find((t) => t.id === id));
   useEffect(() => {
     const busca = () => {
-      const v = TEAS.find((t) => t.id === id) ?? getVivo().teas.find((t) => t.id === id) ?? null;
+      const v = getVivo().teas.find((t) => t.id === id) ?? TEAS.find((t) => t.id === id) ?? null;
       setTea(v); setListo(true);
     };
     cargarVivo().then(busca);

@@ -11,6 +11,8 @@ import { useCart } from "@/lib/cart";
 import { useT, useLang } from "@/i18n";
 import { trCaja, trExtra } from "@/i18n/catalogo";
 import Lamina from "@/components/clasica/Lamina";
+import { useSyncExternalStore } from "react";
+import { subscribeVivo, getVivoVersion } from "@/lib/vivoStore";
 
 const FRASE = {
   verano:    { es: ["Fuera es verano.", "Limonada fría y tés que saben a tarde larga."], en: ["It's summer outside.", "Cold lemonade and teas that taste of long afternoons."], sl: ["Zunaj je poletje.", "Hladna limonada in čaji z okusom dolgih popoldnevov."] },
@@ -20,6 +22,7 @@ const FRASE = {
 } as const;
 
 export default function HomeClasica() {
+  useSyncExternalStore(subscribeVivo, getVivoVersion, () => 0);
   const T = useT();
   const { lang } = useLang();
   const add = useCart((s) => s.add);
@@ -51,8 +54,9 @@ export default function HomeClasica() {
           <hr className="regla my-3" />
           <p className="eyebrow mb-1.5">{T.cl.dentroCaja}</p>
           <ul className="text-sm space-y-1">
+            {caja.incluyeTeNormalAlAzar && <li>— {T.cl.teDeLaSala}</li>}
             {caja.extras.map((id) => { const e = extraById(id); return e ? <li key={id}>— {trExtra(e, lang).nombre}</li> : null; })}
-            <li>— {T.cl.cucharaSorpresa} <b>🥄?</b></li>
+            {caja.incluyeCucharaAlAzar && <li>— {T.cl.cucharaSorpresa} <b>🥄?</b></li>}
           </ul>
           <div className="mt-4 flex items-center justify-between">
             <span className="font-display text-2xl">{eur(precioCaja(caja))}</span>

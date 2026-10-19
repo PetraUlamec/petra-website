@@ -4,7 +4,7 @@
 // El catálogo (tés/plantas/historias) se traduce con los helpers de ./catalogo (fallback ES).
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 import { T as T_ES } from "./es";
-import { cargarVivo } from "@/lib/vivoStore";
+import { cargarVivo, setVivo, recargarVivo } from "@/lib/vivoStore";
 import { T_EN } from "./en";
 import { T_SL } from "./sl";
 
@@ -35,6 +35,20 @@ export function LangProvider({ children }: { children: ReactNode }) {
       if (nav === "en") setLangState("en");
       else if (nav === "sl") setLangState("sl");
     }
+  }, []);
+  useEffect(() => {
+    const preview = window.parent !== window && new URLSearchParams(location.search).get("studio") === "1";
+    let active = true;
+    const receive = (event: MessageEvent) => {
+      if (preview && event.origin === location.origin && event.source === window.parent && event.data?.type === "petra-studio-preview" && Array.isArray(event.data.catalog?.teas)) cargarVivo().then(() => { if (active) setVivo(event.data.catalog); });
+    };
+    if (preview) {
+      window.addEventListener("message", receive);
+      cargarVivo().then(() => window.parent.postMessage({ type: "petra-studio-ready" }, location.origin));
+    }
+    const refresh = () => { if (!preview) recargarVivo(); };
+    window.addEventListener("focus", refresh);
+    return () => { active = false; window.removeEventListener("message", receive); window.removeEventListener("focus", refresh); };
   }, []);
   // html[lang] sigue al idioma elegido (lectores de pantalla, traductores, SEO): el servidor sirve "es" y aquí se corrige
   useEffect(() => { document.documentElement.lang = lang; }, [lang]);

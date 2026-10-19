@@ -11,7 +11,7 @@ const CSP = [
   "default-src 'self'",
   // blob: es imprescindible: three.js/drei cargan sus «workers» (los que descomprimen los
   // modelos 3D) desde blob:. Sin esto la escena se queda sin modelos — comprobado con navegador.
-  "script-src 'self' 'unsafe-inline' blob:",
+  "script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' blob:",
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob:",
   "font-src 'self' data:",
@@ -19,9 +19,9 @@ const CSP = [
   "worker-src 'self' blob: data:",
   "child-src 'self' blob:",
   "media-src 'self' data: blob:",
-  "frame-src https://checkout.stripe.com https://js.stripe.com",
+  "frame-src 'self' https://checkout.stripe.com https://js.stripe.com",
   "form-action 'self' https://checkout.stripe.com",
-  "frame-ancestors 'none'",
+  "frame-ancestors 'self'",
   "base-uri 'self'",
   "object-src 'none'",
   "upgrade-insecure-requests",
@@ -29,7 +29,7 @@ const CSP = [
 
 const CABECERAS = [
   { key: "Content-Security-Policy", value: CSP },
-  { key: "X-Frame-Options", value: "DENY" },                       // que nadie te meta en un iframe
+  { key: "X-Frame-Options", value: "SAMEORIGIN" },
   { key: "X-Content-Type-Options", value: "nosniff" },             // el navegador no adivina tipos
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
   { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), payment=(self)" },

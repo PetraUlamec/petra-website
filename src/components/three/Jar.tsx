@@ -8,12 +8,14 @@ import { useRef, useState } from "react";
 import { easing } from "maath";
 import { useQuality } from "@/lib/quality";
 import type { Tea } from "@/lib/types";
+import { useLang } from "@/i18n";
+import { trTea } from "@/i18n/catalogo";
+import { INSPECTION_POSITION } from "@/lib/ingredientLayout";
 
 /** Desplazamiento del tarro "cogido": hacia la cámara isométrica y un pelín arriba */
-export const PICK_OFFSET: [number, number, number] = [0.85, 0.1, 0.85];
 
 export default function Jar({
-  tea, position, focused, dimmed, onSelect,
+  tea: originalTea, position, focused, dimmed, onSelect,
 }: {
   tea: Tea;
   position: [number, number, number];
@@ -21,6 +23,8 @@ export default function Jar({
   dimmed: boolean;
   onSelect: () => void;
 }) {
+  const { lang } = useLang();
+  const tea = trTea(originalTea, lang);
   const [hover, setHover] = useState(false);
   const lid = useRef<THREE.Group>(null);
   const root = useRef<THREE.Group>(null);
@@ -31,7 +35,7 @@ export default function Jar({
     if (root.current) {
       // el tarro enfocado sale de la balda hacia la luz; al cerrar, vuelve a su sitio
       const target: [number, number, number] = focused
-        ? [position[0] + PICK_OFFSET[0], position[1] + PICK_OFFSET[1], position[2] + PICK_OFFSET[2]]
+        ? INSPECTION_POSITION
         : position;
       easing.damp3(root.current.position, target, 0.22, dt);
       easing.damp(root.current.rotation, "y", focused ? 0.4 : 0, 0.25, dt);

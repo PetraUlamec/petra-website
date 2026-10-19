@@ -7,6 +7,117 @@ function Tallo({ h = 60 }: { h?: number }) {
 }
 
 const FORMAS: Record<FormaPlanta, (c: string, c2?: string) => React.ReactNode> = {
+  'te-seco': (color) => <>
+    {[[29,28,-45],[61,25,30],[42,51,10],[72,60,-40],[25,74,50],[56,81,70]].map(([horizontal, vertical, angle], index) => <g key={index} transform={`translate(${horizontal} ${vertical}) rotate(${angle})`}>
+      <path d="M0 -17 Q12 -8 4 4 Q-5 13 0 18 Q-13 7 -5 -5 Q0 -11 0 -17Z" fill={color} fillOpacity=".65" strokeWidth="1" />
+      <path d="M0 -12 Q5 -2 -2 10" fill="none" strokeWidth=".7" />
+    </g>)}
+  </>,
+  'te-bola': (color) => <>
+    {[[29,30],[58,24],[45,53],[73,55],[24,75],[60,81]].map(([horizontal, vertical], index) => <g key={index}>
+      <circle cx={horizontal} cy={vertical} r="10" fill={color} fillOpacity=".65" strokeWidth="1.2" />
+      <path d={`M${horizontal-6} ${vertical+3} Q${horizontal+9} ${vertical+1} ${horizontal+1} ${vertical-6}`} fill="none" strokeWidth=".7" />
+    </g>)}
+  </>,
+  polvo: (color) => <>
+    <path d="M13 73 Q25 66 35 47 Q48 30 59 50 Q69 66 87 73 Q53 91 13 73Z" fill={color} fillOpacity=".7" strokeWidth="1.2" />
+    {Array.from({ length: 18 }, (_, index) => <circle key={index} cx={22+index*17%56} cy={64+index*7%14} r=".8" fill={color} stroke="none" />)}
+    <path d="M34 65 Q46 41 54 53" fill="none" stroke="#fff5da" strokeWidth="1" />
+  </>,
+  trozos: (color, edge) => <>
+    {[[10,15,-14],[49,17,12],[25,54,25]].map(([horizontal, vertical, angle], index) => <g key={index} transform={`translate(${horizontal} ${vertical}) rotate(${angle} 15 14)`}>
+      <path d="M3 7 L24 2 L31 23 L12 32 L0 24Z" fill={color} fillOpacity=".65" strokeWidth="1.1" />
+      <path d="M3 7 L12 15 L24 2 M12 15 L12 32 M12 15 L31 23" fill="none" stroke={edge || color} strokeWidth=".8" />
+    </g>)}
+  </>,
+  citrico: (color, rind) => <>
+    <circle cx="50" cy="49" r="33" fill={color} fillOpacity=".5" stroke={rind || color} strokeWidth="5" />
+    <circle cx="50" cy="49" r="28" fill="none" stroke="#fff8df" strokeWidth="2" />
+    {Array.from({ length: 9 }, (_, index) => <path key={index} d="M50 45 L50 22" transform={`rotate(${index*40} 50 49)`} stroke="#fff8df" strokeWidth="2" />)}
+    <circle cx="50" cy="49" r="4" fill="#fff8df" stroke="none" />
+  </>,
+  frambuesa: (color) => <>
+    {[[40,24],[53,24],[33,35],[46,35],[59,35],[29,47],[42,47],[55,47],[66,47],[33,59],[46,59],[59,59],[40,70],[52,70]].map(([horizontal, vertical], index) => <circle key={index} cx={horizontal} cy={vertical} r="7" fill={color} fillOpacity=".65" strokeWidth=".9" />)}
+    <path d="M37 18 L45 12 L54 18" fill="none" strokeWidth="1.1" />
+  </>,
+  estrella: (color) => <>
+    {Array.from({ length: 8 }, (_, index) => <g key={index} transform={`rotate(${index*45} 50 50)`}>
+      <path d="M50 50 Q35 31 50 12 Q65 31 50 50Z" fill={color} fillOpacity=".65" strokeWidth="1.1" />
+      <path d="M50 45 L50 19" strokeWidth=".8" /><ellipse cx="50" cy="31" rx="3" ry="6" fill="#6f452e" stroke="none" />
+    </g>)}
+  </>,
+  clavo: (color) => <>
+    {[[-15,0,-20],[14,13,25]].map(([horizontal, vertical, angle], index) => <g key={index} transform={`translate(${horizontal} ${vertical}) rotate(${angle} 50 50)`}>
+      <path d="M44 37 L47 78 Q50 84 53 78 L56 37Z" fill={color} fillOpacity=".65" strokeWidth="1.1" />
+      <path d="M42 36 L40 28 L48 29 L50 22 L55 29 L62 28 L58 37Z" fill={color} fillOpacity=".7" strokeWidth="1.1" />
+      <circle cx="50" cy="27" r="7" fill={color} strokeWidth="1" />
+    </g>)}
+  </>,
+  coco: (color, rind) => <>
+    {[[0,0,-12],[17,34,24]].map(([horizontal, vertical, angle], index) => <g key={index} transform={`translate(${horizontal} ${vertical}) rotate(${angle} 40 35)`}>
+      <path d="M18 23 Q47 33 70 19 L64 40 Q42 54 13 37Z" fill={color} strokeWidth="1.1" />
+      <path d="M13 37 Q42 54 64 40 L63 44 Q40 58 12 41Z" fill={rind || '#aa845d'} strokeWidth=".7" />
+    </g>)}
+  </>,
+  grano: (color) => <>
+    {[[25,29,30],[52,24,-20],[72,47,50],[41,51,10],[25,76,-40],[59,78,55]].map(([horizontal, vertical, angle], index) => <g key={index} transform={`translate(${horizontal} ${vertical}) rotate(${angle})`}>
+      <ellipse rx="5" ry="13" fill={color} fillOpacity=".65" strokeWidth="1" /><path d="M0 -9 L0 9" fill="none" strokeWidth=".6" />
+    </g>)}
+  </>,
+  nuez: (color) => <>
+    {[[0,0,-18],[23,27,25]].map(([horizontal, vertical, angle], index) => <g key={index} transform={`translate(${horizontal} ${vertical}) rotate(${angle} 40 40)`}>
+      <path d="M40 15 Q69 42 40 65 Q11 42 40 15Z" fill={color} fillOpacity=".6" strokeWidth="1.2" />
+      <path d="M40 23 Q30 43 40 57 M45 26 Q52 41 45 53" fill="none" strokeWidth=".7" />
+    </g>)}
+  </>,
+  hebras: (color) => <>
+    {Array.from({ length: 9 }, (_, index) => <path key={index} d={`M${18+index*7} ${78-index%3*8} Q${30+index*5} 49 ${21+index*7} ${18+index%4*5}`} fill="none" stroke={color} strokeWidth="2.6" />)}
+  </>,
+  rizoma: (color) => <>
+    <path d="M18 57 Q11 45 25 40 L34 41 L31 27 Q34 18 43 25 L48 42 L57 38 L61 23 Q70 16 73 28 L69 46 Q88 43 87 55 Q87 66 71 65 L59 61 L57 78 Q49 88 43 77 L42 61 L29 66 Q19 68 18 57Z" fill={color} fillOpacity=".5" strokeWidth="1.4" />
+    <path d="M24 43 L26 60 M34 43 L36 60 M47 47 L49 62 M60 44 L63 60 M34 31 L42 29 M62 32 L70 34" fill="none" strokeWidth=".8" opacity=".7" />
+    <ellipse cx="80" cy="77" rx="10" ry="7" fill="#f1d9a2" strokeWidth="1.5" />
+  </>,
+  piel: (color) => <>
+    <path d="M16 39 Q29 12 54 17 L65 31 Q39 23 30 49 Z" fill={color} fillOpacity=".72" strokeWidth="1.2" />
+    <path d="M30 49 Q39 23 65 31 L62 36 Q43 29 34 54 Z" fill="#fff5d1" strokeWidth=".8" />
+    <path d="M37 64 Q59 38 80 48 L88 62 Q68 52 49 79 Z" fill={color} fillOpacity=".75" strokeWidth="1.2" />
+    <path d="M49 79 Q68 52 88 62 L84 68 Q69 60 53 83Z" fill="#fff5d1" strokeWidth=".8" />
+    {[[26,34],[31,26],[40,23],[48,26],[44,62],[52,55],[61,51],[70,54]].map(([horizontal, vertical], index) => <circle key={index} cx={horizontal} cy={vertical} r=".8" fill="currentColor" stroke="none" opacity=".5" />)}
+  </>,
+  fresa: (color) => <>
+    <path d="M24 31 Q32 15 50 25 Q67 16 77 31 C83 48 62 73 51 85 C37 77 17 49 24 31Z" fill={color} fillOpacity=".65" strokeWidth="1.5" />
+    <path d="M50 29 Q39 49 51 73 Q61 48 50 29Z" fill="#f4c1ac" strokeWidth=".7" />
+    {[[32,34],[65,33],[28,45],[71,45],[34,56],[65,57],[42,68],[57,70]].map(([horizontal, vertical], index) => <ellipse key={index} cx={horizontal} cy={vertical} rx="1.2" ry="2.3" fill="#f1cc7b" strokeWidth=".5" />)}
+  </>,
+  caliz: (color) => <>
+    <path d="M48 76 Q22 69 27 49 L17 27 L39 42 L44 16 L54 40 L77 22 L69 49 L85 54 L64 66 Q57 79 48 76Z" fill={color} fillOpacity=".65" strokeWidth="1.3" />
+    <path d="M49 73 L44 25 M49 73 L23 35 M49 73 L72 30 M49 73 L76 55" fill="none" strokeWidth="1.1" />
+  </>,
+  petalos: (color) => <>
+    {[[0,0,-20],[-19,20,-65],[20,27,30]].map(([horizontal, vertical, angle], index) => <g key={index} transform={`translate(${horizontal} ${vertical}) rotate(${angle} 50 40)`}>
+      <path d="M50 62 C44 53 27 49 32 32 Q35 21 49 27 Q64 17 69 32 C74 46 57 57 50 62Z" fill={color} fillOpacity=".45" strokeWidth="1.1" />
+      <path d="M50 59 Q44 41 37 33 M50 59 Q55 39 64 30" fill="none" strokeWidth=".6" opacity=".7" />
+    </g>)}
+  </>,
+  "fruta-seca": (color, rind) => <>
+    {[[-12, -9, -20], [13, 17, 18]].map(([horizontal, vertical, angle], index) => <g key={index} transform={`translate(${horizontal} ${vertical}) rotate(${angle} 50 50)`}>
+      <ellipse cx="50" cy="48" rx="24" ry="29" fill={color} fillOpacity=".55" stroke={rind || color} strokeWidth="3" />
+      <ellipse cx="50" cy="48" rx="5" ry="7" fill="#fbf3e4" strokeWidth="1" />
+      {[0, 60, 120, 180, 240, 300].map(angle => <path key={angle} d="M50 38 L50 23" transform={`rotate(${angle} 50 48)`} fill="none" strokeWidth=".8" opacity=".6" />)}
+    </g>)}
+  </>,
+  fruta: (color, leaf) => <>
+    <path d="M50 32 C26 17 12 43 23 66 C37 93 69 88 80 63 C91 37 70 18 50 32Z" fill={color} fillOpacity=".55" strokeWidth="1.5" />
+    <path d="M49 34 Q49 22 56 13 M52 24 Q70 8 76 19 Q67 33 52 24" fill={leaf || color} strokeWidth="1.4" />
+    <path d="M30 42 Q24 55 34 68" fill="none" stroke="#fffdf3" strokeWidth="3" />
+  </>,
+  semilla: (color) => <>
+    {[[-18, -14, -30], [10, -8, 25], [-8, 14, -10], [23, 21, 45]].map(([horizontal, vertical, angle], index) => <g key={index} transform={`translate(${horizontal} ${vertical}) rotate(${angle} 50 50)`}>
+      <path d="M50 30 Q68 52 50 69 Q32 52 50 30Z" fill={color} fillOpacity=".65" strokeWidth="1.3" />
+      <path d="M50 35 L50 64" fill="none" strokeWidth="1" />
+    </g>)}
+  </>,
   margarita: (c, c2) => (
     <>
       <Tallo h={52} />
@@ -69,10 +180,10 @@ const FORMAS: Record<FormaPlanta, (c: string, c2?: string) => React.ReactNode> =
   ),
   raiz: (c) => (
     <>
-      <path d="M50 30 C 46 44, 54 52, 49 66 C 46 76, 52 84, 50 92" fill="none" strokeWidth="2.2" />
-      <path d="M49 48 q-8 4 -10 12 M51 60 q8 3 9 11 M49 74 q-6 3 -7 9" fill="none" strokeWidth="1.2" />
-      <path d="M44 22 q6 -8 6 -14 M50 24 q3 -8 9 -11 M46 24 q-6 -5 -12 -5" fill="none" strokeWidth="1.2" />
-      <ellipse cx="50" cy="28" rx="7" ry="4" fill={c} opacity="0.25" stroke="none" />
+      <path d="M44 19 Q40 37 45 49 L38 64 L42 80 L49 62 L52 49 Q61 37 58 20Z" fill={c} fillOpacity=".5" strokeWidth="1.4" />
+      <path d="M44 39 Q23 42 27 59 L18 70 M53 50 Q74 52 70 71 L79 82 M42 66 L31 83 M48 60 L54 91 M28 57 L36 67 M70 69 L63 83" fill="none" strokeWidth="1.5" />
+      <path d="M43 28 L57 30 M43 34 L55 36 M45 43 L53 45 M43 53 L49 55" fill="none" strokeWidth=".7" />
+      <ellipse cx="51" cy="20" rx="7" ry="3" fill="#ebd9b0" strokeWidth="1" />
     </>
   ),
   corteza: (c) => (

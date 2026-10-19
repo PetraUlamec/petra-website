@@ -40,6 +40,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .audit/
+.petra-seed/
+/data/pedidos/
+/data/.history/
 
 # backups de piezas
 *.bak

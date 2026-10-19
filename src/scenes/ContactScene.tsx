@@ -14,6 +14,7 @@ import {
 } from "@/components/three/deco/taller";
 import { Shelf } from "@/components/three/Furniture";
 import { useT } from "@/i18n";
+import Link from "next/link";
 
 function useBaseZoom() {
   const [z, setZ] = useState(44);
@@ -30,6 +31,19 @@ export default function ContactScene() {
   const T = useT();
   const baseZoom = useBaseZoom();
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [failed, setFailed] = useState(false);
+  const send = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = new FormData(event.currentTarget);
+    setSending(true); setFailed(false);
+    try {
+      const response = await fetch("/api/contacto", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ nombre: form.get("nombre"), email: form.get("email"), mensaje: form.get("mensaje"), consiente: form.get("consiente") === "on" }) });
+      if (!response.ok || !(await response.json()).ok) throw new Error("send failed");
+      setSent(true);
+    } catch { setFailed(true); }
+    finally { setSending(false); }
+  };
   const focus: CamFocus = { target: [0, 1.2, 0], zoom: baseZoom };
   return (
     <main>
@@ -84,16 +98,18 @@ export default function ContactScene() {
       </header>
       <form
         className="fixed z-20 bottom-3 inset-x-3 sm:inset-x-auto sm:right-4 sm:bottom-4 sm:w-96 panel p-4 float-in space-y-2"
-        onSubmit={(e) => { e.preventDefault(); setSent(true); }}
+        onSubmit={send}
       >
         {sent ? (
           <p className="text-sm">{T.contacto.enviado}</p>
         ) : (
           <>
-            <input required placeholder={T.contacto.nombre} className="w-full px-3 py-2 rounded-md border border-[var(--madera)]/40 bg-[var(--crema)] text-sm" />
-            <input required type="email" placeholder={T.contacto.email} className="w-full px-3 py-2 rounded-md border border-[var(--madera)]/40 bg-[var(--crema)] text-sm" />
-            <textarea required placeholder={T.contacto.mensaje} rows={3} className="w-full px-3 py-2 rounded-md border border-[var(--madera)]/40 bg-[var(--crema)] text-sm" />
-            <button type="submit" className="btn-miel px-4 py-2 text-sm w-full">{T.contacto.enviar}</button>
+            {failed && <p role="alert" className="text-sm text-[var(--granate)]">{T.contacto.error}</p>}
+            <input name="nombre" aria-label={T.contacto.nombre} required placeholder={T.contacto.nombre} className="w-full px-3 py-2 rounded-md border border-[var(--madera)]/40 bg-[var(--crema)] text-sm" />
+            <input name="email" aria-label={T.contacto.email} required type="email" placeholder={T.contacto.email} className="w-full px-3 py-2 rounded-md border border-[var(--madera)]/40 bg-[var(--crema)] text-sm" />
+            <textarea name="mensaje" aria-label={T.contacto.mensaje} required placeholder={T.contacto.mensaje} rows={3} className="w-full px-3 py-2 rounded-md border border-[var(--madera)]/40 bg-[var(--crema)] text-sm" />
+            <label className="flex items-start gap-2 text-xs"><input name="consiente" type="checkbox" required /><span>{T.cl.consentimiento} <Link href="/clasica/privacidad" className="underline">{T.cl.navPrivacidad}</Link></span></label>
+            <button disabled={sending} type="submit" className="btn-miel px-4 py-2 text-sm w-full">{sending ? "…" : T.contacto.enviar}</button>
           </>
         )}
       </form>

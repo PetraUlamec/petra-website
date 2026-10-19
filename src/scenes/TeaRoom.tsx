@@ -9,7 +9,8 @@ import { Shelf, Table, Teapot, PlantPot, Door } from "@/components/three/Furnitu
 import { Sconce, Pedestal } from "@/components/three/Decor";
 import { SunPatch, WallSpill } from "@/components/three/LightShaft";
 import { Chispas } from "@/components/three/Chispa";
-import Jar, { PICK_OFFSET } from "@/components/three/Jar";
+import Jar from "@/components/three/Jar";
+import { INSPECTION_POSITION } from "@/lib/ingredientLayout";
 import PlantChips from "@/components/three/PlantChips";
 import DecoVivo from "@/components/three/DecoVivo";
 import Basket, { BASKET_POS } from "@/components/three/Basket";
@@ -23,13 +24,12 @@ import {
 } from "@/components/three/deco/tearoom";
 import TeaPanel from "@/components/hud/TeaPanel";
 import Guia from "@/components/hud/Guia";
-import Hotspot, { useHotspots } from "@/components/three/Hotspot";
 import ExtraPanel from "@/components/hud/ExtraPanel";
 import GLB from "@/components/three/Modelos";
 import { teasBySala } from "@/data/teas";
 import { cucharas } from "@/data/extras";
 import { useUi } from "@/lib/ui";
-import { subscribeVivo, getVivoVersion } from "@/lib/vivoStore";
+import { subscribeVivo, getVivoVersion, setVivo, cargarVivo } from "@/lib/vivoStore";
 import { useT } from "@/i18n";
 
 function useBaseZoom() {
@@ -47,7 +47,12 @@ export default function TeaRoom({ sala }: { sala: "te" | "te-premium" }) {
   const T = useT();
   const [vivoV, setVivoV] = useState(getVivoVersion());
   useEffect(() => subscribeVivo(() => setVivoV(getVivoVersion())), []);
-  const teas = useMemo(() => teasBySala(sala), [sala, vivoV]);
+  const allTeas = useMemo(() => teasBySala(sala), [sala, vivoV]);
+  const [shelfPage, setShelfPage] = useState(0);
+  const capacity = sala === "te-premium" ? 7 : 12;
+  const pages = Math.max(1, Math.ceil(allTeas.length / capacity));
+  const activePage = Math.min(shelfPage, pages - 1);
+  const teas = useMemo(() => allTeas.slice(activePage * capacity, (activePage + 1) * capacity), [allTeas, activePage, capacity]);
   const focusTeaId = useUi((s) => s.focusTeaId);
   const plantId = useUi((s) => s.plantId);
   const focusTea = useUi((s) => s.focusTea);
@@ -56,9 +61,24 @@ export default function TeaRoom({ sala }: { sala: "te" | "te-premium" }) {
   const setExtra = useUi((s) => s.setExtra);
   const baseZoom = useBaseZoom();
   const premium = sala === "te-premium";
-  const hs = useHotspots();
 
   useEffect(() => () => { focusTea(null); setExtra(null); }, [focusTea, setExtra, sala]);
+  useEffect(() => {
+    let active = true;
+    const preview = (event: MessageEvent) => {
+      if (window.parent !== window && event.source === window.parent && event.origin === location.origin && event.data?.type === "petra-studio-preview" && Array.isArray(event.data.catalog?.teas) && new URLSearchParams(location.search).get("studio") === "1") {
+        cargarVivo().then(() => {
+          if (!active) return;
+          setVivo(event.data.catalog);
+          const index = teasBySala(sala).findIndex((tea) => tea.id === event.data.teaId);
+          if (index >= 0) { setShelfPage(Math.floor(index / capacity)); focusTea(event.data.teaId); }
+        });
+      }
+    };
+    window.addEventListener("message", preview);
+    if (window.parent !== window && new URLSearchParams(location.search).get("studio") === "1") window.parent.postMessage({ type: "petra-studio-ready" }, location.origin);
+    return () => { active = false; window.removeEventListener("message", preview); };
+  }, [sala, capacity, focusTea]);
 
   const spoonList = useMemo(() => cucharas(), [vivoV]);
   const spoonPositions = useMemo(() => {
@@ -112,11 +132,11 @@ export default function TeaRoom({ sala }: { sala: "te" | "te-premium" }) {
   const focused = focusTeaId ? jarPositions[focusTeaId] : null;
   // el tarro enfocado se ADELANTA de la balda (gesto de cogerlo): cámara y plantas van al punto adelantado
   const picked: [number, number, number] | null = focused
-    ? [focused[0] + PICK_OFFSET[0], focused[1] + PICK_OFFSET[1], focused[2] + PICK_OFFSET[2]]
+    ? INSPECTION_POSITION
     : null;
   const focusedSpoon = !premium && extraId ? spoonPositions[extraId] : null;
   const focus: CamFocus = picked
-    ? { target: [picked[0], picked[1] + 0.18, picked[2]], zoom: baseZoom * 2.55 }
+    ? { target: [picked[0] + (baseZoom < 30 ? 0 : 0.75), picked[1] + (baseZoom < 30 ? 0.1 : 0.9), picked[2] - (baseZoom < 30 ? 0 : 0.75)], zoom: baseZoom * 2.3 }
     : focusedSpoon
       ? { target: focusedSpoon, zoom: baseZoom * 2.7 }
       : { target: [0, 1.35, 0], zoom: baseZoom };
@@ -125,6 +145,11 @@ export default function TeaRoom({ sala }: { sala: "te" | "te-premium" }) {
 
   return (
     <main>
+      {pages > 1 && <nav aria-label={T.sala.te} className="fixed z-30 left-3 bottom-16 flex items-center gap-2 panel p-2">
+        <button className="sign min-w-10 min-h-10" disabled={activePage === 0} onClick={() => { focusTea(null); setShelfPage(activePage - 1); }}>←</button>
+        <span>{activePage + 1} / {pages}</span>
+        <button className="sign min-w-10 min-h-10" disabled={activePage === pages - 1} onClick={() => { focusTea(null); setShelfPage(activePage + 1); }}>→</button>
+      </nav>}
       <SceneShell
         focus={focus}
         ariaLabel={T.a11y.escena}
@@ -188,7 +213,7 @@ export default function TeaRoom({ sala }: { sala: "te" | "te-premium" }) {
               <Teapot position={[0.4, 1.05, 0.6]} />
               <SteamingCups position={[0.85, 1.05, 0.75]} />
               <SpilledJar position={[-0.2, 1.05, 0.35]} />
-              <WallSign position={[0.2, 3.95, -4.88]} w={1.75} texto="Mezclas de la casa" />
+              <WallSign position={[0.2, 3.95, -4.88]} w={1.75} texto={T.sala.mezclas} />
               <SpoonRack position={[-4.85, 2.2, 0.6]} rotY={Math.PI / 2} />
               <PlantPot position={[-4.3, 0.15, 2.6]} />
               {/* — densidad de la sala de té — */}
@@ -213,7 +238,7 @@ export default function TeaRoom({ sala }: { sala: "te" | "te-premium" }) {
               onSelect={() => { setExtra(null); focusTea(focusTeaId === t.id ? null : t.id); }}
             />
           ))}
-          {focusTeaId && (
+          {focusTeaId && picked && teas.some((tea) => tea.id === focusTeaId) && (
             <PlantChips
               tea={teas.find((t) => t.id === focusTeaId)!}
               jarPos={picked!}
@@ -230,8 +255,6 @@ export default function TeaRoom({ sala }: { sala: "te" | "te-premium" }) {
             felpudo={!premium}
           />
           <DecoVivo sala={premium ? "te-premium" : "te"} />
-          <Hotspot position={[premium ? -2.6 : -0.7, 0.03, premium ? -1.35 : -3.3]} visible={hs && !focusTeaId} />
-          <Hotspot position={[3.4, 0.03, 3.2]} visible={hs && !focusTeaId} />
           <Basket />
           <FlyingItem to={BASKET_POS} />
         </Room>

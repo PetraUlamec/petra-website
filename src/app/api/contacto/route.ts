@@ -14,6 +14,7 @@ export async function POST(req: Request) {
   if (tope) return tope;
   let body: { nombre?: string; email?: string; mensaje?: string; consiente?: boolean };
   try { body = await req.json(); } catch { return NextResponse.json({ error: "JSON no válido" }, { status: 400 }); }
+  if (!body || typeof body !== "object" || Array.isArray(body)) return NextResponse.json({ error: "JSON no válido" }, { status: 400 });
   const nombre = corta(body.nombre, 120), email = corta(body.email, 320), mensaje = corta(body.mensaje, 5000);
   if (!nombre || !email || !mensaje)
     return NextResponse.json({ error: "Faltan campos" }, { status: 400 });
@@ -23,20 +24,25 @@ export async function POST(req: Request) {
   if (body.consiente !== true)
     return NextResponse.json({ error: "Falta el consentimiento de privacidad" }, { status: 400 });
   const key = process.env.RESEND_API_KEY;
+  const from = process.env.PEDIDOS_EMAIL_FROM;
+  const to = process.env.CONTACTO_EMAIL_TO || process.env.PEDIDOS_EMAIL_TO;
+  if (!key || !from || !to) return NextResponse.json({ error: "El correo no está disponible. Inténtalo más tarde." }, { status: 503 });
   if (key) {
     try {
-      await fetch("https://api.resend.com/emails", {
+      const response = await fetch("https://api.resend.com/emails", {
         method: "POST",
+        signal: AbortSignal.timeout(15000),
         headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
         body: JSON.stringify({
-          from: process.env.PEDIDOS_EMAIL_FROM ?? "tienda@petra-erik.local",
-          to: process.env.PEDIDOS_EMAIL_FROM ?? "tienda@petra-erik.local",
+          from,
+          to,
           reply_to: email,
           subject: `Carta de ${nombre} (web)`,
           text: `${mensaje}\n\n— ${nombre} <${email}>`,
         }),
       });
-    } catch { /* no romper el formulario por el correo */ }
+      if (!response.ok) return NextResponse.json({ error: "No se pudo enviar el mensaje. Inténtalo de nuevo." }, { status: 502 });
+    } catch { return NextResponse.json({ error: "No se pudo enviar el mensaje. Inténtalo de nuevo." }, { status: 502 }); }
   }
-  return NextResponse.json({ ok: true, demo: !key });
+  return NextResponse.json({ ok: true });
 }

@@ -22,6 +22,7 @@ export const T = {
     cajas: "Las cajas de temporada, sobre la mesa",
   },
   sala: {
+    mezclas: "Mezclas de la casa",
     te: "Sala de Té", tePremium: "Sala del Té Premium",
     pistaTarros: "Toca un tarro y se abre. Toca sus plantas: cada una cuenta la suya.",
     volver: "Volver a la sala",
@@ -49,7 +50,7 @@ export const T = {
     cupon: "¿Tienes un cupón?", cuponAplicar: "Aplicar",
     cuponInvalido: "Ese cupón no existe (prueba PETRA10)",
     pagarTarjeta: "Pagar con tarjeta", pagarPaypal: "Pagar con PayPal",
-    demoAviso: "MODO DEMOSTRACIÓN — no se cobra nada. Stripe y PayPal se conectarán cuando la tienda tenga su dominio.",
+    demoAviso: "El pago se completa en Stripe. Si aparece TEST, es una prueba sin cobro real. Los datos bancarios se introducen únicamente en Stripe.",
     quitar: "Quitar",
   },
   gracias: {
@@ -72,15 +73,17 @@ export const T = {
     irClasica: "Ir a la web clásica", ir3d: "Entrar en la tienda 3D",
   },
   nosotros: {
+    historia: "Sobre Petra y Erik",
     titulo: "Petra + Erik",
     petra: "Petra hace los tés y prepara todo: los mixes, las cajas, la despensa. Cada mezcla se prueba en la mesa de casa antes de llegar a un tarro.",
-    erik: "Erik trabaja la madera. Sus cucharitas diminutas se tallan de árboles con nombre y apellido; en cada caja viaja una, al azar.",
+    erik: "Erik trabaja la madera. Una de sus cucharitas talladas a mano viaja al azar con cada té premium y cada caja estacional. Los tés normales y la caja general no incluyen cuchara.",
   },
   contacto: {
     titulo: "Escríbenos",
     nombre: "Tu nombre", email: "Tu correo", mensaje: "Tu mensaje",
     enviar: "Dejar la carta",
-    enviado: "Carta dejada sobre el escritorio. (En la tienda conectada llegará al correo de la casa.)",
+    enviado: "Tu mensaje se ha enviado. Gracias por escribirnos.",
+    error: "No se ha podido enviar. Conservamos tu mensaje aquí: vuelve a intentarlo.",
   },
   a11y: {
     escena: "Escena tridimensional de la tienda. El contenido también está disponible como texto bajo la escena.",
@@ -100,7 +103,7 @@ export const T = {
     faqTitulo: "Preguntas de verdad",
     faq: [
       { q: "¿Cuándo llega mi pedido?", a: "Preparamos los pedidos los martes y jueves — las mezclas se envasan al momento. En Eslovenia, 2-3 días laborables; al resto de la UE, 4-7. Envío gratis desde 50 €." },
-      { q: "¿Qué es la cucharita 🥄? de las cajas?", a: "Cada caja y cada té premium llevan escondida una cucharita tallada por Erik, al azar. Se revela en tu entrada de compra, con la historia de su árbol." },
+      { q: "¿Qué productos incluyen una cucharita de Erik?", a: "Cada té premium y cada caja estacional incluyen una cucharita de Erik al azar. Los tés normales y la caja general de té con queso no incluyen cuchara." },
       { q: "¿Cuánto duran las mezclas?", a: "Cada bolsa lleva su fecha de mezcla. En tarro cerrado y sin luz, unos 12 meses con carácter. Después no hace daño — pero pierde el porqué." },
       { q: "¿Por qué las cajas fuera de temporada cuestan +15%?", a: "Guardar producto de otra estación cuesta espacio y cuidado. Preferimos decirlo: la caja de la estación actual siempre está a su precio justo." },
       { q: "¿Puedo devolver un pedido?", a: "14 días desde la entrega con el producto sin abrir. Lo abierto no se devuelve (es alimento), pero si algo llega mal, lo reponemos sin discusión." },
@@ -120,7 +123,7 @@ export const T = {
       { t: "tallar", d: "Erik talla con madera caída o de poda, nunca de árbol sano. Cada cuchara guarda el nombre de su árbol." },
     ],
     mezclasT: "Las mezclas", maderaT: "La madera", ahora: "ahora", casiAgotado: "casi agotado",
-    pagoSenal: "Pago seguro: Tarjeta (Stripe) · PayPal — envío gratis desde 50 €",
+    pagoSenal: "Pago mediante Stripe · envío gratis desde 50 €",
     entradaReclamo: "Tu compra genera una ENTRADA numerada de la casa",
     entradaCuchara: "— y dentro viaja la cucharita 🥄? de Erik",
     teDeLaSala: "1 té de la sala, a elegir",
@@ -152,7 +155,7 @@ export const T = {
     cestaTitulo: "Tu cesta", cestaVacia: "La cesta está vacía. Los tés esperan.",
     cupon: "¿Tienes cupón?", cuponEtiqueta: "Cupón", emailRecibo: "email (para el recibo)", aplicar: "Aplicar", subtotal: "Subtotal", envio: "Envío",
     envioGratis: "Envío gratis desde 50 €", total: "Total", pagarTarjeta: "Pagar con tarjeta",
-    demoAviso: "MODO DEMO — no se cobra nada. Stripe y PayPal se conectan cuando la tienda tenga su dominio.",
+    demoAviso: "El pago se completa en Stripe. Si aparece TEST, es una prueba sin cobro real. Los datos bancarios se introducen únicamente en Stripe.",
     seguirComprando: "Seguir comprando",
     visita3d: "Visita la tienda en 3D",
     pieLegal: "Lo legal",

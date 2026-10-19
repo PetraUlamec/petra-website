@@ -4,20 +4,12 @@
 export type RoomId =
   | "intro" | "salon" | "te" | "te-premium" | "nosotros" | "contacto" | "carrito";
 
-export type FormaPlanta =
-  | "margarita"   // manzanilla, caléndula: pétalos alrededor de un centro
-  | "espiga"      // lavanda: espiga de florecillas
-  | "hoja"        // menta, melisa, salvia, ortiga, hoja de frambueso…
-  | "flor5"       // rosa, azahar: flor de cinco pétalos
-  | "baya"        // escaramujo: frutos rojos
-  | "umbela"      // saúco, hinojo, anís: paraguas de florecillas
-  | "raiz"        // jengibre, regaliz: raíz nudosa
-  | "corteza"     // canela: ramas enrolladas
-  | "vaina"       // cardamomo: vainas verdes
-  | "aguja"       // romero, rooibos: agujas finas
-  | "tallo";      // cola de caballo, tila
+export type FormaPlanta = keyof typeof import("@/data/formasPlanta").FORMAS_PLANTA;
+
 
 export interface Plant {
+  nombres?: { en: string; sl: string };
+  grupo?: string;
   id: string;
   nombre: string;
   latin: string;
@@ -35,6 +27,7 @@ export interface TeaPlant {
 }
 
 export interface Tea {
+  editado?: boolean;
   id: string;
   nombre: string;
   sala: "te" | "te-premium";

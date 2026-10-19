@@ -8,14 +8,19 @@ import { useRef, useState } from "react";
 import type { Tea } from "@/lib/types";
 import { plantById } from "@/data/plants";
 import PlantSprig from "./PlantSprig";
+import { useLang } from "@/i18n";
+import { trPlanta } from "@/i18n/catalogo";
+import { ingredientPage, ingredientOffset } from "@/lib/ingredientLayout";
 
 function FloatingPlant({
-  center, angle, radius, plantId, selected, onPick, delay,
+  center, offset, plantId, selected, onPick, delay, showLabel,
 }: {
-  center: [number, number, number]; angle: number; radius: number;
+  center: [number, number, number]; offset: [number, number, number];
   plantId: string; selected: boolean; onPick: () => void; delay: number;
+  showLabel: boolean;
 }) {
-  const plant = plantById(plantId);
+  const { lang } = useLang();
+  const plant = trPlanta(plantById(plantId), lang);
   const g = useRef<THREE.Group>(null);
   const born = useRef<number | null>(null);
   const [hover, setHover] = useState(false);
@@ -24,14 +29,14 @@ function FloatingPlant({
     if (born.current === null) born.current = clock.elapsedTime;
     const t = Math.min(1, Math.max(0, (clock.elapsedTime - born.current - delay) * 2.2));
     const e = 1 - Math.pow(1 - t, 3);
-    const bob = Math.sin(clock.elapsedTime * 1.5 + angle * 3) * 0.045;
+    const bob = Math.sin(clock.elapsedTime * 1.5 + delay * 3) * 0.015;
     g.current.position.set(
-      center[0] + Math.cos(angle) * radius * e,
-      center[1] + 0.42 + 0.42 * e + bob,
-      center[2] + Math.sin(angle) * radius * e
+      center[0] + offset[0] * e,
+      center[1] + offset[1] * e + bob,
+      center[2] + offset[2] * e
     );
-    g.current.scale.setScalar(0.001 + e * 1.45 * (hover || selected ? 1.18 : 1));
-    g.current.rotation.y = angle + Math.sin(clock.elapsedTime * 0.4) * 0.15;
+    g.current.scale.setScalar(0.001 + e * (hover || selected ? 1.2 : 1.05));
+    g.current.rotation.y = Math.PI / 4;
   });
   return (
     <group ref={g}>
@@ -64,11 +69,11 @@ function FloatingPlant({
           <PlantSprig plant={plant} scale={1.15} />
         </group>
       </group>
-      <Html position={[0, 0.56, 0]} center style={{ pointerEvents: "none" }}>
+      {(showLabel || hover || selected) && <Html position={[0, 0.56, 0]} center style={{ pointerEvents: "none" }}>
         <div className={`px-1.5 py-0.5 rounded text-[10px] whitespace-nowrap border shadow-sm ${selected ? "bg-[var(--miel-clara)] border-[var(--madera)] font-bold" : "bg-[var(--crema)]/95 border-[var(--madera)]/40"}`}>
           {plant.nombre}
         </div>
-      </Html>
+      </Html>}
     </group>
   );
 }
@@ -78,31 +83,21 @@ export default function PlantChips({
 }: {
   tea: Tea; jarPos: [number, number, number]; selectedPlantId: string | null; onPick: (id: string) => void;
 }) {
-  const n = tea.plantas.length;
-  // B5: si el tarro está contra la pared/mueble (z bajo), las plantas brotan en ARCO ABIERTO
-  // hacia la cámara isométrica (dirección +x,+z = π/4), nunca dentro de la madera.
-  const nearWall = jarPos[2] < -3.4 || jarPos[0] < -4.2;
-  const toCam = Math.PI / 4;
-  const span = Math.PI * 0.85; // 153° de abanico frontal
-  const center: [number, number, number] = nearWall
-    ? [jarPos[0] + Math.cos(toCam) * 0.35, jarPos[1], jarPos[2] + Math.sin(toCam) * 0.35]
-    : jarPos;
+  const page = ingredientPage(tea.plantas.findIndex(part => part.plantaId === selectedPlantId), tea.plantas.length);
+  const visible = tea.plantas.slice(page.start, page.end);
   return (
     <group>
-      {tea.plantas.map((tp, i) => {
-        const angle = nearWall
-          ? toCam - span / 2 + (n === 1 ? span / 2 : (i / (n - 1)) * span)
-          : (i / n) * Math.PI * 2 - Math.PI / 2 + Math.PI / n;
+      {visible.map((tp, index) => {
         return (
           <FloatingPlant
             key={tp.plantaId}
-            center={center}
-            angle={angle}
-            radius={nearWall ? 1.2 : 0.95}
+            center={jarPos}
+            offset={ingredientOffset(index, visible.length)}
             plantId={tp.plantaId}
+            showLabel={false}
             selected={selectedPlantId === tp.plantaId}
             onPick={() => onPick(tp.plantaId)}
-            delay={i * 0.1}
+            delay={index * 0.06}
           />
         );
       })}

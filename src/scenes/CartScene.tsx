@@ -1,7 +1,8 @@
 "use client";
 // EL CARRITO (VISION §2): la despensa. La cesta en el centro y la cuenta al lado.
 // Pago en MODO DEMO: la interfaz es la real; Stripe/PayPal se conectan cuando haya dominio (VISION §6).
-import { useState, useEffect } from "react";
+import { useState, useEffect, useSyncExternalStore } from "react";
+import { subscribeVivo, getVivoVersion } from "@/lib/vivoStore";
 import { useRouter } from "next/navigation";
 import SceneShell, { type CamFocus } from "@/components/three/SceneShell";
 import Room, { THEMES } from "@/components/three/Room";
@@ -24,6 +25,7 @@ import { cuponByCodigo } from "@/data/coupons";
 import Guia from "@/components/hud/Guia";
 import { cucharas } from "@/data/extras";
 import { teaById } from "@/data/teas";
+import { iniciarPago } from "@/lib/pagoCliente";
 
 function useBaseZoom() {
   const [z, setZ] = useState(44);
@@ -39,6 +41,7 @@ function useBaseZoom() {
 type PayMethod = "tarjeta" | "paypal" | null;
 
 export default function CartScene() {
+  useSyncExternalStore(subscribeVivo, getVivoVersion, () => 0);
   const T = useT();
   const router = useRouter();
   const baseZoom = useBaseZoom();
@@ -49,6 +52,7 @@ export default function CartScene() {
   const [paying, setPaying] = useState<PayMethod>(null);
   const [processing, setProcessing] = useState(false);
   const [email, setEmail] = useState("");
+  const [errorPago, setErrorPago] = useState("");
   useEffect(() => setMounted(true), []);
 
   const sub = cartSubtotal(lines);
@@ -59,48 +63,10 @@ export default function CartScene() {
 
   const confirmPay = async (method: Exclude<PayMethod, null>) => {
     setProcessing(true);
-    // 2-sep-2026 (auditoría, fallo funcional): el recibo se preparaba DESPUÉS del salto a
-    // Stripe y en un pago real no llegaba a guardarse. Ahora se prepara antes (más abajo se
-    // guarda) y solo después se intenta el cobro.
-    // ¿viaja cuchara sorpresa? — con cajas de temporada y con tés premium (la "?" de Erik)
-    const llevaSorpresa = lines.some(
-      (l) => l.kind === "caja" || (l.kind === "tea" && teaById(l.id).sala === "te-premium")
-    );
-    const pool = cucharas();
-    const cuchara = llevaSorpresa ? pool[Math.floor(Math.random() * pool.length)] : null;
-    const receipt = {
-      metodo: method,
-      fecha: new Date().toISOString(),
-      entrada: `PE-${String(Math.floor(1000 + Math.random() * 9000))}`,
-      lineas: lines.map((l) => ({ nombre: lineName(l), qty: l.qty, precio: linePrice(l) })),
-      sub, disc, ship, total,
-      cupon: cupon?.codigo ?? null,
-      cuchara: cuchara ? { nombre: cuchara.nombre, historia: cuchara.procedencia } : null,
-      fraseIdx: Math.floor(Math.random() * 4),
-    };
-    try {
-      sessionStorage.setItem("petra-last-order", JSON.stringify(receipt));
-      if (email.trim()) sessionStorage.setItem("petra-last-email", email.trim());
-    } catch { /* navegador sin almacenamiento */ }
-
-    // checkout REAL si el servidor tiene STRIPE_SECRET_KEY; si no, sigue el demo
-    try {
-      const r = await fetch("/api/checkout", { method: "POST", headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ lines, cupon: cupon?.codigo ?? null }) }).then((x) => x.json());
-      // Pago real: el recibo ya está guardado; el correo sale al volver de Stripe (?paid=1).
-      if (r.url) { window.location.href = r.url; return; }
-    } catch { /* sin red o demo */ }
-
-    // recibo por correo si hay RESEND_API_KEY y el cliente dejó email (fire-and-forget)
-    if (email.trim()) {
-      const frases = T.gracias.bienvenidas;
-      fetch("/api/pedido-email", { method: "POST", headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...receipt, email: email.trim(), frase: frases[receipt.fraseIdx % frases.length] }) }).catch(() => {});
-      try { sessionStorage.setItem("petra-correo-enviado", receipt.entrada); } catch { /* sin almacenamiento */ }
-    }
-    setTimeout(() => { clear(); window.location.assign("/gracias"); }, 1400);
+    setErrorPago("");
+    try { await iniciarPago(lines, cupon?.codigo ?? null, email, false); }
+    catch (error) { setErrorPago((error as Error).message); setProcessing(false); }
   };
-
   return (
     <main>
       <SceneShell focus={focus} ariaLabel={T.a11y.escena}>
@@ -248,12 +214,6 @@ export default function CartScene() {
 
             <div className="mt-4 grid grid-cols-1 gap-2">
               <button className="btn-miel px-4 py-2.5 text-sm" onClick={() => setPaying("tarjeta")}>💳 {T.carrito.pagarTarjeta}</button>
-              <button
-                className="px-4 py-2.5 text-sm rounded-[10px] font-bold border border-[#003087] text-[#003087] bg-[#ffc439] hover:brightness-105"
-                onClick={() => setPaying("paypal")}
-              >
-                <span className="italic font-black">Pay</span><span className="italic font-black text-[#009cde]">Pal</span>
-              </button>
               <p className="text-[10px] opacity-60 leading-tight">{T.carrito.demoAviso}</p>
             </div>
           </>
@@ -265,30 +225,18 @@ export default function CartScene() {
         <div className="fixed inset-0 z-50 grid place-items-center bg-black/45 p-4" role="dialog" aria-modal="true">
           <div className="panel p-5 w-full max-w-sm float-in">
             <h2 className="font-display text-xl">
-              {paying === "tarjeta" ? T.carrito.pagarTarjeta : "PayPal"} <span className="text-xs align-middle bg-[var(--granate)] text-[var(--crema)] rounded px-1.5 py-0.5 ml-1">DEMO</span>
+              {T.carrito.pagarTarjeta}
             </h2>
             {processing ? (
-              <p className="mt-4 text-sm animate-pulse">Procesando pago de prueba…</p>
+              <p className="mt-4 text-sm">…</p>
             ) : (
               <>
-                {paying === "tarjeta" ? (
-                  <div className="mt-3 space-y-2">
-                    <input placeholder="4242 4242 4242 4242" className="w-full px-3 py-2 rounded-md border border-[var(--madera)]/40 bg-[var(--crema)] text-sm font-mono" />
-                    <div className="flex gap-2">
-                      <input placeholder="MM/AA" className="w-1/2 px-3 py-2 rounded-md border border-[var(--madera)]/40 bg-[var(--crema)] text-sm font-mono" />
-                      <input placeholder="CVC" className="w-1/2 px-3 py-2 rounded-md border border-[var(--madera)]/40 bg-[var(--crema)] text-sm font-mono" />
-                    </div>
-                    <p className="text-[10px] opacity-60">Tarjeta de prueba de Stripe: 4242 4242 4242 4242 — cualquier fecha futura y CVC.</p>
-                    <input value={email} onChange={(e) => setEmail(e.target.value)} type="email"
-                      placeholder="Tu correo para el recibo (opcional)"
-                      className="w-full px-3 py-2 rounded-md border border-[var(--madera)]/40 bg-[var(--crema)] text-sm" />
-                  </div>
-                ) : (
-                  <p className="mt-3 text-sm">Aquí se abrirá la ventana de PayPal cuando la tienda esté conectada.</p>
-                )}
+                {errorPago && <p role="alert" className="text-sm text-[var(--granate)]">{errorPago}</p>}
+                <p className="mt-3 text-sm">{T.carrito.demoAviso}</p>
+                <input value={email} onChange={(event) => setEmail(event.target.value)} type="email" aria-label={T.cl.emailRecibo} placeholder={T.cl.emailRecibo} className="w-full px-3 py-2 mt-3 rounded-md border border-[var(--madera)]/40 bg-[var(--crema)] text-sm" />
                 <div className="mt-4 flex gap-2">
                   <button className="btn-miel flex-1 px-4 py-2 text-sm" onClick={() => confirmPay(paying)}>
-                    Pagar {eur(total)} (prueba)
+                    {T.cl.pagarTarjeta} · {eur(total)}
                   </button>
                   <button className="sign px-3 py-2 text-xs" onClick={() => setPaying(null)}>Cancelar</button>
                 </div>

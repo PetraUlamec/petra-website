@@ -102,6 +102,7 @@ export default function TallerPrivado() {
             <span className="text-[10px] text-[var(--crema)]/60">se recuerda en este navegador</span>
           </div>
           <h1 className="font-display text-3xl text-[var(--crema)]">El taller privado</h1>
+          <a href="/studio/index.html" className="btn-miel inline-block px-5 py-3 mt-4">Abrir PETRA Studio · editar tés, precios y plantas</a>
           <p className="text-sm text-[var(--crema)]/75 mt-1">Aquí Petra y Erik publican sin tocar código. Lo publicado aparece al momento en la tienda.</p>
           {msg && <p className="mt-2 inline-block panel px-4 py-2 text-sm">{msg}</p>}
         </header>
