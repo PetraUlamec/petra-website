@@ -20,5 +20,11 @@ function load(filename) {
 const Illustration = load('src/components/clasica/PlantaSVG.tsx').default;
 const formas = load('src/data/formasPlanta.ts').FORMAS_PLANTA;
 const shapes = Object.keys(formas);
+const { trTea, trPlanta } = load('src/i18n/catalogo.ts');
+const teas = load('src/data/teas.ts').TEAS.map(tea => ({ ...tea, traducciones: Object.fromEntries(['en', 'sl'].map(lang => {
+  const translated = trTea(tea, lang);
+  return [lang, { nombre: translated.nombre, paraQueSirve: translated.paraQueSirve, plantas: Object.fromEntries(translated.plantas.map(plant => [plant.plantaId, plant.porQueEnEsteMix])) }];
+})) }));
+const plants = load('src/data/plants.ts').PLANTS.map(plant => ({ ...plant, nombres: { en: trPlanta(plant, 'en').nombre, sl: trPlanta(plant, 'sl').nombre } }));
 const drawings = Object.fromEntries(shapes.map(forma => [forma, renderToStaticMarkup(React.createElement(Illustration, { forma, color: '#aabbcc', color2: '#ddeeff' }))]));
-fs.writeFileSync(path.join(root, 'public/studio/catalogo-base.json'), JSON.stringify({ teas: load('src/data/teas.ts').TEAS, plants: load('src/data/plants.ts').PLANTS, drawings, formas }, null, 2) + '\n');
+fs.writeFileSync(path.join(root, 'public/studio/catalogo-base.json'), JSON.stringify({ teas, plants, drawings, formas }, null, 2) + '\n');

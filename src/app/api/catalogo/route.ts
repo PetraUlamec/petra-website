@@ -7,7 +7,7 @@ import { esClaveValida } from "@/lib/biblioteca-claves";
 import { guardaTaller } from "@/lib/tallerAuth";
 import { leerJSON, escribirJSON } from "@/lib/jsonSeguro";
 import { PLANTS } from "@/data/plants";
-import type { Plant } from "@/lib/types";
+import type { Plant, Tea } from "@/lib/types";
 import { FORMAS_PLANTA } from "@/data/formasPlanta";
 import { promises as fs } from "fs";
 import { randomUUID } from "crypto";
@@ -44,6 +44,8 @@ export async function GET() {
 
 /** Lo que puede llegar del taller (todo opcional: la validación es la de abajo). */
 interface ItemIn {
+  traducciones?: Tea["traducciones"];
+  nombres?: Plant["nombres"];
   id?: string;
   latin?: string; color?: string; color2?: string; forma?: string;
   nombre?: string; sala?: string; precio?: number | string; gramos?: number | string;
@@ -78,6 +80,7 @@ async function publicar(req: Request) {
     if (item.foto && !/^\/(?:api\/imagen|fotos)\/[a-zA-Z0-9_.-]+$/.test(item.foto))
       return NextResponse.json({ error: "Foto no válida" }, { status: 400 });
     if (d.teas.length >= MAX_ITEMS && !d.teas.some((tea) => tea.id === id)) return NextResponse.json({ error: "demasiados tés publicados" }, { status: 409 });
+    const translations = item.traducciones ?? d.teas.find((tea) => tea.id === id)?.traducciones;
     const t = {
       id, nombre: txt(item.nombre, 120), editado: true,
       sala: item.sala === "te-premium" ? "te-premium" : "te",
@@ -85,6 +88,11 @@ async function publicar(req: Request) {
       paraQueSirve: txt(item.paraQueSirve), colorHoja: /^#[0-9a-fA-F]{3,8}$/.test(String(item.colorHoja)) ? item.colorHoja : "#C9B36A",
       ...(item.foto ? { foto: String(item.foto) } : {}),
       plantas: item.plantas.map((planta) => ({ plantaId: planta.plantaId, porQueEnEsteMix: txt(planta.porQueEnEsteMix) })),
+      traducciones: Object.fromEntries((["en", "sl"] as const).map((lang) => [lang, {
+        nombre: txt(typeof translations?.[lang]?.nombre === "string" ? translations[lang].nombre : "", 120),
+        paraQueSirve: txt(typeof translations?.[lang]?.paraQueSirve === "string" ? translations[lang].paraQueSirve : ""),
+        plantas: Object.fromEntries(item.plantas!.map((plant) => [plant.plantaId, txt(typeof translations?.[lang]?.plantas?.[plant.plantaId!] === "string" ? translations[lang].plantas[plant.plantaId!] : "")])),
+      }])),
     };
     d.teas = d.teas.filter((x: { id: string }) => x.id !== t.id).concat(t);
   } else if (tipo === "plant") {
@@ -94,7 +102,10 @@ async function publicar(req: Request) {
       return NextResponse.json({ error: "Revisa nombre, forma y colores de la planta" }, { status: 400 });
     if ((d.plants?.length ?? 0) >= MAX_ITEMS && !d.plants?.some((plant) => plant.id === id))
       return NextResponse.json({ error: "Demasiadas plantas" }, { status: 409 });
-    const plant: Plant = { id, nombre: txt(item.nombre, 120), latin: txt(item.latin, 120), color: item.color!, color2: item.color2!, forma: item.forma as Plant["forma"] };
+    const plant: Plant = { id, nombre: txt(item.nombre, 120), latin: txt(item.latin, 120), color: item.color!, color2: item.color2!, forma: item.forma as Plant["forma"], nombres: {
+      en: txt(typeof item.nombres?.en === "string" ? item.nombres.en : "", 120),
+      sl: txt(typeof item.nombres?.sl === "string" ? item.nombres.sl : "", 120),
+    } };
     d.plants = [...(d.plants ?? []).filter((known) => known.id !== id), plant];
   } else if (tipo === "extra") {
     if (!item?.nombre || !item?.procedencia)

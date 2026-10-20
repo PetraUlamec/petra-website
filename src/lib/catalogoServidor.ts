@@ -5,13 +5,19 @@
 // servidor, que es quien tiene que decidir el precio.
 import path from "path";
 import { leerJSON } from "./jsonSeguro";
-import type { Tea, Extra } from "./types";
+import type { Tea, Extra, Plant } from "./types";
+import { TEAS } from "@/data/teas";
 
 const FICHERO = path.join(process.cwd(), "data", "catalogo-vivo.json");
 
-export interface CatalogoVivo { teas: Tea[]; extras: Extra[] }
+export interface CatalogoVivo { teas: Tea[]; extras: Extra[]; plants?: Plant[] }
 
 export async function catalogoVivo(): Promise<CatalogoVivo> {
   const d = await leerJSON<Partial<CatalogoVivo>>(FICHERO, {}, true);
-  return { teas: Array.isArray(d.teas) ? d.teas : [], extras: Array.isArray(d.extras) ? d.extras : [] };
+  return { teas: Array.isArray(d.teas) ? d.teas : [], extras: Array.isArray(d.extras) ? d.extras : [], plants: Array.isArray(d.plants) ? d.plants : [] };
+}
+
+export async function tesPublicados(): Promise<Tea[]> {
+  const live = await catalogoVivo();
+  return [...new Map([...TEAS, ...live.teas].map((tea) => [tea.id, tea])).values()];
 }

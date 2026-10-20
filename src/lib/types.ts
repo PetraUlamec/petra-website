@@ -27,6 +27,11 @@ export interface TeaPlant {
 }
 
 export interface Tea {
+  traducciones?: Partial<Record<"en" | "sl", {
+    nombre?: string;
+    paraQueSirve?: string;
+    plantas?: Record<string, string>;
+  }>>;
   editado?: boolean;
   id: string;
   nombre: string;

@@ -40,7 +40,11 @@ export function LangProvider({ children }: { children: ReactNode }) {
     const preview = window.parent !== window && new URLSearchParams(location.search).get("studio") === "1";
     let active = true;
     const receive = (event: MessageEvent) => {
-      if (preview && event.origin === location.origin && event.source === window.parent && event.data?.type === "petra-studio-preview" && Array.isArray(event.data.catalog?.teas)) cargarVivo().then(() => { if (active) setVivo(event.data.catalog); });
+      if (preview && event.origin === location.origin && event.source === window.parent && event.data?.type === "petra-studio-preview" && Array.isArray(event.data.catalog?.teas)) cargarVivo().then(() => {
+        if (!active) return;
+        setVivo(event.data.catalog);
+        if (["es", "en", "sl"].includes(event.data.lang)) setLangState(event.data.lang);
+      });
     };
     if (preview) {
       window.addEventListener("message", receive);

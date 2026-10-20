@@ -25,7 +25,29 @@
           "plantaId": "melisa",
           "porQueEnEsteMix": "Redondea el sabor y desata el nudo del pecho cuando el día ha sido largo."
         }
-      ]
+      ],
+      "traducciones": {
+        "en": {
+          "nombre": "Forest Sleep",
+          "paraQueSirve": "For the last hour of the day: it loosens the body and turns down the noise in your head before sleep.",
+          "plantas": {
+            "manzanilla": "Here it is the base that settles a nervous bedtime stomach, so the body stops asking for attention.",
+            "tila": "It softens the racing pulse of the day's end; it is what lets sleep arrive without a fight.",
+            "lavanda": "Just a pinch, only for its scent: it tells the mind there is nothing left to solve today.",
+            "melisa": "It rounds off the flavour and unties the knot in the chest after a long day."
+          }
+        },
+        "sl": {
+          "nombre": "Gozdni sen",
+          "paraQueSirve": "Za zadnjo uro dneva: sprosti telo in utiša misli pred spanjem.",
+          "plantas": {
+            "manzanilla": "Tu je osnova, ki pomiri živčen želodec pred spanjem, da telo neha zahtevati pozornost.",
+            "tila": "Umiri pospešen utrip ob koncu dneva; prav ona pripelje spanec brez boja.",
+            "lavanda": "Le ščepec, samo zaradi vonja: glavi pove, da danes ni treba rešiti ničesar več.",
+            "melisa": "Zaokroži okus in razveže vozel v prsih, kadar je bil dan dolg."
+          }
+        }
+      }
     },
     {
       "id": "manana-clara",
@@ -48,7 +70,27 @@
           "plantaId": "hierbaluisa",
           "porQueEnEsteMix": "Pone el toque de limón que hace la mezcla fresca en vez de amarga."
         }
-      ]
+      ],
+      "traducciones": {
+        "en": {
+          "nombre": "Clear Morning",
+          "paraQueSirve": "Waking up without coffee: it clears the head and gets you going without a sudden jolt.",
+          "plantas": {
+            "menta": "The morning's kindest slap: it opens the breath and wakes you from the very first sip.",
+            "romero": "In this mix it serves first-hour memory, when the head is still starting cold.",
+            "hierbaluisa": "It brings the lemon touch that makes the blend fresh instead of bitter."
+          }
+        },
+        "sl": {
+          "nombre": "Jasno jutro",
+          "paraQueSirve": "Prebujanje brez kave: zbistri glavo in te požene brez sunka.",
+          "plantas": {
+            "menta": "Prijazna jutranja zaušnica: odpre dih in prebudi že s prvim požirkom.",
+            "romero": "V tej mešanici skrbi za spomin ob prvi uri, ko glava še vžiga na hladno.",
+            "hierbaluisa": "Doda limonin pridih, zaradi katerega je mešanica sveža, ne grenka."
+          }
+        }
+      }
     },
     {
       "id": "estomago-contento",
@@ -75,7 +117,29 @@
           "plantaId": "manzanilla",
           "porQueEnEsteMix": "En este mix va de escolta: calma el ardor cuando la comida fue más abundante que la prudencia."
         }
-      ]
+      ],
+      "traducciones": {
+        "en": {
+          "nombre": "Happy Belly",
+          "paraQueSirve": "After eating too much or too late: it helps digestion and eases the bloat.",
+          "plantas": {
+            "hinojo": "The one that truly works against bloating after a big plate; that is why it takes the largest share.",
+            "anis": "It keeps the fennel company and sweetens the sip without sugar: the after-meal hour turns gentle.",
+            "menta": "Here it does not wake you: it freshens the mouth and settles a heavy stomach.",
+            "manzanilla": "In this mix it rides escort: it calms the burn when dinner was bigger than prudence."
+          }
+        },
+        "sl": {
+          "nombre": "Zadovoljen želodec",
+          "paraQueSirve": "Po preobilni ali pozni jedi: pomaga prebavi in odpravi napihnjenost.",
+          "plantas": {
+            "hinojo": "Tisti, ki po obilnem krožniku zares dela proti napihnjenosti; zato ga je v mešanici največ.",
+            "anis": "Dela družbo komarčku in brez sladkorja osladi požirek: ura po kosilu postane prijazna.",
+            "menta": "Tu ne prebuja: osveži usta in umiri težek želodec.",
+            "manzanilla": "V tej mešanici je spremljevalka: pomiri zgago, kadar je bila jed obilnejša od pameti."
+          }
+        }
+      }
     },
     {
       "id": "garganta-de-invierno",
@@ -102,7 +166,29 @@
           "plantaId": "regaliz",
           "porQueEnEsteMix": "Endulza y suaviza la garganta irritada; es la capa de miel de esta mezcla, sin miel."
         }
-      ]
+      ],
+      "traducciones": {
+        "en": {
+          "nombre": "Winter Throat",
+          "paraQueSirve": "For cold days, a scratchy voice and a blocked nose.",
+          "plantas": {
+            "tomillo": "The guardian of the chest: it is here for the cough and for that throat that scratches when you speak.",
+            "jengibre": "It lights the fire inside; in this mix its heat is the winter coat.",
+            "escaramujo": "The wild rose's vitamin: it reinforces just when the body is busy defending itself.",
+            "regaliz": "It sweetens and soothes an irritated throat; the honey layer of this blend, with no honey in it."
+          }
+        },
+        "sl": {
+          "nombre": "Zimsko grlo",
+          "paraQueSirve": "Za mrzle dni, hripav glas in zamašen nos.",
+          "plantas": {
+            "tomillo": "Varuh prsi: tu je zaradi kašlja in grla, ki praska ob govorjenju.",
+            "jengibre": "Prižge ogenj v telesu; v tej mešanici je njegova ostrina topel plašč.",
+            "escaramujo": "Vitamin divje vrtnice: okrepi ravno takrat, ko se telo brani.",
+            "regaliz": "Osladi in pomiri razdraženo grlo; medena plast te mešanice, čeprav brez medu."
+          }
+        }
+      }
     },
     {
       "id": "tarde-en-calma",
@@ -125,7 +211,27 @@
           "plantaId": "salvia",
           "porQueEnEsteMix": "Sostiene el ánimo parejo y evita que la calma se vuelva modorra."
         }
-      ]
+      ],
+      "traducciones": {
+        "en": {
+          "nombre": "Calm Afternoon",
+          "paraQueSirve": "For the small anxiety of mid-afternoon: carry on with the day, only lighter.",
+          "plantas": {
+            "melisa": "Here she is the lead: she turns down the hum without making you sleepy — there is still day ahead.",
+            "azahar": "Orange blossom brings the comfort: it smells like everything will turn out fine.",
+            "salvia": "It keeps the mood even and stops calm from turning into drowsiness."
+          }
+        },
+        "sl": {
+          "nombre": "Mirno popoldne",
+          "paraQueSirve": "Za drobno popoldansko tesnobo: dan teče naprej, a lažje.",
+          "plantas": {
+            "melisa": "Tu je glavna: utiša notranji šum, ne da bi uspavala — dneva je še nekaj pred nami.",
+            "azahar": "Pomarančni cvet doda tolažbo: diši po tem, da bo vse še dobro.",
+            "salvia": "Drži razpoloženje v ravnovesju in pazi, da mir ne postane dremavost."
+          }
+        }
+      }
     },
     {
       "id": "monte-limpio",
@@ -148,7 +254,27 @@
           "plantaId": "menta",
           "porQueEnEsteMix": "En esta mezcla es puro sabor: sin ella, el barrido sabría a campo mojado."
         }
-      ]
+      ],
+      "traducciones": {
+        "en": {
+          "nombre": "Mountain Sweep",
+          "paraQueSirve": "The seasonal cleanse: for when the body asks for a good sweep.",
+          "plantas": {
+            "ortiga": "The broom of the mix: here for its fame of cleaning from within and remineralising.",
+            "colacaballo": "It joins the nettle by pulling out the excess water; together they finish the sweep.",
+            "menta": "In this blend it is pure flavour: without it, the sweep would taste of wet field."
+          }
+        },
+        "sl": {
+          "nombre": "Gorska metla",
+          "paraQueSirve": "Sezonsko čiščenje: za takrat, ko telo prosi za temeljito metlo.",
+          "plantas": {
+            "ortiga": "Metla te mešanice: tu je zaradi slovesa, da čisti od znotraj in vrača minerale.",
+            "colacaballo": "Koprivi pomaga odvajati odvečno vodo; skupaj pometeta do konca.",
+            "menta": "V tej mešanici je čisti okus: brez nje bi imelo čiščenje okus po mokri travi."
+          }
+        }
+      }
     },
     {
       "id": "abrazo-de-frutas",
@@ -175,7 +301,29 @@
           "plantaId": "canela",
           "porQueEnEsteMix": "Media vuelta de canela para que la fruta sepa a tarta y no a zumo."
         }
-      ]
+      ],
+      "traducciones": {
+        "en": {
+          "nombre": "Fruit Hug",
+          "paraQueSirve": "The tea for people who did not want tea: fruity, reddish, loved by children and guests.",
+          "plantas": {
+            "escaramujo": "Here it brings the body and the reddish colour of the glass; it is the fruit of this cup.",
+            "frambuesa": "The raspberry leaf lays the green base that keeps it from cloying.",
+            "rosa": "The petals are the jar's smile: they perfume it and make it beautiful to open.",
+            "canela": "Half a turn of cinnamon so the fruit tastes of pie, not of juice."
+          }
+        },
+        "sl": {
+          "nombre": "Sadni objem",
+          "paraQueSirve": "Čaj za tiste, ki čaja niso hoteli: saden, rdečkast, všeč otrokom in gostom.",
+          "plantas": {
+            "escaramujo": "Tu prispeva polnost in rdečkasto barvo kozarca; on je sadje te skodelice.",
+            "frambuesa": "Malinov list da zeleno osnovo, da mešanica ni presladka.",
+            "rosa": "Cvetni listi so nasmeh kozarca: odišavijo ga in polepšajo ob odprtju.",
+            "canela": "Pol obrata cimeta, da ima sadje okus po piti, ne po soku."
+          }
+        }
+      }
     },
     {
       "id": "respiro-de-sauco",
@@ -198,7 +346,27 @@
           "plantaId": "hierbaluisa",
           "porQueEnEsteMix": "Su limón fresco despeja la nariz por el aroma antes que el trago."
         }
-      ]
+      ],
+      "traducciones": {
+        "en": {
+          "nombre": "Elderflower Breath",
+          "paraQueSirve": "For springs full of sneezes and dripping noses.",
+          "plantas": {
+            "saúco": "Elderflower is the key here: the old remedy for spring colds.",
+            "escaramujo": "In this mix it backs the defences while the elderflower does its work.",
+            "hierbaluisa": "Its fresh lemon clears the nose by scent before the sip even lands."
+          }
+        },
+        "sl": {
+          "nombre": "Bezgov predih",
+          "paraQueSirve": "Za pomladi kihanja in smrkavih nosov.",
+          "plantas": {
+            "saúco": "Bezgov cvet je tu ključ: od nekdaj prvi pri pomladnih prehladih.",
+            "escaramujo": "V tej mešanici podpira odpornost, medtem ko bezeg opravlja svoje delo.",
+            "hierbaluisa": "Njena sveža limona odmaši nos že z vonjem, še pred požirkom."
+          }
+        }
+      }
     },
     {
       "id": "oro-de-otono",
@@ -225,7 +393,29 @@
           "plantaId": "calendula",
           "porQueEnEsteMix": "Sus pétalos naranjas son el oro visible del nombre: se sirven en la taza."
         }
-      ]
+      ],
+      "traducciones": {
+        "en": {
+          "nombre": "Autumn Gold",
+          "paraQueSirve": "The house reserve: rooibos and noble spices, the cup for special occasions.",
+          "plantas": {
+            "rooibos": "South African rooibos is the silk of this mix: sweet body and not a drop of caffeine.",
+            "cardamomo": "Hand-crushed at packing: here it is the luxury you smell before the water even boils.",
+            "canela": "Ceylon cinnamon in sticks, not ground: in this blend elegance rules, not sweetness.",
+            "calendula": "Its orange petals are the visible gold of the name: they are served right in the cup."
+          }
+        },
+        "sl": {
+          "nombre": "Jesensko zlato",
+          "paraQueSirve": "Hišna rezerva: rooibos in žlahtne začimbe, skodelica za posebne priložnosti.",
+          "plantas": {
+            "rooibos": "Južnoafriški rooibos je svila te mešanice: sladka polnost in niti kaplje teina.",
+            "cardamomo": "Ročno strt ob pakiranju: tu je razkošje, ki ga zavohaš, še preden zavre voda.",
+            "canela": "Cejlonski cimet v palčkah, ne mlet: v tej mešanici vlada eleganca, ne sladkost.",
+            "calendula": "Njeni oranžni cvetni listi so vidno zlato imena: postrežejo se kar v skodelici."
+          }
+        }
+      }
     },
     {
       "id": "jardin-de-petra",
@@ -252,7 +442,29 @@
           "plantaId": "calendula",
           "porQueEnEsteMix": "La caléndula guarda el color del verano para las tazas de enero."
         }
-      ]
+      ],
+      "traducciones": {
+        "en": {
+          "nombre": "Petra's Garden",
+          "paraQueSirve": "The mix that started it all: flowers from the home garden, in small numbered harvests.",
+          "plantas": {
+            "rosa": "The roses come from the bush Petra's grandmother planted: every petal dries in the shade, never in the sun.",
+            "lavanda": "The lavender by the front door: here it does not help you sleep, it helps you remember.",
+            "melisa": "It grows on its own by the well; the freshness that keeps the garden from cloying.",
+            "calendula": "Calendula keeps the colour of summer for the cups of January."
+          }
+        },
+        "sl": {
+          "nombre": "Petrin vrt",
+          "paraQueSirve": "Mešanica, s katero se je vse začelo: cvetje z domačega vrta, v majhnih oštevilčenih letinah.",
+          "plantas": {
+            "rosa": "Vrtnice so z grma, ki ga je posadila Petrina babica: vsak cvetni list se suši v senci, nikoli na soncu.",
+            "lavanda": "Sivka ob domačem vhodu: tu ne pomaga spati, pomaga, da se spominjaš.",
+            "melisa": "Sama raste ob vodnjaku; svežina, da vrt ne postane presladek.",
+            "calendula": "Ognjič hrani barvo poletja za januarske skodelice."
+          }
+        }
+      }
     },
     {
       "id": "raiz-y-fuego",
@@ -279,7 +491,29 @@
           "plantaId": "regaliz",
           "porQueEnEsteMix": "El final dulce de cada sorbo, para que el fuego despida bien."
         }
-      ]
+      ],
+      "traducciones": {
+        "en": {
+          "nombre": "Root & Fire",
+          "paraQueSirve": "The house chai: roots and spices for those who want a cup with character.",
+          "plantas": {
+            "jengibre": "Here the ginger does not warm you: it COMMANDS. Cut thick so the fire lasts the whole cup.",
+            "canela": "In this mix it is firewood for the ginger's flame, not perfume.",
+            "cardamomo": "The green counterpoint that keeps the fire from burning: order within character.",
+            "regaliz": "The sweet finish of every sip, so the fire says a proper goodbye."
+          }
+        },
+        "sl": {
+          "nombre": "Korenina in ogenj",
+          "paraQueSirve": "Hišni chai: korenine in začimbe za tiste, ki hočejo skodelico z značajem.",
+          "plantas": {
+            "jengibre": "Tu ingver ne greje: UKAZUJE. Narezan na debelo, da ogenj traja vso skodelico.",
+            "canela": "V tej mešanici je kurjava za ingverjev ogenj, ne parfum.",
+            "cardamomo": "Zelena protiutež, da ogenj ne ožge: red znotraj značaja.",
+            "regaliz": "Sladek zaključek vsakega požirka, da se ogenj lepo poslovi."
+          }
+        }
+      }
     },
     {
       "id": "niebla-blanca",
@@ -302,7 +536,27 @@
           "plantaId": "tila",
           "porQueEnEsteMix": "La tila da el fondo sedoso; es el silencio de esta taza."
         }
-      ]
+      ],
+      "traducciones": {
+        "en": {
+          "nombre": "White Mist",
+          "paraQueSirve": "The most delicate of the house: pale flowers to drink slowly and in silence.",
+          "plantas": {
+            "azahar": "Orange blossom is the mist of the name: picked at dawn, before the sun grows heavy.",
+            "saúco": "Here the elderflower cures no colds: it brings the white-pear note that holds up the orange blossom.",
+            "tila": "Linden lays the silky base; it is the silence of this cup."
+          }
+        },
+        "sl": {
+          "nombre": "Bela megla",
+          "paraQueSirve": "Najnežnejši v hiši: bledo cvetje za počasno pitje v tišini.",
+          "plantas": {
+            "azahar": "Pomarančni cvet je megla iz imena: nabran ob zori, ko sonce še ne teži.",
+            "saúco": "Tu bezeg ne zdravi prehladov: doda noto bele hruške, ki podpira pomarančni cvet.",
+            "tila": "Lipa da svilnato osnovo; ona je tišina te skodelice."
+          }
+        }
+      }
     },
     {
       "id": "vispera-de-fiesta",
@@ -329,7 +583,29 @@
           "plantaId": "jengibre",
           "porQueEnEsteMix": "Un fondo picante muy leve, el secreto que hace preguntar «¿qué lleva?»."
         }
-      ]
+      ],
+      "traducciones": {
+        "en": {
+          "nombre": "Festive Eve",
+          "paraQueSirve": "Made for gifting: the jar you open at the table and everyone goes ooh.",
+          "plantas": {
+            "escaramujo": "The deep red of the brew: on the table it looks like spiced wine.",
+            "rosa": "Whole petals, never broken: this jar is bought as much for the eyes as for the cup.",
+            "canela": "The festive scent when the lid lifts: the gift's first impression.",
+            "jengibre": "A very light spicy base, the secret that makes people ask “what is in this?”."
+          }
+        },
+        "sl": {
+          "nombre": "Praznični predvečer",
+          "paraQueSirve": "Za darilo: kozarec, ki ga odpreš na mizi in vsi rečejo ooo.",
+          "plantas": {
+            "escaramujo": "Globoka rdečina napitka: na mizi je videti kot kuhano vino.",
+            "rosa": "Celi cvetni listi, ne zdrobljeni: ta kozarec se kupuje z očmi prav toliko kot s skodelico.",
+            "canela": "Praznični vonj ob dvigu pokrova: prvi vtis darila.",
+            "jengibre": "Čisto rahla pikantnost v ozadju, skrivnost, zaradi katere vsi vprašajo: »Kaj je notri?«"
+          }
+        }
+      }
     },
     {
       "id": "rubi-de-hibisco",
@@ -352,7 +628,27 @@
           "plantaId": "menta",
           "porQueEnEsteMix": "Aquí la menta es el hielo: el final fresco que pide el verano."
         }
-      ]
+      ],
+      "traducciones": {
+        "en": {
+          "nombre": "Hibiscus Ruby",
+          "paraQueSirve": "Deep red and freshly tart: served cold in summer, it is the jewel of the pitcher.",
+          "plantas": {
+            "hibisco": "Hibiscus brings the ruby: colour, tartness and freshness — the whole soul of this pitcher.",
+            "naranjaseca": "Dried orange rounds off the hibiscus tang with its toasted sweetness.",
+            "menta": "Here the mint is the ice: the cool finish summer asks for."
+          }
+        },
+        "sl": {
+          "nombre": "Hibiskusov rubin",
+          "paraQueSirve": "Živo rdeč in sveže kiselkast: hladen poleti je dragulj vrča.",
+          "plantas": {
+            "hibisco": "Hibiskus da rubin: barvo, kislino in svežino — on je vsa duša tega vrča.",
+            "naranjaseca": "Posušena pomaranča s svojo praženo sladkobo zaokroži hibiskusovo kislino.",
+            "menta": "Tu je meta led: svež zaključek, ki ga zahteva poletje."
+          }
+        }
+      }
     },
     {
       "id": "prado-azul",
@@ -375,7 +671,27 @@
           "plantaId": "melisa",
           "porQueEnEsteMix": "La melisa pone la brisa: sin ella el prado sería solo bonito, no tranquilo."
         }
-      ]
+      ],
+      "traducciones": {
+        "en": {
+          "nombre": "Blue Meadow",
+          "paraQueSirve": "For afternoons of reading by the window: little blue flowers and calm.",
+          "plantas": {
+            "aciano": "Cornflower paints the meadow blue right in the cup — and soothes eyes tired from reading.",
+            "malva": "Mallow is the velvet of this meadow: it softens throat and mood alike.",
+            "melisa": "Lemon balm brings the breeze: without it the meadow would be merely pretty, not peaceful."
+          }
+        },
+        "sl": {
+          "nombre": "Modri travnik",
+          "paraQueSirve": "Za popoldneve branja ob oknu: drobne modre cvetlice in mir.",
+          "plantas": {
+            "aciano": "Plavica v skodelici pobarva travnik na modro — in pomiri od branja utrujene oči.",
+            "malva": "Slez je žamet tega travnika: zmehča grlo in razpoloženje.",
+            "melisa": "Melisa prinese sapico: brez nje bi bil travnik le lep, ne miren."
+          }
+        }
+      }
     },
     {
       "id": "manzana-del-horno",
@@ -398,7 +714,27 @@
           "plantaId": "escaramujo",
           "porQueEnEsteMix": "El escaramujo pone el puntito ácido que evita el empalago de la tarta."
         }
-      ]
+      ],
+      "traducciones": {
+        "en": {
+          "nombre": "Baked Apple",
+          "paraQueSirve": "It tastes of apple pie fresh from the oven: the tea of Sunday teatime.",
+          "plantas": {
+            "manzanaseca": "The dried apple is the pie: baked-fruit sweetness without a pinch of sugar.",
+            "canela": "Here the cinnamon is the home-oven kind: the one that smells of Sunday afternoon.",
+            "escaramujo": "Rosehip adds the tiny tart note that keeps the pie from cloying."
+          }
+        },
+        "sl": {
+          "nombre": "Pečeno jabolko",
+          "paraQueSirve": "Ima okus po sveže pečeni jabolčni piti: čaj nedeljskih malic.",
+          "plantas": {
+            "manzanaseca": "Posušeno jabolko je pita: sladkost pečenega sadja brez ščepca sladkorja.",
+            "canela": "Tu je cimet tisti iz domače pečice: ta, ki diši po nedeljskem popoldnevu.",
+            "escaramujo": "Šipek doda drobno kislost, da pita ni presladka."
+          }
+        }
+      }
     },
     {
       "id": "bosque-de-invierno",
@@ -421,7 +757,27 @@
           "plantaId": "jengibre",
           "porQueEnEsteMix": "El jengibre es la lumbre esperando en casa al volver del bosque."
         }
-      ]
+      ],
+      "traducciones": {
+        "en": {
+          "nombre": "Winter Forest",
+          "paraQueSirve": "A walk through the snowy forest: resin, freshness and warmth.",
+          "plantas": {
+            "abeto": "The fir tips are the forest itself: fresh resin that opens the chest.",
+            "eucalipto": "Eucalyptus clears the walk's frozen nose — the scarf of this mix.",
+            "jengibre": "Ginger is the fire waiting at home when you come back from the forest."
+          }
+        },
+        "sl": {
+          "nombre": "Zimski gozd",
+          "paraQueSirve": "Sprehod po zasneženem gozdu: smola, svežina in toplina.",
+          "plantas": {
+            "abeto": "Jelovi vršički so gozd sam: sveža smola, ki odpre prsi.",
+            "eucalipto": "Evkaliptus odmaši od mraza zamašen nos — šal te mešanice.",
+            "jengibre": "Ingver je ogenj, ki te čaka doma po vrnitvi iz gozda."
+          }
+        }
+      }
     },
     {
       "id": "noche-de-reyes",
@@ -448,7 +804,29 @@
           "plantaId": "canela",
           "porQueEnEsteMix": "La canela une la comitiva: sin ella cada especia iría por su lado."
         }
-      ]
+      ],
+      "traducciones": {
+        "en": {
+          "nombre": "Twelfth Night",
+          "paraQueSirve": "The rarest reserve of the house: Thai black ginger and spices of legend.",
+          "plantas": {
+            "jengibrenegro": "Black ginger is the dark jewel: rare, deep, almost mysterious — it goes in this jar only.",
+            "cardamomo": "Cardamom escorts the dark king with its green perfume.",
+            "curcuma": "Turmeric gilds the cup: the kings' gold at the bottom.",
+            "canela": "Cinnamon binds the procession: without it every spice would go its own way."
+          }
+        },
+        "sl": {
+          "nombre": "Noč kraljev",
+          "paraQueSirve": "Najredkejša rezerva hiše: tajski črni ingver in legendarne začimbe.",
+          "plantas": {
+            "jengibrenegro": "Črni ingver je temni dragulj: redek, globok, skoraj skrivnosten — samo v tem kozarcu.",
+            "cardamomo": "Kardamom spremlja temnega kralja s svojim zelenim vonjem.",
+            "curcuma": "Kurkuma pozlati skodelico: zlato kraljev na dnu.",
+            "canela": "Cimet poveže sprevod: brez njega bi šla vsaka začimba svojo pot."
+          }
+        }
+      }
     },
     {
       "id": "colina-de-brezo",
@@ -471,7 +849,27 @@
           "plantaId": "verbena",
           "porQueEnEsteMix": "La verbena pone el atardecer: cierra el sorbo con calma lila."
         }
-      ]
+      ],
+      "traducciones": {
+        "en": {
+          "nombre": "Heather Hill",
+          "paraQueSirve": "The pink hills of the north in bloom: delicate, wild, to be drunk slowly.",
+          "plantas": {
+            "brezo": "Heather is the whole hill: hand-picked when the moor turns pink.",
+            "hiperico": "St John's wort brings the sun that gilds those hills — the joy of the mix.",
+            "verbena": "Vervain brings the dusk: it closes the sip with lilac calm."
+          }
+        },
+        "sl": {
+          "nombre": "Vresov grič",
+          "paraQueSirve": "Rožnati griči severa v cvetju: nežen, divji, za počasno pitje.",
+          "plantas": {
+            "brezo": "Vresa je ves grič: ročno nabrana, ko se pobočja obarvajo rožnato.",
+            "hiperico": "Šentjanževka prinese sonce, ki pozlati te griče — veselje te mešanice.",
+            "verbena": "Sporiš doda večerni mrak: požirek zaključi z lila mirom."
+          }
+        }
+      }
     }
   ],
   "plants": [
@@ -481,7 +879,11 @@
       "latin": "Matricaria chamomilla",
       "color": "#ffffff",
       "color2": "#f2c94c",
-      "forma": "margarita"
+      "forma": "margarita",
+      "nombres": {
+        "en": "Chamomile",
+        "sl": "Kamilica"
+      }
     },
     {
       "id": "melisa",
@@ -489,7 +891,11 @@
       "latin": "Melissa officinalis",
       "color": "#9dbb61",
       "color2": "#7a9a4a",
-      "forma": "hoja"
+      "forma": "hoja",
+      "nombres": {
+        "en": "Lemon balm",
+        "sl": "Melisa"
+      }
     },
     {
       "id": "tila",
@@ -497,7 +903,11 @@
       "latin": "Tilia cordata",
       "color": "#e5e0b0",
       "color2": "#a9bd7a",
-      "forma": "tallo"
+      "forma": "tallo",
+      "nombres": {
+        "en": "Linden blossom",
+        "sl": "Lipovo cvetje"
+      }
     },
     {
       "id": "lavanda",
@@ -505,7 +915,11 @@
       "latin": "Lavandula angustifolia",
       "color": "#8d79c9",
       "color2": "#8fa382",
-      "forma": "espiga"
+      "forma": "espiga",
+      "nombres": {
+        "en": "Lavender",
+        "sl": "Sivka"
+      }
     },
     {
       "id": "menta",
@@ -513,7 +927,11 @@
       "latin": "Mentha × piperita",
       "color": "#4f9e64",
       "color2": "#3d7d4e",
-      "forma": "hoja"
+      "forma": "hoja",
+      "nombres": {
+        "en": "Peppermint",
+        "sl": "Poprova meta"
+      }
     },
     {
       "id": "hinojo",
@@ -521,7 +939,11 @@
       "latin": "Foeniculum vulgare",
       "color": "#e8d35f",
       "color2": "#9db76a",
-      "forma": "umbela"
+      "forma": "umbela",
+      "nombres": {
+        "en": "Fennel",
+        "sl": "Komarček"
+      }
     },
     {
       "id": "anis",
@@ -529,7 +951,11 @@
       "latin": "Pimpinella anisum",
       "color": "#f0ead0",
       "color2": "#b8c48a",
-      "forma": "umbela"
+      "forma": "umbela",
+      "nombres": {
+        "en": "Anise",
+        "sl": "Janež"
+      }
     },
     {
       "id": "jengibre",
@@ -537,7 +963,11 @@
       "latin": "Zingiber officinale",
       "color": "#d9a44c",
       "color2": "#c08a35",
-      "forma": "rizoma"
+      "forma": "rizoma",
+      "nombres": {
+        "en": "Ginger",
+        "sl": "Ingver"
+      }
     },
     {
       "id": "escaramujo",
@@ -545,7 +975,11 @@
       "latin": "Rosa canina",
       "color": "#c7402e",
       "color2": "#6f8f5a",
-      "forma": "baya"
+      "forma": "baya",
+      "nombres": {
+        "en": "Rosehip",
+        "sl": "Šipek"
+      }
     },
     {
       "id": "saúco",
@@ -553,7 +987,11 @@
       "latin": "Sambucus nigra",
       "color": "#f6efd8",
       "color2": "#87a066",
-      "forma": "umbela"
+      "forma": "umbela",
+      "nombres": {
+        "en": "Elderflower",
+        "sl": "Bezgov cvet"
+      }
     },
     {
       "id": "tomillo",
@@ -561,7 +999,11 @@
       "latin": "Thymus vulgaris",
       "color": "#b9a0c9",
       "color2": "#7e8f68",
-      "forma": "aguja"
+      "forma": "aguja",
+      "nombres": {
+        "en": "Thyme",
+        "sl": "Timijan"
+      }
     },
     {
       "id": "salvia",
@@ -569,7 +1011,11 @@
       "latin": "Salvia officinalis",
       "color": "#a7b7a0",
       "color2": "#8ba184",
-      "forma": "hoja"
+      "forma": "hoja",
+      "nombres": {
+        "en": "Sage",
+        "sl": "Žajbelj"
+      }
     },
     {
       "id": "ortiga",
@@ -577,7 +1023,11 @@
       "latin": "Urtica dioica",
       "color": "#57804f",
       "color2": "#436a3d",
-      "forma": "hoja"
+      "forma": "hoja",
+      "nombres": {
+        "en": "Nettle",
+        "sl": "Kopriva"
+      }
     },
     {
       "id": "colacaballo",
@@ -585,7 +1035,11 @@
       "latin": "Equisetum arvense",
       "color": "#6f8f5a",
       "color2": "#5a7a48",
-      "forma": "tallo"
+      "forma": "tallo",
+      "nombres": {
+        "en": "Horsetail",
+        "sl": "Njivska preslica"
+      }
     },
     {
       "id": "romero",
@@ -593,7 +1047,11 @@
       "latin": "Rosmarinus officinalis",
       "color": "#7c9484",
       "color2": "#5f7a68",
-      "forma": "aguja"
+      "forma": "aguja",
+      "nombres": {
+        "en": "Rosemary",
+        "sl": "Rožmarin"
+      }
     },
     {
       "id": "hierbaluisa",
@@ -601,7 +1059,11 @@
       "latin": "Aloysia citrodora",
       "color": "#b5ce7c",
       "color2": "#8fb35a",
-      "forma": "hoja"
+      "forma": "hoja",
+      "nombres": {
+        "en": "Lemon verbena",
+        "sl": "Limonska verbena"
+      }
     },
     {
       "id": "calendula",
@@ -609,7 +1071,11 @@
       "latin": "Calendula officinalis",
       "color": "#f0942e",
       "color2": "#d97a1f",
-      "forma": "margarita"
+      "forma": "margarita",
+      "nombres": {
+        "en": "Calendula",
+        "sl": "Ognjič"
+      }
     },
     {
       "id": "rooibos",
@@ -617,7 +1083,11 @@
       "latin": "Aspalathus linearis",
       "color": "#b4552d",
       "color2": "#94421f",
-      "forma": "aguja"
+      "forma": "aguja",
+      "nombres": {
+        "en": "Rooibos",
+        "sl": "Rooibos"
+      }
     },
     {
       "id": "canela",
@@ -625,7 +1095,11 @@
       "latin": "Cinnamomum verum",
       "color": "#a96a3b",
       "color2": "#8a5028",
-      "forma": "corteza"
+      "forma": "corteza",
+      "nombres": {
+        "en": "Ceylon cinnamon",
+        "sl": "Cejlonski cimet"
+      }
     },
     {
       "id": "cardamomo",
@@ -633,7 +1107,11 @@
       "latin": "Elettaria cardamomum",
       "color": "#9fb56e",
       "color2": "#7e9a52",
-      "forma": "vaina"
+      "forma": "vaina",
+      "nombres": {
+        "en": "Cardamom",
+        "sl": "Kardamom"
+      }
     },
     {
       "id": "rosa",
@@ -641,7 +1119,11 @@
       "latin": "Rosa damascena",
       "color": "#d98a9e",
       "color2": "#b56a7e",
-      "forma": "petalos"
+      "forma": "petalos",
+      "nombres": {
+        "en": "Rose petals",
+        "sl": "Cvetni listi vrtnice"
+      }
     },
     {
       "id": "azahar",
@@ -649,7 +1131,11 @@
       "latin": "Citrus aurantium",
       "color": "#f8f2dd",
       "color2": "#7fa060",
-      "forma": "flor5"
+      "forma": "flor5",
+      "nombres": {
+        "en": "Orange blossom",
+        "sl": "Pomarančni cvet"
+      }
     },
     {
       "id": "regaliz",
@@ -657,7 +1143,11 @@
       "latin": "Glycyrrhiza glabra",
       "color": "#8c7350",
       "color2": "#6f5a3d",
-      "forma": "raiz"
+      "forma": "raiz",
+      "nombres": {
+        "en": "Licorice root",
+        "sl": "Sladki koren"
+      }
     },
     {
       "id": "frambuesa",
@@ -665,7 +1155,11 @@
       "latin": "Rubus idaeus",
       "color": "#7e9e62",
       "color2": "#63834c",
-      "forma": "hoja"
+      "forma": "hoja",
+      "nombres": {
+        "en": "Raspberry leaf",
+        "sl": "Malinov list"
+      }
     },
     {
       "id": "hibisco",
@@ -673,7 +1167,11 @@
       "latin": "Hibiscus sabdariffa",
       "color": "#b3243c",
       "color2": "#7e9e62",
-      "forma": "caliz"
+      "forma": "caliz",
+      "nombres": {
+        "en": "Hibiscus",
+        "sl": "Hibiskus"
+      }
     },
     {
       "id": "jazmin",
@@ -681,7 +1179,11 @@
       "latin": "Jasminum officinale",
       "color": "#f8f4e6",
       "color2": "#7fa060",
-      "forma": "flor5"
+      "forma": "flor5",
+      "nombres": {
+        "en": "Jasmine",
+        "sl": "Jasmin"
+      }
     },
     {
       "id": "verbena",
@@ -689,7 +1191,11 @@
       "latin": "Verbena officinalis",
       "color": "#c1a8d9",
       "color2": "#8fa382",
-      "forma": "espiga"
+      "forma": "espiga",
+      "nombres": {
+        "en": "Vervain",
+        "sl": "Sporiš"
+      }
     },
     {
       "id": "amapola",
@@ -697,7 +1203,11 @@
       "latin": "Papaver rhoeas",
       "color": "#d0342c",
       "color2": "#6f8f5a",
-      "forma": "flor5"
+      "forma": "flor5",
+      "nombres": {
+        "en": "Poppy",
+        "sl": "Poljski mak"
+      }
     },
     {
       "id": "aciano",
@@ -705,7 +1215,11 @@
       "latin": "Centaurea cyanus",
       "color": "#4a6fd9",
       "color2": "#8ba184",
-      "forma": "margarita"
+      "forma": "margarita",
+      "nombres": {
+        "en": "Cornflower",
+        "sl": "Plavica"
+      }
     },
     {
       "id": "naranjaseca",
@@ -713,7 +1227,11 @@
       "latin": "Citrus sinensis",
       "color": "#e08a2e",
       "color2": "#c9701f",
-      "forma": "citrico"
+      "forma": "citrico",
+      "nombres": {
+        "en": "Dried orange",
+        "sl": "Posušena pomaranča"
+      }
     },
     {
       "id": "manzanaseca",
@@ -721,7 +1239,11 @@
       "latin": "Malus domestica",
       "color": "#c9a26a",
       "color2": "#a8875a",
-      "forma": "fruta-seca"
+      "forma": "fruta-seca",
+      "nombres": {
+        "en": "Dried apple",
+        "sl": "Posušeno jabolko"
+      }
     },
     {
       "id": "curcuma",
@@ -729,7 +1251,11 @@
       "latin": "Curcuma longa",
       "color": "#e0921f",
       "color2": "#c9791a",
-      "forma": "rizoma"
+      "forma": "rizoma",
+      "nombres": {
+        "en": "Turmeric",
+        "sl": "Kurkuma"
+      }
     },
     {
       "id": "jengibrenegro",
@@ -737,7 +1263,11 @@
       "latin": "Kaempferia parviflora",
       "color": "#5a4a6f",
       "color2": "#463a56",
-      "forma": "rizoma"
+      "forma": "rizoma",
+      "nombres": {
+        "en": "Black ginger",
+        "sl": "Črni ingver"
+      }
     },
     {
       "id": "hiperico",
@@ -745,7 +1275,11 @@
       "latin": "Hypericum perforatum",
       "color": "#f2c832",
       "color2": "#8a9b6e",
-      "forma": "margarita"
+      "forma": "margarita",
+      "nombres": {
+        "en": "St John's wort",
+        "sl": "Šentjanževka"
+      }
     },
     {
       "id": "milenrama",
@@ -753,7 +1287,11 @@
       "latin": "Achillea millefolium",
       "color": "#f2ede0",
       "color2": "#87a066",
-      "forma": "umbela"
+      "forma": "umbela",
+      "nombres": {
+        "en": "Yarrow",
+        "sl": "Rman"
+      }
     },
     {
       "id": "malva",
@@ -761,7 +1299,11 @@
       "latin": "Malva sylvestris",
       "color": "#b87fc9",
       "color2": "#7e8f68",
-      "forma": "flor5"
+      "forma": "flor5",
+      "nombres": {
+        "en": "Mallow",
+        "sl": "Slez"
+      }
     },
     {
       "id": "brezo",
@@ -769,7 +1311,11 @@
       "latin": "Calluna vulgaris",
       "color": "#d987b3",
       "color2": "#6f7a5a",
-      "forma": "espiga"
+      "forma": "espiga",
+      "nombres": {
+        "en": "Heather",
+        "sl": "Vresa"
+      }
     },
     {
       "id": "abeto",
@@ -777,7 +1323,11 @@
       "latin": "Abies alba",
       "color": "#3f6a4a",
       "color2": "#2e5238",
-      "forma": "aguja"
+      "forma": "aguja",
+      "nombres": {
+        "en": "Fir tips",
+        "sl": "Jelovi vršički"
+      }
     },
     {
       "id": "laurel",
@@ -785,7 +1335,11 @@
       "latin": "Laurus nobilis",
       "color": "#4a6a3f",
       "color2": "#3a5632",
-      "forma": "hoja"
+      "forma": "hoja",
+      "nombres": {
+        "en": "Bay leaf",
+        "sl": "Lovor"
+      }
     },
     {
       "id": "eucalipto",
@@ -793,7 +1347,11 @@
       "latin": "Eucalyptus globulus",
       "color": "#8fa89a",
       "color2": "#748a7e",
-      "forma": "hoja"
+      "forma": "hoja",
+      "nombres": {
+        "en": "Eucalyptus",
+        "sl": "Evkaliptus"
+      }
     },
     {
       "id": "herbario-te-negro-assam",

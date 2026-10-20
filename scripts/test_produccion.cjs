@@ -136,6 +136,45 @@ test('catalog editing preserves product id when renaming', async () => {
   assert.equal(response.status, 200);
   assert.equal((await response.json()).teas[0].id, item.id);
 });
+test('edited tea translations persist, sanitize and never reuse stale base copy', async () => {
+  const plantId = TEAS[0].plantas[0].plantaId;
+  const item = { ...TEAS[0], nombre: 'Nueva mezcla', traducciones: {
+    en: { nombre: '  Orchard\u0000 tea  ', paraQueSirve: 'Fruit aroma', plantas: { [plantId]: 'Fresh finish', unknown: 'Discard' } },
+    sl: { nombre: 'Sadni čaj', paraQueSirve: 'Sadna aroma', plantas: { [plantId]: 'Svež zaključek' } },
+    fr: { nombre: 'Not supported' },
+  } };
+  const response = await catalog.POST(request({ tipo: 'tea', item }));
+  assert.equal(response.status, 200);
+  const saved = (await response.json()).teas.find(tea => tea.id === item.id);
+  assert.equal(saved.traducciones?.en.nombre, 'Orchard  tea');
+  assert.equal(saved.traducciones.fr, undefined);
+  assert.equal(saved.traducciones.en.plantas.unknown, undefined);
+  const { trTea } = require('../src/i18n/catalogo.ts');
+  assert.equal(trTea(saved, 'en').nombre, 'Orchard  tea');
+  assert.equal(trTea(saved, 'sl').plantas[0].porQueEnEsteMix, 'Svež zaključek');
+  assert.equal(trTea(saved, 'es').nombre, 'Nueva mezcla');
+  assert.equal(trTea({ ...saved, traducciones: { en: { nombre: '' } } }, 'en').nombre, 'Nueva mezcla');
+  assert.equal(trTea({ ...saved, traducciones: undefined }, 'sl').nombre, 'Nueva mezcla');
+  assert.equal(trTea(saved, 'sl').precio, item.precio);
+  const legacy = await catalog.POST(request({ tipo: 'tea', item: { ...item, traducciones: undefined, precio: 17 } }));
+  const updated = (await legacy.json()).teas.find(tea => tea.id === item.id);
+  assert.equal(trTea(updated, 'sl').nombre, 'Sadni čaj');
+});
+test('custom ingredient names retain English and Slovenian translations', async () => {
+  const item = { id: 'test-translated-plant', nombre: 'Limón', nombres: { en: ' Lemon peel ', sl: 'Limonina lupina', fr: 'Ignored' }, latin: 'Citrus limon', forma: 'piel', color: '#e4bb37', color2: '#779750' };
+  const response = await catalog.POST(request({ tipo: 'plant', item }));
+  assert.equal(response.status, 200);
+  const saved = (await response.json()).plants.find(plant => plant.id === item.id);
+  assert.deepEqual(saved.nombres, { en: 'Lemon peel', sl: 'Limonina lupina' });
+});
+test('server SEO catalog merges live tea edits and new products by stable id', async () => {
+  const { tesPublicados } = require('../src/lib/catalogoServidor.ts');
+  await catalog.POST(request({ tipo: 'tea', item: { ...TEAS[0], id: 'seo-new-tea', nombre: 'Nuevo té SEO' } }));
+  const teas = await tesPublicados();
+  assert.equal(teas.filter(tea => tea.id === TEAS[0].id).length, 1);
+  assert.equal(teas.find(tea => tea.id === TEAS[0].id).nombre, 'Nueva mezcla');
+  assert.equal(teas.find(tea => tea.id === 'seo-new-tea').nombre, 'Nuevo té SEO');
+});
 test('unknown plants and invalid weights cannot enter the public catalog', async () => {
   for (const item of [{ ...TEAS[0], plantas: [{ plantaId: 'unknown', porQueEnEsteMix: '' }] }, { ...TEAS[0], gramos: -1 }]) {
     assert.equal((await catalog.POST(request({ tipo: 'tea', item }))).status, 400);

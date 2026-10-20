@@ -10,18 +10,19 @@ import { eur } from "@/lib/format";
 import { useCart } from "@/lib/cart";
 import { useT, useLang } from "@/i18n";
 import { trTea, trPlanta } from "@/i18n/catalogo";
-import type { Tea } from "@/lib/types";
+import type { Tea, Plant } from "@/lib/types";
+import { getVivo } from "@/lib/vivoStore";
 import PlantaSVG from "@/components/clasica/PlantaSVG";
 import Lamina from "@/components/clasica/Lamina";
 import { jsonLdSeguro } from "@/lib/jsonLd";
 
-export default function FichaTe({ tea: teaRaw }: { tea: Tea }) {
+export default function FichaTe({ tea: teaRaw, initialPlants = [] }: { tea: Tea; initialPlants?: Plant[] }) {
   const T = useT();
   const { lang } = useLang();
   const tea = trTea(teaRaw, lang); // té + porqués en el idioma activo (fallback ES)
   const add = useCart((s) => s.add);
   const [puesto, setPuesto] = useState(false);
-  const plantas = tea.plantas.map((tp) => ({ tp, p: trPlanta(plantById(tp.plantaId), lang) }));
+  const plantas = tea.plantas.map((tp) => ({ tp, p: trPlanta(getVivo().plants?.find(plant => plant.id === tp.plantaId) ?? initialPlants.find(plant => plant.id === tp.plantaId) ?? plantById(tp.plantaId), lang) }));
   const relacionados = teasBySala(tea.sala).filter((t) => t.id !== tea.id).slice(0, 3);
   const anadir = () => { add("tea", tea.id); setPuesto(true); setTimeout(() => setPuesto(false), 1800); };
 

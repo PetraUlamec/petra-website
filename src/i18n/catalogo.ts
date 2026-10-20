@@ -444,16 +444,16 @@ const TODO_EL_ANO: Record<Lang, string> = { es: "todo el año", en: "all year ro
 
 // ── HELPERS (fallback ES siempre: si falta la traducción, se ve el original) ─
 export function trTea(t: Tea, lang: Lang): Tea {
-  if (lang === "es" || t.editado) return t;
-  const d = TR_TEAS[t.id];
-  if (!d) return t; // té del taller u otro sin traducción → ES entero
+  if (lang === "es") return t;
+  const translated = t.traducciones?.[lang];
+  const d = t.editado ? undefined : TR_TEAS[t.id];
   return {
     ...t,
-    nombre: d.nombre?.[lang] ?? t.nombre,
-    paraQueSirve: d.paraQueSirve?.[lang] ?? t.paraQueSirve,
+    nombre: translated?.nombre?.trim() || d?.nombre?.[lang] || t.nombre,
+    paraQueSirve: translated?.paraQueSirve?.trim() || d?.paraQueSirve?.[lang] || t.paraQueSirve,
     plantas: t.plantas.map((p) => ({
       ...p,
-      porQueEnEsteMix: d.plantas?.[p.plantaId]?.[lang] ?? p.porQueEnEsteMix,
+      porQueEnEsteMix: translated?.plantas?.[p.plantaId]?.trim() || d?.plantas?.[p.plantaId]?.[lang] || p.porQueEnEsteMix,
     })),
   };
 }
