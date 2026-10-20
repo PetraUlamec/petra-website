@@ -1,11 +1,13 @@
 "use strict";
+const ui = window.PetraI18n;
+const translate = ui.t;
 const element = (id) => document.getElementById(id);
 const make = (tag, text, className) => { const node = document.createElement(tag); if (text !== undefined) node.textContent = text; if (className) node.className = className; return node; };
 const merge = (base, edited) => [...new Map([...base, ...edited].map((item) => [item.id, item])).values()];
-const money = (amount) => new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR' }).format(Number(amount) || 0);
+const money = (amount) => new Intl.NumberFormat(ui.language, { style: 'currency', currency: 'EUR' }).format(Number(amount) || 0);
 let base = { teas: [], plants: [] }, catalog = { teas: [], extras: [], plants: [] };
 let draft = null, pendingPlants = [], busy = false, changed = false, preview3d = false, previewTimer;
-let contentLanguage = 'es';
+let contentLanguage = ui.language;
 const localizedPlant = plant => contentLanguage === 'es' ? plant.nombre : plant.nombres?.[contentLanguage] || plant.nombre;
 const contentText = key => contentLanguage === 'es' ? draft[key] : draft.traducciones?.[contentLanguage]?.[key] || '';
 const ingredientText = part => contentLanguage === 'es' ? part.porQueEnEsteMix : draft.traducciones?.[contentLanguage]?.plantas?.[part.plantaId] || '';
@@ -24,13 +26,15 @@ function renderLanguage() {
   renderPlants(); preview();
 }
 for (const radio of document.querySelectorAll('input[name="content-language"]')) radio.addEventListener('change', () => { contentLanguage = radio.value; renderLanguage(); });
-for (const [lang, label] of [['en', 'Nombre en inglés / English name'], ['sl', 'Nombre en esloveno / Slovensko ime']]) {
-  const field = make('label', label), input = make('input');
+for (const [lang, label] of [['en', translate('Nombre en inglés / English name')], ['sl', translate('Nombre en esloveno / Slovensko ime')]]) {
+  const field = make('label'), caption = make('span'), input = make('input');
+  caption.dataset.i18n = lang === 'en' ? 'Nombre en inglés / English name' : 'Nombre en esloveno / Slovensko ime';
+  caption.textContent = label; field.append(caption);
   input.id = `plant-name-${lang}`; input.name = `plant-name-${lang}`; input.maxLength = 120; input.lang = lang;
   field.append(input); element('plant-latin').closest('label').before(field);
 }
 const blank = () => ({ nombre: '', precio: 8, gramos: 60, sala: 'te', colorHoja: '#9fa968', paraQueSirve: '', plantas: [] });
-for (const [value, text] of [['fruta', 'Fruta / cítrico'], ['semilla', 'Semilla'], ['piel', 'Piel de cítrico'], ['fruta-seca', 'Rodaja de manzana seca'], ['fresa', 'Fresa en láminas'], ['caliz', 'Cáliz de hibisco'], ['petalos', 'Pétalos secos'], ['rizoma', 'Rizoma / jengibre']]) { const option = make('option', text); option.value = value; element('plant-shape').append(option); }
+for (const [value, text] of [['fruta', 'Fruta / cítrico'], ['semilla', 'Semilla'], ['piel', translate('Piel de cítrico')], ['fruta-seca', 'Rodaja de manzana seca'], ['fresa', translate('Fresa en láminas')], ['caliz', translate('Cáliz de hibisco')], ['petalos', 'Pétalos secos'], ['rizoma', 'Rizoma / jengibre']]) { const option = make('option', text); option.value = value; element('plant-shape').append(option); }
 const pantry = [
   ['limon', 'Piel de limón', 'Citrus limon', 'piel', '#e4bb37', '#779750', 'Un toque cítrico y luminoso.'],
   ['naranja', 'Piel de naranja', 'Citrus sinensis', 'piel', '#df8734', '#71934d', 'Aroma de naranja.'],
@@ -43,27 +47,46 @@ const pantry = [
   ['hibisco', 'Hibisco', 'Hibiscus sabdariffa', 'caliz', '#9e3e59', '#6b854d', 'Un toque floral.'],
   ['hinojo', 'Semillas de hinojo', 'Foeniculum vulgare', 'semilla', '#a69b61', '#71824d', 'Un matiz anisado.'],
 ].map(([slug, nombre, latin, forma, color, color2, note]) => ({ id: `studio-${slug}`, nombre, latin, forma, color, color2, note }));
+const pantryTranslations = [
+  ['Lemon peel', 'Limonina lupina', 'A bright citrus note.', 'Svetla citrusna nota.'],
+  ['Orange peel', 'Pomarančna lupina', 'Orange aroma.', 'Aroma pomaranče.'],
+  ['Dried apple', 'Suho jabolko', 'Gentle fruit notes.', 'Nežne sadne note.'],
+  ['Dried strawberry', 'Suhe jagode', 'A red fruit accent.', 'Poudarek rdečega sadja.'],
+  ['Blueberry', 'Borovnica', 'A fruity note.', 'Sadna nota.'],
+  ['Ginger', 'Ingver', 'A warm, spicy note.', 'Topla, začimbna nota.'],
+  ['Cinnamon', 'Cimet', 'A sweet, warm aroma.', 'Sladka, topla aroma.'],
+  ['Mint', 'Meta', 'A fresh finish.', 'Svež zaključek.'],
+  ['Hibiscus', 'Hibiskus', 'A floral note.', 'Cvetlična nota.'],
+  ['Fennel seeds', 'Semena komarčka', 'An anise-like note.', 'Nota, podobna janežu.'],
+];
+pantry.forEach((plant, index) => {
+  const [en, sl, noteEn, noteSl] = pantryTranslations[index];
+  plant.nombres = { en, sl }; plant.notes = { en: noteEn, sl: noteSl };
+});
 let plantFilter = 'all';
 let plantLimit = 24;
 const searchable = (value) => String(value).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase();
 const plants = () => merge(merge(base.plants, catalog.plants || []), pendingPlants);
 const teas = () => merge(base.teas, catalog.teas || []);
-function notice(message, error = false) { element('notice').textContent = message; element('notice').dataset.error = String(error); }
+function notice(message, error = false) { element('notice').textContent = translate(message); element('notice').dataset.error = String(error); }
 async function api(url, options = {}) {
-  const response = await fetch(url, { ...options, cache: 'no-store', signal: AbortSignal.timeout(20000) });
+  const response = await fetch(url, { ...options, cache: 'no-store', signal: AbortSignal.timeout(20000) }).catch(() => { throw new Error(translate('No se pudo conectar. Conservamos tus cambios; vuelve a intentarlo.')); });
   const data = await response.json();
-  if (!response.ok) throw new Error(data.error || 'No se pudo conectar. Conservamos tus cambios; vuelve a intentarlo.');
+  if (!response.ok) {
+    const message = response.status === 429 ? 'Demasiadas peticiones. Espera antes de reintentar.' : ui.messages.has(data.error) ? data.error : 'No se pudo guardar. Revisa los datos e inténtalo de nuevo.';
+    throw new Error(translate(message));
+  }
   return data;
 }
 const post = (url, data) => api(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
 function preserve() {
   changed = true;
-  element('draft-state').textContent = 'Borrador · sin publicar';
+  element('draft-state').textContent = translate('Borrador · sin publicar');
   try { localStorage.setItem('petra-studio-draft', JSON.stringify({ draft, pendingPlants })); }
-  catch { notice('El navegador no permite guardar borradores. No cierres esta ventana antes de publicar.', true); }
+  catch { notice(translate('El navegador no permite guardar borradores. No cierres esta ventana antes de publicar.'), true); }
   preview();
 }
-function discardAllowed() { return !changed || window.confirm('Hay cambios sin publicar. ¿Cambiar de mezcla y descartarlos?'); }
+function discardAllowed() { return !changed || window.confirm(translate('Hay cambios sin publicar. ¿Cambiar de mezcla y descartarlos?')); }
 function selectTea(tea) {
   if (!discardAllowed()) return;
   draft = structuredClone(tea); changed = false;
@@ -74,17 +97,17 @@ function selectTea(tea) {
   element('tea-color').value = /^#[0-9a-f]{6}$/i.test(draft.colorHoja) ? draft.colorHoja : '#9fa968';
   element('tea-description').value = contentText('paraQueSirve');
   element('tea-photo').value = '';
-  element('editor-title').textContent = draft.id ? 'Editar mezcla' : 'Crear una mezcla';
-  element('draft-state').textContent = draft.id ? 'Versión publicada' : 'Nueva mezcla';
+  element('editor-title').textContent = draft.id ? translate('Editar mezcla') : translate('Crear una mezcla');
+  element('draft-state').textContent = draft.id ? translate('Versión publicada') : translate('Nueva mezcla');
   renderList(); renderLanguage(); setFrame(true);
 }
 function renderList() {
   const query = element('search-tea').value.toLocaleLowerCase();
   const list = element('tea-list'); list.replaceChildren();
-  for (const tea of teas().filter((item) => `${item.nombre} ${item.plantas.map((part) => plants().find((plant) => plant.id === part.plantaId)?.nombre || '').join(' ')}`.toLocaleLowerCase().includes(query))) {
+  for (const tea of teas().filter((item) => `${item.nombre} ${item.traducciones?.en?.nombre || ''} ${item.traducciones?.sl?.nombre || ''} ${item.plantas.map((part) => plants().find((plant) => plant.id === part.plantaId)?.nombre || '').join(' ')}`.toLocaleLowerCase().includes(query))) {
     const button = make('button', undefined, 'tea-choice'); button.type = 'button'; button.setAttribute('aria-pressed', String(tea.id === draft?.id));
     const swatch = make('span', '', 'swatch'); swatch.style.backgroundColor = tea.colorHoja;
-    const label = make('span', tea.nombre); label.append(make('small', `${money(tea.precio)} · ${tea.plantas.length} ingredientes`));
+    const label = make('span', tea.traducciones?.[ui.language]?.nombre || tea.nombre); label.append(make('small', `${money(tea.precio)} · ${translate('{count} ingredientes', { count: tea.plantas.length })}`));
     button.append(swatch, label); button.addEventListener('click', () => selectTea(tea)); list.append(button);
   }
 }
@@ -109,17 +132,17 @@ function renderPlants() {
     if (selected) {
       const text = make('textarea'); text.rows = 2; text.maxLength = 2000; text.value = ingredientText(selected); text.lang = contentLanguage;
       text.name = `ingredient-${plant.id}-${contentLanguage}`;
-      text.placeholder = contentLanguage === 'es' ? 'Qué aporta: sabor, aroma, cantidad o parte utilizada…' : selected.porQueEnEsteMix;
-      const textLabel = make('label', `Qué aporta / Prispevek · ${localizedPlant(plant)} (${contentLanguage.toUpperCase()})`);
+      text.placeholder = contentLanguage === 'es' ? translate('Qué aporta: sabor, aroma, cantidad o parte utilizada…') : selected.porQueEnEsteMix;
+      const textLabel = make('label', `${translate('Qué aporta')} · ${localizedPlant(plant)} (${contentLanguage.toUpperCase()})`);
       textLabel.append(text);
       text.addEventListener('input', () => { if (contentLanguage === 'es') selected.porQueEnEsteMix = text.value; else translationDraft().plantas[plant.id] = text.value; preserve(); }); block.append(textLabel);
     }
     list.append(block);
   }
-  if (!list.childElementCount) list.append(make('p', 'No hay ingredientes aquí. Prueba otra búsqueda o añádelos desde la despensa visual.', 'quiet'));
-  element('ingredient-results').textContent = `${Math.min(plantLimit, filtered.length)} de ${filtered.length} opciones · ${draft.plantas.length} en tu mezcla`;
+  if (!list.childElementCount) list.append(make('p', translate('No hay ingredientes aquí. Prueba otra búsqueda o añádelos desde la despensa visual.'), 'quiet'));
+  element('ingredient-results').textContent = translate('{shown} de {total} opciones · {count} en tu mezcla', { shown: Math.min(plantLimit, filtered.length), total: filtered.length, count: draft.plantas.length });
   element('more-plants').hidden = plantLimit >= filtered.length;
-  element('library-total').textContent = `${base.plants.length} ingredientes y variedades · ${base.plants.filter(plant => plant.id.startsWith('herbario-')).length} nuevos`;
+  element('library-total').textContent = translate('{total} ingredientes y variedades · {added} nuevos', { total: base.plants.length, added: base.plants.filter(plant => plant.id.startsWith('herbario-')).length });
   if (previousFocus) list.querySelector(`[data-plant-id="${CSS.escape(previousFocus)}"]`)?.focus({ preventScroll: true });
 }
 function drawing(plant) {
@@ -160,10 +183,16 @@ function drawing(plant) {
 }
 function addIngredient(plant) {
   if (!plants().some(item => item.id === plant.id)) {
-    const { note, ...definition } = plant;
+    const { note, notes, ...definition } = plant;
     pendingPlants.push(definition);
   }
   if (!draft.plantas.some(part => part.plantaId === plant.id)) draft.plantas.push({ plantaId: plant.id, porQueEnEsteMix: plant.note || '' });
+  for (const language of ['en', 'sl']) {
+    if (!plant.notes?.[language]) continue;
+    draft.traducciones ??= {}; draft.traducciones[language] ??= {};
+    draft.traducciones[language].plantas ??= {};
+    draft.traducciones[language].plantas[plant.id] ??= plant.notes[language];
+  }
   renderPlants(); preserve();
 }
 function createDemo() {
@@ -171,26 +200,30 @@ function createDemo() {
   changed = false;
   selectTea({ ...blank(), nombre: 'Sol de huerto · DEMO', precio: 9.5, gramos: 60, colorHoja: '#d6a24e', paraQueSirve: 'Demostración visual, no receta comercial: piel de limón y naranja, manzana y fresa deshidratadas, jengibre, canela, menta e hibisco. Ingredientes y precio de ejemplo, pendientes de validar por Petra.' });
   for (const index of [0, 1, 2, 3, 5, 6, 7, 8]) addIngredient(pantry[index]);
-  notice('Demo sin publicar: cambia ingredientes y compara la página clásica con el 3D. No modifica tu tienda.');
+  Object.assign(draft.traducciones.en, { nombre: 'Orchard sunshine · DEMO', paraQueSirve: 'Visual demonstration, not a commercial recipe: lemon and orange peel, dried apple and strawberry, ginger, cinnamon, mint and hibiscus. Example ingredients and price, awaiting Petra’s approval.' });
+  Object.assign(draft.traducciones.sl, { nombre: 'Sonce sadovnjaka · DEMO', paraQueSirve: 'Vizualna predstavitev, ne recept za prodajo: limonina in pomarančna lupina, suha jabolka in jagode, ingver, cimet, meta in hibiskus. Primer sestavin in cene, ki jih mora potrditi Petra.' });
+  renderLanguage(); preserve();
+  notice(translate('Demo sin publicar: cambia ingredientes y compara la página clásica con el 3D. No modifica tu tienda.'));
 }
 function renderPantry() {
   const list = element('pantry-options'); list.replaceChildren();
   for (const plant of pantry) {
     const button = make('button', undefined, 'ingredient-card'); button.type = 'button';
-    button.setAttribute('aria-label', `Añadir ${plant.nombre}`);
-    button.append(drawing(plant), make('span', plant.nombre), make('small', '+ Añadir'));
-    button.addEventListener('click', () => { addIngredient(plant); notice(`${plant.nombre} añadido al borrador. Mira el resultado en la vista previa.`); }); list.append(button);
+    button.setAttribute('aria-label', translate('Añadir {name}', { name: plant.nombres?.[ui.language] || plant.nombre }));
+    button.append(drawing(plant), make('span', plant.nombres?.[ui.language] || plant.nombre), make('small', translate('+ Añadir')));
+    button.addEventListener('click', () => { addIngredient(plant); notice(translate('{name} añadido al borrador. Mira el resultado en la vista previa.', { name: plant.nombres?.[ui.language] || plant.nombre })); }); list.append(button);
   }
 }
 function previewIngredient() {
   const plant = { forma: element('plant-shape').value, color: element('plant-color').value, color2: element('plant-color2').value };
-  element('new-plant-preview').replaceChildren(drawing(plant), make('span', element('plant-name').value || 'Tu nuevo ingrediente'));
+  element('new-plant-preview').replaceChildren(drawing(plant), make('span', element('plant-name').value || translate('Tu nuevo ingrediente')));
   for (const button of element('shape-options').querySelectorAll('button')) button.setAttribute('aria-pressed', String(button.dataset.shape === plant.forma));
 }
 function renderShapes() {
+const selectedShape = element('plant-shape').value;
 element('plant-shape').replaceChildren();
-for (const [value, label] of Object.entries(base.formas || {})) { const option = make('option', label); option.value = value; element('plant-shape').append(option); }
-element('plant-shape').value = 'hoja';
+for (const [value, label] of Object.entries(base.formas || {})) { const option = make('option', translate(label)); option.value = value; element('plant-shape').append(option); }
+element('plant-shape').value = selectedShape || 'hoja';
 element('shape-options').replaceChildren();
 for (const option of element('plant-shape').options) {
   const button = make('button', undefined, 'ingredient-card'); button.type = 'button'; button.dataset.shape = option.value;
@@ -207,15 +240,15 @@ for (const value of ['all','selected']) element(`filter-${value}`).addEventListe
 });
 function preview() {
   if (!draft) return;
-  element('preview-name').textContent = contentText('nombre') || draft.nombre || 'Tu próxima mezcla';
-  element('preview-description').textContent = contentText('paraQueSirve') || draft.paraQueSirve || 'Aquí aparecerá la historia que escribas para este té.';
+  element('preview-name').textContent = contentText('nombre') || draft.nombre || translate('Tu próxima mezcla');
+  element('preview-description').textContent = contentText('paraQueSirve') || draft.paraQueSirve || translate('Aquí aparecerá la historia que escribas para este té.');
   element('translation-status').textContent = ['en', 'sl'].map(lang => {
     const translation = draft.traducciones?.[lang];
     const missing = Number(!translation?.nombre?.trim()) + Number(!!draft.paraQueSirve?.trim() && !translation?.paraQueSirve?.trim()) + draft.plantas.filter(part => part.porQueEnEsteMix?.trim() && !translation?.plantas?.[part.plantaId]?.trim()).length;
-    return `${lang.toUpperCase()}: ${missing ? `${missing} textos pendientes` : 'textos completos · revisar'}`;
+    return `${lang.toUpperCase()}: ${missing ? translate('{count} textos pendientes', { count: missing }) : translate('textos completos · revisar')}`;
   }).join(' · ');
   element('preview-price').textContent = money(draft.precio); element('preview-weight').textContent = `${draft.gramos || 0} g`;
-  element('plant-count').textContent = `${draft.plantas.length} ingredientes`;
+  element('plant-count').textContent = translate('{count} ingredientes', { count: draft.plantas.length });
   const illustration = element('preview-plants'), ingredients = element('preview-ingredients'); illustration.replaceChildren(); ingredients.replaceChildren();
   for (const part of draft.plantas) {
     const plant = plants().find((item) => item.id === part.plantaId); if (!plant) continue;
@@ -236,21 +269,21 @@ function setFrame(force = false) {
   else sendPreview();
 }
 async function refresh() {
-  catalog = await api('/api/catalogo'); element('connection').textContent = 'Conectado a tu tienda'; renderList(); if (draft) renderPlants();
+  catalog = await api('/api/catalogo'); element('connection').textContent = translate('Conectado a tu tienda'); renderList(); if (draft) renderPlants();
 }
 element('login-form').addEventListener('submit', async (event) => {
   event.preventDefault();
-  try { await post('/api/taller-sesion', { password: element('workshop-key').value }); element('workshop-key').value = ''; element('login-form').hidden = true; notice('Sesión iniciada. Ya puedes guardar y publicar.'); }
-  catch (error) { element('login-status').textContent = error.message; }
+  try { await post('/api/taller-sesion', { password: element('workshop-key').value }); element('workshop-key').value = ''; element('login-form').hidden = true; notice(translate('Sesión iniciada. Ya puedes guardar y publicar.')); }
+  catch (error) { element('login-status').textContent = translate(error.message); }
 });
-element('logout').addEventListener('click', async () => { try { await api('/api/taller-sesion', { method: 'DELETE' }); element('login-form').hidden = false; notice('Sesión cerrada. Tus cambios sin publicar siguen en este navegador.'); } catch (error) { notice(error.message, true); } });
-element('refresh').addEventListener('click', () => refresh().then(() => notice('Catálogo actualizado.')).catch((error) => notice(error.message, true)));
+element('logout').addEventListener('click', async () => { try { await api('/api/taller-sesion', { method: 'DELETE' }); element('login-form').hidden = false; notice(translate('Sesión cerrada. Tus cambios sin publicar siguen en este navegador.')); } catch (error) { notice(ui.messages.has(error.message) || [...ui.messages.values()].some(row => row[ui.language] === error.message) ? error.message : translate('No se pudo conectar. Conservamos tus cambios; vuelve a intentarlo.'), true); } });
+element('refresh').addEventListener('click', () => refresh().then(() => notice(translate('Catálogo actualizado.'))).catch((error) => notice(error.message, true)));
 element('search-tea').addEventListener('input', renderList);
 element('search-plant').addEventListener('input', () => { plantLimit = 24; renderPlants(); });
 element('category-plant').addEventListener('change', () => { plantLimit = 24; renderPlants(); });
 element('more-plants').addEventListener('click', () => { plantLimit += 24; renderPlants(); });
 element('new-tea').addEventListener('click', () => selectTea(blank()));
-element('duplicate').addEventListener('click', () => { const copy = { ...structuredClone(draft), nombre: `${draft.nombre} · nueva mezcla` }; delete copy.id; changed = false; selectTea(copy); preserve(); });
+element('duplicate').addEventListener('click', () => { const copy = { ...structuredClone(draft), nombre: `${draft.nombre} · ${translate('nueva mezcla')}` }; delete copy.id; changed = false; selectTea(copy); preserve(); });
 for (const [id, key] of Object.entries({ 'tea-name': 'nombre', 'tea-price': 'precio', 'tea-weight': 'gramos', 'tea-room': 'sala', 'tea-color': 'colorHoja', 'tea-description': 'paraQueSirve' })) {
   element(id).addEventListener('input', (event) => {
     if (contentLanguage !== 'es' && ['nombre', 'paraQueSirve'].includes(key)) translationDraft()[key] = event.target.value;
@@ -259,26 +292,28 @@ for (const [id, key] of Object.entries({ 'tea-name': 'nombre', 'tea-price': 'pre
   });
   element(id).addEventListener('invalid', (event) => event.target.setAttribute('aria-invalid', 'true'));
 }
-element('tea-photo').addEventListener('change', () => { changed = true; element('draft-state').textContent = 'Foto pendiente de publicar'; });
+element('tea-photo').addEventListener('change', () => { changed = true; element('draft-state').textContent = translate('Foto pendiente de publicar'); });
 element('tea-form').addEventListener('submit', async (event) => {
   event.preventDefault(); if (busy) return;
-  if (!draft.nombre.trim()) { contentLanguage = 'es'; renderLanguage(); element('tea-name').focus(); notice('Escribe el nombre original antes de publicar.', true); return; }
-  if (!draft.plantas.length) { notice('Selecciona al menos un ingrediente para esta mezcla.', true); return; }
-  if (!window.confirm(`¿Publicar «${draft.nombre}» a ${money(draft.precio)} en la tienda?`)) return;
+  if (!draft.nombre.trim()) { contentLanguage = 'es'; renderLanguage(); element('tea-name').focus(); notice(translate('Escribe el nombre original antes de publicar.'), true); return; }
+  if (!draft.plantas.length) { notice(translate('Selecciona al menos un ingrediente para esta mezcla.'), true); return; }
+  if (!window.confirm(translate('¿Publicar «{name}» a {price} en la tienda?', { name: contentText('nombre') || draft.nombre, price: money(draft.precio) }))) return;
   busy = true; element('publish').disabled = true;
   try {
     for (const plant of pendingPlants) catalog = await post('/api/catalogo', { tipo: 'plant', item: plant });
     pendingPlants = [];
     const photo = element('tea-photo').files[0];
     if (photo) {
-      if (photo.size > 12 * 1024 * 1024) throw new Error('La foto debe pesar menos de 12 MB.');
+      if (photo.size > 12 * 1024 * 1024) throw new Error(translate('La foto debe pesar menos de 12 MB.'));
       const form = new FormData(); form.set('file', photo); form.set('nombre', draft.nombre); form.set('recortar', '0');
       const uploaded = await api('/api/foto', { method: 'POST', body: form }); draft.foto = uploaded.foto;
     }
     catalog = await post('/api/catalogo', { tipo: 'tea', item: draft });
     const saved = catalog.teas.find((tea) => tea.id === draft.id) || catalog.teas.find((tea) => tea.nombre === draft.nombre);
-    changed = false; localStorage.removeItem('petra-studio-draft'); selectTea(saved || draft);
-    notice('Publicado. Tu tienda clásica y 3D ya usan estos textos, precio e ingredientes.');
+    changed = false;
+    try { localStorage.removeItem('petra-studio-draft'); } catch {}
+    selectTea(saved || draft);
+    notice(translate('Publicado. Tu tienda clásica y 3D ya usan estos textos, precio e ingredientes.'));
   } catch (error) { preserve(); notice(error.message, true); }
   finally { busy = false; element('publish').disabled = false; }
 });
@@ -288,7 +323,7 @@ element('plant-form').addEventListener('submit', (event) => {
   event.preventDefault(); const name = element('plant-name').value.trim();
   const slug = name.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 90);
   const id = `planta-${slug || crypto.randomUUID()}`;
-  if (plants().some((plant) => plant.id === id)) { element('plant-notice').textContent = 'Ya existe ese ingrediente. Elígelo en el herbario.'; return; }
+  if (plants().some((plant) => plant.id === id)) { element('plant-notice').textContent = translate('Ya existe ese ingrediente. Elígelo en el herbario.'); return; }
   pendingPlants.push({ id, nombre: name, nombres: { en: element('plant-name-en').value, sl: element('plant-name-sl').value }, latin: element('plant-latin').value, forma: element('plant-shape').value, color: element('plant-color').value, color2: element('plant-color2').value });
   draft.plantas.push({ plantaId: id, porQueEnEsteMix: '' }); renderPlants(); preserve(); element('plant-dialog').close(); element('plant-form').reset();
 });
@@ -301,19 +336,39 @@ element('preview-3d').addEventListener('click', () => { preview3d = true; setFra
 element('site-frame').addEventListener('load', sendPreview);
 window.addEventListener('message', (event) => { if (event.origin === location.origin && event.source === element('site-frame').contentWindow && event.data?.type === 'petra-studio-ready') sendPreview(); });
 window.addEventListener('beforeunload', (event) => { if (changed) { event.preventDefault(); event.returnValue = ''; } });
+function renderInterface() {
+  const connection = element('connection').textContent;
+  const loginStatus = element('login-status').textContent;
+  ui.apply();
+  renderList(); renderPantry(); renderShapes();
+  for (const option of element('category-plant').options) if (option.value) option.textContent = translate(option.value);
+  if (draft) {
+    element('editor-title').textContent = translate(draft.id ? 'Editar mezcla' : 'Crear una mezcla');
+    element('draft-state').textContent = translate(changed ? 'Borrador · sin publicar' : draft.id ? 'Versión publicada' : 'Nueva mezcla');
+    renderPlants(); preview();
+  }
+  element('connection').textContent = translate(connection);
+  element('login-status').textContent = translate(loginStatus);
+  element('notice').textContent = translate(element('notice').textContent);
+}
+for (const radio of document.querySelectorAll('input[name="ui-language"]')) radio.addEventListener('change', () => {
+  ui.setLanguage(radio.value); renderInterface();
+});
+ui.apply();
 (async () => {
   try {
     base = await api('/studio/catalogo-base.json'); await refresh();
     for (const group of [...new Set(plants().map(plant => plant.grupo || 'Originales y personalizados'))]) {
-      const option = make('option', group); option.value = group; element('category-plant').append(option);
+      const option = make('option', translate(group)); option.value = group; element('category-plant').append(option);
     }
     renderPantry(); renderShapes();
     const session = await api('/api/taller-sesion'); element('login-form').hidden = session.authenticated;
-    const raw = localStorage.getItem('petra-studio-draft');
-    if (raw && window.confirm('Hay un borrador sin publicar. ¿Recuperarlo?')) { const saved = JSON.parse(raw); pendingPlants = saved.pendingPlants || []; selectTea(saved.draft); preserve(); }
+    let raw;
+    try { raw = localStorage.getItem('petra-studio-draft'); } catch { notice(translate('El navegador no permite guardar borradores. No cierres esta ventana antes de publicar.'), true); }
+    if (raw && window.confirm(translate('Hay un borrador sin publicar. ¿Recuperarlo?'))) { const saved = JSON.parse(raw); pendingPlants = saved.pendingPlants || []; selectTea(saved.draft); preserve(); }
     if (!draft) {
       if (new URLSearchParams(location.search).get('demo') === 'citrico') createDemo();
       else selectTea(teas()[0] || blank());
     }
-  } catch (error) { element('connection').textContent = 'Sin conexión'; notice(error.message, true); }
+  } catch (error) { element('connection').textContent = translate('Sin conexión'); notice(error.message, true); }
 })();

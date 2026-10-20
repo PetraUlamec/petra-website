@@ -26,7 +26,7 @@ Carrito (`petra-cart-v1`) e idioma (`petra-lang`) son **compartidos** entre las 
 - **Verificar midiendo, no adivinando**: leer la escena real (posiciones, qué hay entre la cámara y el punto),
   no sacar conclusiones de una captura.
 - **Un solo build por tanda** de correcciones (no uno por retoque).
-- Autoría git: `SER <anio1996991@gmail.com>`. Permisos totales; no preguntar por cada paso.
+- Autoría git: `SER <[correo personal retirado]>`. Permisos totales; no preguntar por cada paso.
 
 ### Comandos del día a día
 ```bash

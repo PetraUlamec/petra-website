@@ -4,7 +4,7 @@ Proyecto: tienda de té diorama 3D isométrico de Petra & Erik.
 La idea completa: `VISION.md` · Herramientas: `SETUP.md` · Cómo verla: `COMO-VERLO.md` · Bugs: `web/BUGS.md`
 
 ## EL GIT LOCAL (encargo de SER, 18-ago-2026)
-- **Repositorio**: `/home/ser/Documentos/PETRA-WEBSITE-TÉ/web/.git` — local, sin remoto (GitHub pendiente
+- **Repositorio**: `~/Documentos/PETRA-WEBSITE-TÉ/web/.git` — local, sin remoto (GitHub pendiente
   de `gh auth login`, el token de SER está caducado). Rama: `main` (HEAD suelto inicial de create-next-app).
 - **Historia**:
   | hash | qué es |
@@ -94,10 +94,10 @@ informes de environment modeling, (4) contenido real de Petra (fotos/textos/prec
 - Ver la web: `http://localhost:3111` (servidor encendido) · forzar calidad: `?q=low|mid|high`.
 
 ## NOTA DE IDENTIDAD GIT (19-ago, orden de SER)
-Autoría del repo: `SER <anio1996991@gmail.com>` (reescrita en TODA la historia con filter-branch; los hashes
+Autoría del repo: `SER <[correo personal retirado]>` (reescrita en TODA la historia con filter-branch; los hashes
 cambiaron: el HEAD nuevo es el que diga `git log`). El email anterior venía de la cuenta de Claude de SER
 (lo inyecta Claude Code como contexto); SER mandó NO usarlo en git. `git config user.email` del repo ya
-queda fijado a anio1996991@gmail.com — los commits futuros salen bien solos.
+queda fijado a [correo personal retirado] — los commits futuros salen bien solos.
 
 ## REVISIÓN TOTAL + FIXES (19-ago, tarde) — VERIFICADOR del equipo glueva
 Evidencia: campaña de auditoría con 5 agentes en paralelo (rutas, salas 3D, monitor en vivo,
@@ -122,7 +122,7 @@ datos/i18n, backend+baterías) + limpieza de catálogo vivo hecha (verif-c1-te f
 - **Pendientes tras fixes**: integrar GLB huérfanos (bandeja_servida, cucharas_variadas),
   Effects mid/high, TALLER_KEY fuerte (.env.local), i18n modal pago + textos de estación,
   sitemap base URL 3111 + /clasica, README, `.bak` de src → mover a backups/, comentarios teas.ts.
-- **Prohibición de SER**: NO tocar /home/ser/EIDOS en absoluto; baterías con venv `/home/ser/apify/venv`.
+- **Prohibición de SER**: NO tocar ~/EIDOS en absoluto; baterías con venv `~/apify/venv`.
 - **Secrets alerta**: `~/.config/opencode/opencode.jsonc` tiene API keys de groq/xai en claro → rotar.
 
 ## Día 6 (20-ago) — i18n TOTAL del catálogo (encargo: «traduccion de todos los textos… verificalos y solucionarlos»)

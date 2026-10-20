@@ -4,7 +4,7 @@ Orquestador: al volver SER, (1) leer `~/.claude/agents/_CEREBRO_GULEVA/pausa_21a
 producción `cd web && pnpm start -p 3111` si no está, (3) encender la pantalla HP si está apagada
 (`xrandr --output eDP --mode 1920x1080 --right-of HDMI-A-0`; verificar audio `pactl get-default-sink`),
 (4) relanzar los agentes **en este orden** con los briefs de abajo (o reanudar los pausados con
-SendMessage: sus transcripciones siguen vivas). Commits solo el orquestador, autoría `SER <anio1996991@gmail.com>`.
+SendMessage: sus transcripciones siguen vivas). Commits solo el orquestador, autoría `SER <[correo personal retirado]>`.
 
 ## Reglas comunes (van en TODOS los briefs)
 - Leer `~/.claude/agents/_DOCTRINA.md` + antibiblioteca (incl. #23: navegador SOLO en la HP).
