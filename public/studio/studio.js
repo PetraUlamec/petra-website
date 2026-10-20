@@ -69,6 +69,11 @@ const searchable = (value) => String(value).normalize('NFD').replace(/[\u0300-\u
 const plants = () => merge(merge(base.plants, catalog.plants || []), pendingPlants);
 const teas = () => merge(base.teas, catalog.teas || []);
 function notice(message, error = false) { element('notice').textContent = translate(message); element('notice').dataset.error = String(error); }
+function showSession(authenticated) {
+  element('login-form').hidden = authenticated;
+  element('session-remembered').hidden = !authenticated;
+  element('logout').hidden = !authenticated;
+}
 async function api(url, options = {}) {
   const response = await fetch(url, { ...options, cache: 'no-store', signal: AbortSignal.timeout(20000) }).catch(() => { throw new Error(translate('No se pudo conectar. Conservamos tus cambios; vuelve a intentarlo.')); });
   const data = await response.json();
@@ -273,10 +278,10 @@ async function refresh() {
 }
 element('login-form').addEventListener('submit', async (event) => {
   event.preventDefault();
-  try { await post('/api/taller-sesion', { password: element('workshop-key').value }); element('workshop-key').value = ''; element('login-form').hidden = true; notice(translate('Sesión iniciada. Ya puedes guardar y publicar.')); }
+  try { await post('/api/taller-sesion', { password: element('workshop-key').value }); element('workshop-key').value = ''; showSession(true); notice(translate('Sesión iniciada. Ya puedes guardar y publicar.')); }
   catch (error) { element('login-status').textContent = translate(error.message); }
 });
-element('logout').addEventListener('click', async () => { try { await api('/api/taller-sesion', { method: 'DELETE' }); element('login-form').hidden = false; notice(translate('Sesión cerrada. Tus cambios sin publicar siguen en este navegador.')); } catch (error) { notice(ui.messages.has(error.message) || [...ui.messages.values()].some(row => row[ui.language] === error.message) ? error.message : translate('No se pudo conectar. Conservamos tus cambios; vuelve a intentarlo.'), true); } });
+element('logout').addEventListener('click', async () => { try { await api('/api/taller-sesion', { method: 'DELETE' }); showSession(false); notice(translate('Sesión cerrada. Tus cambios sin publicar siguen en este navegador.')); } catch (error) { notice(ui.messages.has(error.message) || [...ui.messages.values()].some(row => row[ui.language] === error.message) ? error.message : translate('No se pudo conectar. Conservamos tus cambios; vuelve a intentarlo.'), true); } });
 element('refresh').addEventListener('click', () => refresh().then(() => notice(translate('Catálogo actualizado.'))).catch((error) => notice(error.message, true)));
 element('search-tea').addEventListener('input', renderList);
 element('search-plant').addEventListener('input', () => { plantLimit = 24; renderPlants(); });
@@ -362,7 +367,9 @@ ui.apply();
       const option = make('option', translate(group)); option.value = group; element('category-plant').append(option);
     }
     renderPantry(); renderShapes();
-    const session = await api('/api/taller-sesion'); element('login-form').hidden = session.authenticated;
+    const session = await api('/api/taller-sesion');
+    if (session.authenticated) await post('/api/taller-sesion', { action: 'remember' });
+    showSession(session.authenticated);
     let raw;
     try { raw = localStorage.getItem('petra-studio-draft'); } catch { notice(translate('El navegador no permite guardar borradores. No cierres esta ventana antes de publicar.'), true); }
     if (raw && window.confirm(translate('Hay un borrador sin publicar. ¿Recuperarlo?'))) { const saved = JSON.parse(raw); pendingPlants = saved.pendingPlants || []; selectTea(saved.draft); preserve(); }

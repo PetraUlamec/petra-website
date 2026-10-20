@@ -1,6 +1,7 @@
 "use strict";
 window.PetraI18n = (() => {
   const rows = [
+    ['Este navegador recuerda tu acceso. Puedes cerrar y volver a abrir Studio sin escribir la contraseña.', 'This browser remembers your access. You can close and reopen Studio without entering the password.', 'Ta brskalnik si zapomni tvojo prijavo. Studio lahko zapreš in znova odpreš brez vnosa gesla.'],
     ['Idioma del editor', 'Editor language', 'Jezik urejevalnika'],
     ['1. Elige un té · 2. Cambia sus datos · 3. Guarda y publica', '1. Choose a tea · 2. Edit its details · 3. Save and publish', '1. Izberi čaj · 2. Uredi podatke · 3. Shrani in objavi'],
     ['Ver tienda clásica', 'View classic shop', 'Poglej klasično trgovino'],

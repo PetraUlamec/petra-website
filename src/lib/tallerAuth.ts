@@ -10,6 +10,7 @@ import { createHash, createHmac, timingSafeEqual } from "crypto";
 export const CABECERA_CLAVE = "x-taller-key";
 /** Una clave de 5 letras no protege nada; se exige un mínimo razonable. */
 export const LARGO_MINIMO = 8;
+export const DURACION_SESION = 365 * 24 * 60 * 60;
 
 export function hayClaveConfigurada(): boolean {
   const k = process.env.TALLER_KEY;
@@ -50,8 +51,17 @@ export function nuevaSesion(password: unknown): string | null {
   if (!hayClaveConfigurada() || typeof password !== "string") return null;
   const configured = process.env.TALLER_PASSWORD || process.env.TALLER_KEY!;
   if (!igualSeguro(password, configured)) return null;
-  const expiry = String(Date.now() + 12 * 60 * 60 * 1000);
+  return firmarSesion();
+}
+
+function firmarSesion(): string {
+  const expiry = String(Date.now() + DURACION_SESION * 1000);
   return `${expiry}.${createHmac("sha256", process.env.TALLER_KEY!).update(expiry).digest("hex")}`;
+}
+
+export function renovarSesion(req: Request): string | null {
+  if (req.method !== "POST" || !claveOk(req)) return null;
+  return firmarSesion();
 }
 
 /**
