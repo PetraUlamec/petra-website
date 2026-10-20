@@ -35,7 +35,7 @@ export default function Lamina({ tea: teaRaw, num }: { tea: Tea; num: number }) 
         ) : (
           <div className="flex flex-wrap justify-center gap-1 my-3 min-h-[118px]">
             {plantas.map((p, i) => (
-              <PlantaSVG key={p.id} forma={p.forma} color={p.color} color2={p.color2} size={i === 1 ? 116 : 96} />
+              <PlantaSVG key={p.id} plantId={p.id} forma={p.forma} color={p.color} color2={p.color2} size={i === 1 ? 116 : 96} />
             ))}
           </div>
         )}

@@ -48,7 +48,7 @@ export default function TeaPanel({ jarPositions }: { jarPositions: Record<string
         {tea.plantas.map((ingredient) => {
           const plant = trPlanta(plantById(ingredient.plantaId), lang);
           return <button key={plant.id} aria-pressed={plantId === plant.id} className={`min-h-20 rounded-md border px-1 py-2 text-xs flex flex-col items-center gap-1 ${plantId === plant.id ? "border-[var(--madera)] bg-[var(--miel-clara)]" : "border-[var(--madera)]/30 bg-[var(--crema)]"}`} onClick={() => setPlant(plant.id)}>
-            <PlantaSVG forma={plant.forma} color={plant.color} color2={plant.color2} size={42} />{plant.nombre}
+            <PlantaSVG plantId={plant.id} forma={plant.forma} color={plant.color} color2={plant.color2} size={42} />{plant.nombre}
           </button>;
         })}
       </div>

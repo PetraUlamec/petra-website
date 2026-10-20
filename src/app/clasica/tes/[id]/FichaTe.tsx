@@ -50,7 +50,7 @@ export default function FichaTe({ tea: teaRaw, initialPlants = [] }: { tea: Tea;
               <div className="absolute -top-14 inset-x-0 flex justify-center items-end gap-0 pointer-events-none">
                 {plantas.slice(0, 5).map(({ p }, i) => (
                   <div key={p.id} className="brota" style={{ animationDelay: `${0.25 + i * 0.14}s` }}>
-                    <PlantaSVG forma={p.forma} color={p.color} color2={p.color2} size={i === 2 ? 96 : 72} />
+                    <PlantaSVG plantId={p.id} forma={p.forma} color={p.color} color2={p.color2} size={i === 2 ? 96 : 72} />
                   </div>
                 ))}
               </div>
@@ -62,7 +62,7 @@ export default function FichaTe({ tea: teaRaw, initialPlants = [] }: { tea: Tea;
             {plantas.map(({ tp, p }, i) => (
               <div key={p.id} className="flex gap-4">
                 <div className="shrink-0" style={{ animationDelay: `${i * 0.18}s` }}>
-                  <PlantaSVG forma={p.forma} color={p.color} color2={p.color2} size={104} dibuja />
+                  <PlantaSVG plantId={p.id} forma={p.forma} color={p.color} color2={p.color2} size={104} dibuja />
                 </div>
                 <div className="pt-1">
                   <p className="font-display text-xl leading-tight">{p.nombre}</p>

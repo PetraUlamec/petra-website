@@ -5,6 +5,8 @@
 import { useMemo } from "react";
 import * as THREE from "three";
 import type { Plant } from "@/lib/types";
+import { visualProfile } from "@/data/botanicalArt";
+import BotanicalSpecimen from "./BotanicalSpecimen";
 
 // pseudo-aleatorio determinista a partir del id
 function rng(seed: string) {
@@ -90,6 +92,11 @@ function Stem({ h, color, x = 0, z = 0, tilt = 0 }: { h: number; color: string; 
 }
 
 export default function PlantSprig({ plant, scale = 1 }: { plant: Plant; scale?: number }) {
+  if (visualProfile(plant.id)) return <BotanicalSpecimen plant={plant} scale={scale} />;
+  return <GenericPlantSprig plant={plant} scale={scale} />;
+}
+
+function GenericPlantSprig({ plant, scale = 1 }: { plant: Plant; scale?: number }) {
   const parts = useMemo(() => {
     const r = rng(plant.id);
     const out: React.ReactNode[] = [];

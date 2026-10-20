@@ -27,4 +27,6 @@ const teas = load('src/data/teas.ts').TEAS.map(tea => ({ ...tea, traducciones: O
 })) }));
 const plants = load('src/data/plants.ts').PLANTS.map(plant => ({ ...plant, nombres: { en: trPlanta(plant, 'en').nombre, sl: trPlanta(plant, 'sl').nombre } }));
 const drawings = Object.fromEntries(shapes.map(forma => [forma, renderToStaticMarkup(React.createElement(Illustration, { forma, color: '#aabbcc', color2: '#ddeeff' }))]));
-fs.writeFileSync(path.join(root, 'public/studio/catalogo-base.json'), JSON.stringify({ teas, plants, drawings, formas }, null, 2) + '\n');
+const { VISUAL_PROFILES: visualProfiles, VISUAL_ALIASES: visualAliases } = load('src/data/botanicalArt.ts');
+const ingredientDrawings = Object.fromEntries(plants.map(plant => [plant.id, renderToStaticMarkup(React.createElement(Illustration, { plantId: plant.id, forma: plant.forma, color: '#aabbcc', color2: '#ddeeff' }))]));
+fs.writeFileSync(path.join(root, 'public/studio/catalogo-base.json'), JSON.stringify({ teas, plants, drawings, formas, ingredientDrawings, visualProfiles, visualAliases }, null, 2) + '\n');

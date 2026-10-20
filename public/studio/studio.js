@@ -151,7 +151,7 @@ function renderPlants() {
   if (previousFocus) list.querySelector(`[data-plant-id="${CSS.escape(previousFocus)}"]`)?.focus({ preventScroll: true });
 }
 function drawing(plant) {
-  const template = base.drawings?.[plant.forma];
+  const template = base.ingredientDrawings?.[base.visualAliases?.[plant.id] || plant.id] || base.drawings?.[plant.forma];
   if (template && /^#[0-9a-f]{6}$/i.test(plant.color) && /^#[0-9a-f]{6}$/i.test(plant.color2)) {
     const documentSVG = new DOMParser().parseFromString(template.replace('<svg ', '<svg xmlns="http://www.w3.org/2000/svg" ').replaceAll('#aabbcc', plant.color).replaceAll('#ddeeff', plant.color2), 'image/svg+xml');
     const svg = document.importNode(documentSVG.documentElement, true);

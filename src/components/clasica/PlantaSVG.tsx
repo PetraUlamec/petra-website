@@ -1,6 +1,7 @@
 // Siluetas botánicas de lámina de herbario — dibujadas a trazo, una por forma real del catálogo.
 // El realismo no es foto: es el lenguaje de las láminas botánicas (trazo, latín, anotación).
 import type { FormaPlanta } from "@/lib/types";
+import { botanicalArt } from "@/data/botanicalArt";
 
 function Tallo({ h = 60 }: { h?: number }) {
   return <path d={`M50 ${95} C ${48} ${95 - h * 0.4}, ${52} ${95 - h * 0.7}, 50 ${95 - h}`} fill="none" strokeWidth="1.6" />;
@@ -224,14 +225,15 @@ const FORMAS: Record<FormaPlanta, (c: string, c2?: string) => React.ReactNode> =
   ),
 };
 
-export default function PlantaSVG({ forma, color, color2, size = 84, dibuja = false }: {
-  forma: FormaPlanta; color: string; color2?: string; size?: number; dibuja?: boolean;
+export default function PlantaSVG({ plantId, forma, color, color2, size = 84, dibuja = false }: {
+  plantId?: string; forma: FormaPlanta; color: string; color2?: string; size?: number; dibuja?: boolean;
 }) {
+  const marks = plantId ? botanicalArt(plantId, color, color2 || color) : null;
   return (
-    <svg viewBox="0 0 100 100" width={size} height={size} aria-hidden
+    <svg viewBox="0 0 100 100" width={size} height={size} aria-hidden data-ingredient={plantId}
       className={dibuja ? "lamina-dibuja" : undefined}
       style={{ color: "var(--tinta-suave, #4a3826)" }} stroke="currentColor" strokeLinecap="round">
-      {(FORMAS[forma] || FORMAS.hoja)(color, color2)}
+      {marks ? marks.map((mark, index) => <path key={index} d={mark.d} fill={mark.fill} stroke={mark.stroke} strokeWidth={mark.width} transform={mark.transform} />) : (FORMAS[forma] || FORMAS.hoja)(color, color2)}
     </svg>
   );
 }
