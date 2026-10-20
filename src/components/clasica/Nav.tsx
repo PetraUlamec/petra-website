@@ -24,7 +24,7 @@ export default function Nav() {
   ];
   return (
     <header className="sticky top-0 z-40 bg-[#fdf8ea]/92 backdrop-blur border-b border-[rgba(58,37,19,0.12)]">
-      <div className="max-w-[1240px] mx-auto px-4 sm:px-6 h-14 flex items-center gap-5">
+      <div className="max-w-[1240px] mx-auto px-3 sm:px-6 h-14 flex items-center gap-1 sm:gap-5">
         <Link href="/clasica" aria-label={T.a11y.inicio} className="shrink-0 group min-h-10 flex items-center">
           {/* Logotipo tipográfico sin fondo ni subrayados. */}
           <span className="font-display leading-none inline-flex items-baseline whitespace-nowrap text-[#17120f]">
@@ -42,7 +42,7 @@ export default function Nav() {
             </Link>
           ))}
         </nav>
-        <div className="ml-auto flex items-center gap-2">
+        <div className="ml-auto flex items-center gap-1 sm:gap-2">
           {/* puente a la otra cara de la tienda: la misma cesta y el mismo idioma te acompañan */}
           <Link href="/" className="hidden sm:inline-flex items-center min-h-10 px-2 text-[12.5px] whitespace-nowrap opacity-75 hover:opacity-100 transition-opacity" title={T.cl.visita3d}>
             ✨ {T.nav.tienda3d}
