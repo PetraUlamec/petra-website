@@ -136,7 +136,7 @@ export default function Jar({
             <meshStandardMaterial color="#efe4c8" roughness={1} transparent opacity={opacity} />
           </mesh>
           <Text
-            font="/fonts/karla-latin-700-normal.woff"
+            font="/fonts/karla-full-700-normal.woff"
             position={[0, 0.008, 0.012]}
             fontSize={0.03}
             maxWidth={0.19}

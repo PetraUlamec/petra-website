@@ -330,7 +330,7 @@ export function WallSign({ position, texto, rotY = 0, w = 1.15 }: { position: [n
           <meshStandardMaterial color="#2e2013" metalness={0.5} roughness={0.5} />
         </mesh>
       ))}
-      <Text position={[0, 0, 0.045]} fontSize={0.128} color="#f3e4c4" font="/fonts/karla-latin-700-normal.woff"
+      <Text position={[0, 0, 0.045]} fontSize={0.128} color="#f3e4c4" font="/fonts/karla-full-700-normal.woff"
         anchorX="center" anchorY="middle" maxWidth={w - 0.12}>
         {texto}
       </Text>

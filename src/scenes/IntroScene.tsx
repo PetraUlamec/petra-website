@@ -55,9 +55,9 @@ function SwingingSign() {
             <meshStandardMaterial color="#d9b45b" roughness={0.7} metalness={0.2} />
           </mesh>
         ))}
-        <Text position={[0, 0.05, 0.046]} fontSize={0.21} color="#f3e4c4" font="/fonts/karla-latin-700-normal.woff"
+        <Text position={[0, 0.05, 0.046]} fontSize={0.21} color="#f3e4c4" font="/fonts/karla-full-700-normal.woff"
           anchorX="center" anchorY="middle" maxWidth={1.18}>{T.marca}</Text>
-        <Text position={[0, -0.12, 0.046]} fontSize={0.065} color="#e8d5ae" font="/fonts/karla-latin-700-normal.woff"
+        <Text position={[0, -0.12, 0.046]} fontSize={0.065} color="#e8d5ae" font="/fonts/karla-full-700-normal.woff"
           anchorX="center" anchorY="middle" letterSpacing={0.26} maxWidth={1.14}>{T.tienda.toUpperCase()}</Text>
       </group>
     </group>
