@@ -29,6 +29,11 @@ test('rooms never render the removed floor guidance circles', () => {
     assert.doesNotMatch(fs.readFileSync(path.join(root, 'src/scenes', filename), 'utf8'), /<Hotspot\b|useHotspots/);
   }
 });
+test('saved salon side door stays parallel to the left wall', () => {
+  const overrides = JSON.parse(fs.readFileSync(path.join(root, 'data/overrides.json'), 'utf8'));
+  assert.ok(Math.abs(overrides['/salon']['puerta-nosotros'].rotY - Math.PI / 2) < 0.001);
+  for (const id of ['puerta-te', 'puerta-te-premium']) assert.equal(overrides['/salon'][id].rotY, 0);
+});
 const originalResolve = Module._resolveFilename;
 Module._resolveFilename = function (request, parent, ...rest) {
   return originalResolve.call(this, request.startsWith('@/') ? path.join(root, 'src', request.slice(2)) : request, parent, ...rest);
