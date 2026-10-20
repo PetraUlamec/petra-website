@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "node scripts/preparar-datos.cjs && node scripts/exportar-estudio.cjs && next build",
+    "build": "node scripts/preparar-datos.cjs && node scripts/exportar-estudio.cjs && next build --webpack",
     "start": "next start -H 127.0.0.1 -p 3111",
     "lint": "eslint",
     "start:publico": "next start -p 3111"
